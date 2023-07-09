@@ -1,0 +1,16 @@
+body,
+html {
+  margin: 0;
+  background-image: linear-gradient(#d9f0ff, #acdeff);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
