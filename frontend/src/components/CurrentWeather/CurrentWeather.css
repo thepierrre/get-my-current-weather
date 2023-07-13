@@ -1,0 +1,59 @@
+.city-container {
+  width: 45rem;
+  background-color: rgba(255, 255, 255, 0.6);
+  color: black;
+  padding-bottom: 2rem;
+  border-radius: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.current-weather-info {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.current-weather-info__main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 12rem;
+  font-size: 2rem;
+}
+
+.current-weather-info-image {
+  width: 12rem;
+}
+
+.current-weather-info-image img {
+  max-width: 180px;
+}
+
+.current-weather-info__additional {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 12rem;
+  font-size: 1.2rem;
+}
+
+.city-name {
+  font-size: 0.8rem;
+  color: rgb(36, 36, 36);
+}
+
+.current-temperature {
+  font-size: 2rem;
+}
+
+.current-weather-description {
+  font-size: 2rem;
+}
+
+.current-date {
+  font-size: 1.5rem;
+}
