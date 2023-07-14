@@ -6,12 +6,13 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import "./SearchBar.css";
 
 const SearchBar = (props) => {
-  const { getWeather, cityInputChangeHandler, enteredCity } = props;
+  const { getWeather, getLocation, cityInputChangeHandler, enteredCity } =
+    props;
 
   return (
     <div className="search-container">
       <Button variant="contained" disableElevation className="location-button">
-        <LocationOnIcon sx={{ fill: "white" }} />
+        <LocationOnIcon sx={{ fill: "white" }} onClick={getLocation} />
       </Button>
       <TextField
         className="search-bar"

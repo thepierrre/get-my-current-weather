@@ -1,18 +1,25 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
 .city-container {
-  width: 45rem;
+  width: 43rem;
   background-color: rgba(255, 255, 255, 0.6);
   color: black;
-  padding-bottom: 2rem;
   border-radius: 0.3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 1rem 1rem 2rem 1rem;
 }
 
 .current-weather-info {
   display: flex;
-  flex-direction: row;
-  gap: 2rem;
+  align-items: center;
+  position: relative;
+  flex-direction: column;
+  width: 45rem;
 }
 
 .current-weather-info__main {
@@ -20,30 +27,45 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 12rem;
+  width: 21rem;
   font-size: 2rem;
 }
 
 .current-weather-info-image {
-  width: 12rem;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
 }
 
 .current-weather-info-image img {
-  max-width: 180px;
+  max-width: 80px;
 }
 
 .current-weather-info__additional {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 12rem;
   font-size: 1.2rem;
+  gap: 2rem;
 }
 
-.city-name {
+.query {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-size: 0.8rem;
   color: rgb(36, 36, 36);
+}
+
+.query h1 {
+  font-size: 2.2rem;
+  margin: 1rem 0 0 0.5rem;
+}
+
+.query p {
+  margin: 0;
+  font-size: 1.8rem;
 }
 
 .current-temperature {

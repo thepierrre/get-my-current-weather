@@ -3,8 +3,9 @@
   background-color: rgba(255, 255, 255, 0.6);
   border-radius: 0.3rem;
   justify-content: center;
-  width: 45rem;
+  width: 43rem;
   gap: 5rem;
+  padding: 1rem;
 }
 
 .additional-day {
@@ -12,6 +13,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 15rem;
 }
 
 .longterm-weather-photo img {

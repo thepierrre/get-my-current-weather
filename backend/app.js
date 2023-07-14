@@ -16,11 +16,37 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use("/address", (req, res, next) => {
+  const ipAddress = req.socket.remoteAddress;
+  res.json(ipAddress);
+});
+
+app.use("/location", async (req, res, next) => {
+  // ipstack key
+  const apiKey = "0fe6aa6fe86b3038828f74b6d0a57c61";
+  // ipstack API
+  const APIUrl = `http://api.ipstack.com/check?access_key=${apiKey}`;
+
+  let location;
+
+  try {
+    const response = await axios.get(APIUrl);
+    location = response.data;
+  } catch (error) {
+    location = null;
+    error = "Something went wrong. Please try again.";
+  }
+
+  res.json(location);
+});
+
 app.use("/weather", async (req, res, next) => {
   const { city } = req.query;
-  const apiKey = "056795ab2eb5a0b267ee4ab9dfafce43";
+  // weatherstack key
+  const apiKey = "e96bee8a8e5fe10c3c1b61411c9fc0b0";
 
-  const APIUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+  // weatherstack API
+  const APIUrl = `http://api.weatherstack.com/current?access_key=${apiKey}&query=${city}$forecast_days=3`;
 
   let weather;
   let error;
