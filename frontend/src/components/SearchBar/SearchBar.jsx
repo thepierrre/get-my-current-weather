@@ -6,7 +6,7 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import "./SearchBar.css";
 
 const SearchBar = (props) => {
-  const { getWeather } = props;
+  const { getWeather, cityInputChangeHandler, enteredCity } = props;
 
   return (
     <div className="search-container">
@@ -17,12 +17,14 @@ const SearchBar = (props) => {
         className="search-bar"
         label="City name"
         style={{ background: "rgba(255, 255, 255)" }}
+        onChange={cityInputChangeHandler}
       />
 
       <Button
         variant="contained"
         disableElevation
         className="search-button"
+        value={enteredCity}
         onClick={getWeather}
       >
         Get My Weather!

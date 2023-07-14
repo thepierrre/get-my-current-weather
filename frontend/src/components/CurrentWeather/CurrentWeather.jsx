@@ -1,6 +1,8 @@
 import "./CurrentWeather.css";
 
-const CurrentWeather = () => {
+const CurrentWeather = (props) => {
+  const { currWeather } = props;
+
   return (
     <div className="city-container">
       <div className="city-name">
@@ -11,8 +13,10 @@ const CurrentWeather = () => {
           <img src="https://cdn-icons-png.flaticon.com/512/3349/3349371.png" />
         </div>
         <div className="current-weather-info__main">
-          <span className="current-temperature">23°C</span>
-          <span className="current-weather-description">Clear sky</span>
+          <span className="current-temperature">{currWeather.temp}°C</span>
+          <span className="current-weather-description">
+            {currWeather.main}
+          </span>
           {/* <span className="current-date">9 July, 2023</span> */}
         </div>
         {/* <div className="current-weather-info__additional">
