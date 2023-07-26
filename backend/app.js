@@ -16,18 +16,11 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/address", (req, res, next) => {
-  const ipAddress = req.socket.remoteAddress;
-  res.json(ipAddress);
-});
-
 app.use("/location", async (req, res, next) => {
   // ipstack key
   const apiKey = "0fe6aa6fe86b3038828f74b6d0a57c61";
   // ipstack API
   const APIUrl = `http://api.ipstack.com/check?access_key=${apiKey}`;
-
-  let location;
 
   try {
     const response = await axios.get(APIUrl);
@@ -42,11 +35,10 @@ app.use("/location", async (req, res, next) => {
 
 app.use("/weather", async (req, res, next) => {
   const { city } = req.query;
-  // weatherstack key
-  const apiKey = "e96bee8a8e5fe10c3c1b61411c9fc0b0";
-
-  // weatherstack API
-  const APIUrl = `http://api.weatherstack.com/current?access_key=${apiKey}&query=${city}$forecast_days=3`;
+  // openweather key
+  const apiKey = "056795ab2eb5a0b267ee4ab9dfafce43";
+  // openweather API
+  const APIUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
 
   let weather;
   let error;
@@ -60,10 +52,6 @@ app.use("/weather", async (req, res, next) => {
   }
 
   res.json(weather);
-});
-
-app.use("/", (req, res, next) => {
-  res.send("Hello!");
 });
 
 app.listen(port);

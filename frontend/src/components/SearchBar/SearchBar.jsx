@@ -1,8 +1,7 @@
-import Box from "@mui/material/Box";
 import { InputAdornment, TextField, IconButton } from "@mui/material";
-import Button from "@mui/material/Button";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-
+import SearchIcon from "@mui/icons-material/Search";
+import Tooltip from "@mui/material/Tooltip";
 import "./SearchBar.css";
 
 const SearchBar = (props) => {
@@ -11,25 +10,34 @@ const SearchBar = (props) => {
 
   return (
     <div className="search-container">
-      <Button variant="contained" disableElevation className="location-button">
-        <LocationOnIcon sx={{ fill: "white" }} onClick={getLocation} />
-      </Button>
       <TextField
         className="search-bar"
         label="City name"
+        focused
         style={{ background: "rgba(255, 255, 255)" }}
-        onChange={cityInputChangeHandler}
-      />
-
-      <Button
-        variant="contained"
-        disableElevation
-        className="search-button"
         value={enteredCity}
-        onClick={getWeather}
-      >
-        Get My Weather!
-      </Button>
+        onChange={cityInputChangeHandler}
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <Tooltip title="Get my location">
+                <IconButton onClick={getLocation}>
+                  <LocationOnIcon color="primary" />
+                </IconButton>
+              </Tooltip>
+            </InputAdornment>
+          ),
+          endAdornment: (
+            <InputAdornment position="end">
+              <Tooltip title="Get weather">
+                <IconButton onClick={getWeather}>
+                  <SearchIcon color="primary" />
+                </IconButton>
+              </Tooltip>
+            </InputAdornment>
+          ),
+        }}
+      />
     </div>
   );
 };
