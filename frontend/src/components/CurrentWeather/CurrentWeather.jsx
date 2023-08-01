@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import DayPartContext from "../../context/day-part-context";
 import { imagesLinks } from "../../utils/images/images-links";
 import "./CurrentWeather.css";
@@ -131,42 +132,53 @@ const CurrentWeather = (props) => {
   }
 
   return (
-    <div className="city-container">
-      <div className="current-weather-info">
-        <div className="current-weather-info__place">
-          <h1>
-            {currWeather.city || "Dreamcity"},{" "}
-            {currWeather.country || "Dreamland"}
-          </h1>
-          <p>{time}</p>
-        </div>
-        <div className="current-weather-info__main">
-          <p className="current-temperature">
-            {Math.floor(currWeather.temp || 24.0)}°C
-          </p>
-          <p className="current-weather-description">
-            {currWeather.main || "Clear"}
-          </p>
-        </div>
-        <div className="current-weather-info__additional">
-          <div className="additional_1">
-            <p>Wind: {Math.floor(currWeather.wind || 3)} km/h</p>
-            <p>Humidity: {Math.floor(currWeather.humidity || 15)}%</p>
+    <>
+      <div className="city-container">
+        <div className="current-weather-info">
+          <div className="current-weather-info__place">
+            <h1>
+              {currWeather.city || "Dreamcity"},{" "}
+              {currWeather.country || "Dreamland"}
+            </h1>
+            <p>{time}</p>
           </div>
-          <div className="additional_2">
-            <p>Pressure: {currWeather.pressure || 1013} hPa</p>
-            <p>Feels like: {Math.floor(currWeather.felt || 24)}°C</p>
+          <div className="current-weather-info__main">
+            <p className="current-temperature">
+              {Math.floor(currWeather.temp || 24.0)}°C
+            </p>
+            <p className="current-weather-description">
+              {currWeather.main || "Clear"}
+            </p>
+          </div>
+          <div className="current-weather-info__additional">
+            <div className="additional_1">
+              <p>Wind: {Math.floor(currWeather.wind || 3)} km/h</p>
+              <p>Humidity: {Math.floor(currWeather.humidity || 15)}%</p>
+            </div>
+            <div className="additional_2">
+              <p>Pressure: {currWeather.pressure || 1013} hPa</p>
+              <p>Feels like: {Math.floor(currWeather.felt || 24)}°C</p>
+            </div>
+          </div>
+          <div className="current-weather-info__day">
+            <p className="sunrise">Sunrise: {sunrise} </p>
+            <p className="sunset">Sunset: {sunset}</p>
           </div>
         </div>
-        <div className="current-weather-info__day">
-          <p className="sunrise">Sunrise: {sunrise} </p>
-          <p className="sunset">Sunset: {sunset}</p>
+        <div className="current-weather-image">
+          <img src={imgSrc} />
         </div>
       </div>
-      <div className="current-weather-image">
-        <img src={imgSrc} />
+      <div className="footer">
+        <p>Created by Piotr Owczarczyk in 2023.</p>
+        <p>
+          <Link to="/credits" className="credits-link">
+            Click here
+          </Link>{" "}
+          for the picture credits.
+        </p>
       </div>
-    </div>
+    </>
   );
 };
 
