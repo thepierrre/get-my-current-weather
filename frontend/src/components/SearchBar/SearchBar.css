@@ -1,9 +1,7 @@
 .search-container {
+  margin-top: 5rem;
   gap: 1rem;
-  position: fixed;
-  top: 10%;
   left: 50%;
-  transform: translateX(-50%);
 }
 
 .search-bar {
@@ -18,7 +16,7 @@
   width: 12rem;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
   .search-container {
     width: 95vw;
     top: 0;

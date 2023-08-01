@@ -4,9 +4,9 @@
 }
 
 .city-container {
-  position: fixed;
-  top: 20%;
+  position: relative;
   width: 40rem;
+  box-sizing: content-box;
   background: #0081d6;
   color: white;
   border-radius: 0.3rem;
@@ -30,6 +30,7 @@
   flex-direction: column;
   width: 100%;
   padding-bottom: 1rem;
+  gap: 0.25rem;
   border-bottom: 1px solid white;
 }
 
@@ -64,9 +65,13 @@
   flex-direction: row;
   width: 100%;
   font-size: 1.3rem;
-  gap: 3rem;
+  gap: 4rem;
   padding: 1rem 0 1rem 0;
   border-bottom: 1px solid white;
+}
+
+.current-weather-info__additional p {
+  margin: 0.3rem 0;
 }
 
 .current-weather-info__day {
@@ -108,12 +113,10 @@
   font-size: 1.5rem;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
   .city-container {
     flex-direction: column;
     width: 86vw;
-    height: 85vh;
-    top: 10%;
   }
 
   .current-weather-info {

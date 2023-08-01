@@ -18,6 +18,7 @@ const SearchBar = (props) => {
         value={enteredCity}
         onChange={cityInputChangeHandler}
         InputProps={{
+          style: { fontFamily: "Arial" },
           startAdornment: (
             <InputAdornment position="start">
               <Tooltip title="Get my location">

@@ -3,12 +3,11 @@ import { useState } from "react";
 import SearchBar from "./components/SearchBar/SearchBar";
 import CurrentWeather from "./components/CurrentWeather/CurrentWeather";
 import { useHttpClient } from "./hooks/http-hook";
-
+import Footer from "./components/authorship/Footer";
 import "./App.css";
 
 function App() {
   const [enteredCity, setEnteredCity] = useState("");
-  const [isNight, setIsNight] = useState(true);
   const [currWeather, setCurrWeather] = useState({
     city: undefined,
     country: undefined,
@@ -64,10 +63,8 @@ function App() {
     }
   };
 
-  const appClass = `app ${isNight ? "dark" : "bright"}`;
-
   return (
-    <div className={appClass}>
+    <div className="app">
       <SearchBar
         getWeather={getWeather}
         getLocation={getLocation}
@@ -75,6 +72,7 @@ function App() {
         enteredCity={enteredCity}
       />
       <CurrentWeather currWeather={currWeather} />
+      <Footer className="footer" />
     </div>
   );
 }
