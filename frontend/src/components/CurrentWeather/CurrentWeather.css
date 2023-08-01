@@ -130,6 +130,7 @@
   .city-container {
     flex-direction: column;
     width: 86vw;
+    gap: 0.5rem;
   }
 
   .current-weather-info {
@@ -153,6 +154,7 @@
 
   .additional_1 {
     width: 50%;
+    font-size: 1.05rem;
   }
 
   .additional_2 {
@@ -160,6 +162,7 @@
     flex-direction: column;
     align-items: flex-end;
     width: 60%;
+    font-size: 1.05rem;
   }
 
   .current-temperature {
@@ -170,8 +173,12 @@
     font-size: 1.3rem;
   }
 
+  .current-weather-info__day {
+    gap: 0.8rem;
+  }
+
   .current-weather-info__day p {
-    font-size: 1rem;
+    font-size: 1.05rem;
   }
 
   .footer {
