@@ -10,6 +10,4 @@ export const imagesLinks = {
   snow: "https://cdn-icons-png.flaticon.com/512/4837/4837621.png",
   thunder: "https://cdn-icons-png.flaticon.com/512/4837/4837858.png",
   tornado: "https://cdn-icons-png.flaticon.com/512/826/826982.png",
-  collection:
-    "https://www.freepik.com/icon/cloudy_4837668#position=14&page=3&term=cloudy&fromView=search",
 };

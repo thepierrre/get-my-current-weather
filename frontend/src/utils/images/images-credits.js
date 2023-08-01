@@ -14,4 +14,5 @@ export const imagesCredits = {
     "https://www.freepik.com/icon/storm_4837858#fromView=resource_detail&position=7",
   tornado:
     "https://www.freepik.com/icon/twister_826982#fromView=search&term=tornado&page=1&position=15",
+  main: "https://www.freepik.com/icon/sunny_979585#fromView=search&term=sun&page=1&position=2",
 };

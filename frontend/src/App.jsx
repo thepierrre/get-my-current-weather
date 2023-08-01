@@ -65,6 +65,7 @@ function App() {
 
   return (
     <div className="app">
+      <h1 className="main-title">Enter a city name!</h1>
       <SearchBar
         getWeather={getWeather}
         getLocation={getLocation}
