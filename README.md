@@ -24,7 +24,7 @@ The current location functionality works in the following way:
 
 **Important note:** because of a considerable latency of the free Google Maps API, getting your current location can take up to several seconds.
 
-<h3 align="center">Display chosen weather</h3>
+<h3 align="center">Display chosen city</h3>
 
 You can click on the magnifying glass icon to display the weather either for your current location (if you used the current location function described above) or for an entered city name of your choice. Afterwards, you receive the following info for your chosen spot:
 
