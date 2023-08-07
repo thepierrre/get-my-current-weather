@@ -14,7 +14,7 @@ The project comprises a full-stack application displaying a current weather for 
 
 The application comprises of two core functionalities: _fetching your current location_ and _displaying the weather for the entered city_. Before any API call is made, by default, the application displays my very own definition of perfect weather for an imaginary city _Dreamland_.
 
-<h3 align="center">Get my current location</h3>
+<h3>Get my current location</h3>
 
 The current location functionality works in the following way:
 
@@ -24,7 +24,7 @@ The current location functionality works in the following way:
 
 **Important note:** because of a considerable latency of the free Google Maps API, getting your current location can take up to several seconds.
 
-<h3 align="center">Display chosen weather</h3>
+<h3>Display chosen weather</h3>
 
 You can click on the magnifying glass icon to display the weather either for your current location (if you used the current location function described above) or for an entered city name of your choice. Afterwards, you receive the following info for your chosen spot:
 
@@ -45,7 +45,7 @@ Additionally, the current weather is illustrated by an image. There a different 
 - thunderstorm,
 - tornado,
 - smoke,
-- dust/sand/ash
+- dust/sand/ash.
 
 <h2 align="center">Project Installation</h2>
 
