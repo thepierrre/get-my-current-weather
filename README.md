@@ -34,7 +34,18 @@ You can click on the magnifying glass icon to display the weather either for you
 - wind, humidity, pressure, perceived temperature,
 - sunrise & sunset.
 
-Additionally, the current weather is illustrated by an image (if the sky is clear, a moon picture is displayed instead of the sun at night).
+Additionally, the current weather is illustrated by an image. There a different images for the following weather phenomena:
+
+- clear sky (if the sky is clear, a moon picture is displayed instead of the sun at night),
+- clouds,
+- rain,
+- snow,
+- haze,
+- fog,
+- thunderstorm,
+- tornado,
+- smoke,
+- dust/sand/ash
 
 <h2 align="center">Project Installation</h2>
 
