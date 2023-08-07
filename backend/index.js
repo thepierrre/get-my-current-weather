@@ -1,30 +1,27 @@
 const axios = require("axios");
 const express = require("express");
+const cors = require("cors");
 const app = express();
 
-const port = 5002;
+const port = process.env.PORT;
 
 app.use(express.json());
 
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
-  next();
-});
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
 app.use("/location", async (req, res, next) => {
-  // ipstack key
-  const apiKey = "0fe6aa6fe86b3038828f74b6d0a57c61";
-  // ipstack API
-  const APIUrl = `http://api.ipstack.com/check?access_key=${apiKey}`;
+  const { lat, lon } = req.body;
+
+  const apiKey = process.env.LOCATIONKEY;
+  const APIUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key=${apiKey}`;
 
   try {
     const response = await axios.get(APIUrl);
-    location = response.data;
+    location = response.data.results[9].formatted_address;
   } catch (error) {
     location = null;
     error = "Something went wrong. Please try again.";
@@ -35,9 +32,7 @@ app.use("/location", async (req, res, next) => {
 
 app.use("/weather", async (req, res, next) => {
   const { city } = req.query;
-  // openweather key
-  const apiKey = "056795ab2eb5a0b267ee4ab9dfafce43";
-  // openweather API
+  const apiKey = process.env.WEATHERKEY;
   const APIUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
 
   let weather;
@@ -54,4 +49,6 @@ app.use("/weather", async (req, res, next) => {
   res.json(weather);
 });
 
-app.listen(port);
+app.listen(port, () => {
+  console.log(`Server is listening on port ${port}`);
+});
