@@ -12,12 +12,16 @@ The project comprises a full-stack application displaying a current weather for 
 
 <h2 align="center">User Functionalities</h2>
 
-The application comprises of two core functionalities: fetching the user's current location and displaying the weather for the entered city. Before any API call is made, by default, the application displays my very own definition of perfect weather for an imaginary city _Dreamland_.
+The application comprises of two core functionalities: _fetching your current location_ and _displaying the weather for the entered city_. Before any API call is made, by default, the application displays my very own definition of perfect weather for an imaginary city _Dreamland_.
 
 <h3 align="center">Get my current location</h3>
 
-The current location functionality works in the following way: first, a geolocation API is used to get the user's geographical coordinates (latitude and longitude) based on the browser location of the user. Then, the geolocation data is sent to the backend, which uses a Google Maps reversed geocoding API to return the city name based on the coordinates. Finally, the city name is sent back to the user.
-**Important note:** because of a considerable latency of the free Google Maps API, getting your current location can take up to several seconds.
+The current location functionality works in the following way:
+
+1. First, a geolocation API is used to get your geographical coordinates (latitude and longitude) based on the location of your browser.
+2. Then, the geolocation data is sent to the backend, which uses a Google Maps reversed geocoding API to return the city name based on the coordinates.
+3. Finally, the city name is sent back to you.
+   **Important note:** because of a considerable latency of the free Google Maps API, getting your current location can take up to several seconds.
 
 <h3 align="center">Display chosen weather</h3>
 
