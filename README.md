@@ -21,7 +21,8 @@ The current location functionality works in the following way:
 1. First, a geolocation API is used to get your geographical coordinates (latitude and longitude) based on the location of your browser.
 2. Then, the geolocation data is sent to the backend, which uses a Google Maps reversed geocoding API to return the city name based on the coordinates.
 3. Finally, the city name is sent back to you.
-   **Important note:** because of a considerable latency of the free Google Maps API, getting your current location can take up to several seconds.
+
+**Important note:** because of a considerable latency of the free Google Maps API, getting your current location can take up to several seconds.
 
 <h3 align="center">Display chosen weather</h3>
 
