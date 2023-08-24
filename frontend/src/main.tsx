@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.jsx";
 import Credits from "./components/authorship/Credits.jsx";
 import DayPartContextProvider from "./DayPartContextProvider.jsx";
+import { ChakraProvider } from "@chakra-ui/react";
 
 const router = createBrowserRouter([
   {
@@ -18,8 +19,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <DayPartContextProvider>
-      <RouterProvider router={router} />
-    </DayPartContextProvider>
+    <ChakraProvider>
+      <DayPartContextProvider>
+        <RouterProvider router={router} />
+      </DayPartContextProvider>
+    </ChakraProvider>
   </React.StrictMode>
 );

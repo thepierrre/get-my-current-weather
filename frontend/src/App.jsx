@@ -4,6 +4,7 @@ import SearchBar from "./components/SearchBar/SearchBar";
 import CurrentWeather from "./components/CurrentWeather/CurrentWeather";
 import DayPartContextProvider from "./DayPartContextProvider";
 import Footer from "./components/authorship/Footer";
+import { Box, Flex } from "@chakra-ui/react";
 import "./App.css";
 
 function App() {
@@ -30,7 +31,7 @@ function App() {
 
   const getLocation = () => {
     setIsLoading(true);
-    setEnteredCity("Fetching the city...");
+    setEnteredCity("Fetching my location...");
     navigator.geolocation.getCurrentPosition(
       async (position) => {
         const lat = position.coords.latitude;
@@ -83,24 +84,32 @@ function App() {
   };
 
   return (
-    <div className="app">
-      <h1 className="main-title">Get my current weather</h1>
-      <SearchBar
-        getWeather={getWeather}
-        getLocation={getLocation}
-        cityInputChangeHandler={cityInputChangeHandler}
-        enteredCity={enteredCity}
-      />
-      {inputError && <p className="input-error">{inputError}</p>}
-      <DayPartContextProvider
-        sunrise={currWeather.sunrise}
-        sunset={currWeather.sunset}
-      >
-        <CurrentWeather currWeather={currWeather} />
-      </DayPartContextProvider>
+    <Box
+      className="app"
+      paddingTop="5rem"
+      bg="linear-gradient(150deg, #4477CE, #CCEEBC)"
+      w="100vw"
+      h="100vh"
+    >
+      <Flex direction="column" align="center" gap="3rem">
+        {/* <h1 className="main-title">Get my current weather</h1> */}
+        <SearchBar
+          getWeather={getWeather}
+          getLocation={getLocation}
+          cityInputChangeHandler={cityInputChangeHandler}
+          enteredCity={enteredCity}
+        />
+        {inputError && <p className="input-error">{inputError}</p>}
+        <DayPartContextProvider
+          sunrise={currWeather.sunrise}
+          sunset={currWeather.sunset}
+        >
+          <CurrentWeather currWeather={currWeather} />
+        </DayPartContextProvider>
 
-      <Footer className="footer" />
-    </div>
+        {/* <Footer className="footer" /> */}
+      </Flex>
+    </Box>
   );
 }
 

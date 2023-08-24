@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import DayPartContext from "../../context/day-part-context";
 import { imagesLinks } from "../../utils/images/images-links";
-import "./CurrentWeather.css";
+import { Flex, Spacer, Text, Heading, Box, Image } from "@chakra-ui/react";
+// import "./CurrentWeather.css";
 
 const CurrentWeather = (props) => {
   const { isNight } = useContext(DayPartContext);
@@ -125,43 +126,130 @@ const CurrentWeather = (props) => {
   }
 
   return (
-    <div className="city-container">
-      <div className="current-weather-info">
-        <div className="current-weather-info__place">
-          <h1>
-            {currWeather.city || "Dreamcity"},{" "}
-            {currWeather.country || "Dreamland"}
-          </h1>
-          <p>{time || "Saturday 10 AM"}</p>
-        </div>
-        <div className="current-weather-info__main">
-          <p className="current-temperature">
-            {Math.floor(currWeather.temp || 24.0)}°C
-          </p>
-          <p className="current-weather-description">
-            {currWeather.main || "Clear"}
-          </p>
-        </div>
-        <div className="current-weather-info__additional">
-          <div className="additional_1">
-            <p>Wind: {Math.floor(currWeather.wind || 3)} km/h</p>
-            <p>Humidity: {Math.floor(currWeather.humidity || 15)}%</p>
-          </div>
-          <div className="additional_2">
-            <p>Pressure: {currWeather.pressure || 1013} hPa</p>
-            <p>Feels like: {Math.floor(currWeather.felt || 24)}°C</p>
-          </div>
-        </div>
-        <div className="current-weather-info__day">
-          <p className="sunrise">Sunrise: {sunrise} </p>
-          <p className="sunset">Sunset: {sunset}</p>
-        </div>
-      </div>
-      <div className="current-weather-image">
-        <img src={imgSrc} />
-      </div>
-    </div>
+    <>
+      <Box w="100%" h="100%">
+        <Flex direction="column" gap="2rem">
+          <Box>
+            <Flex direction="column" align="center" gap="0.5rem">
+              <Heading as="h1" fontSize="6xl" textAlign="center">
+                {currWeather.city || "Munich"}, {currWeather.country || "DE"}
+              </Heading>
+              <Heading as="h2" fontSize="2xl">
+                {time || "Saturday 10 AM"}
+              </Heading>
+            </Flex>
+          </Box>
+          <Flex justify="center" align="center">
+            <Box w="30%" padding="4rem" borderRight="1px solid black">
+              <Flex
+                direction="row"
+                justify="center"
+                gap="3rem"
+                marginBottom="2rem"
+              >
+                <Flex direction="column" align="center">
+                  <Text fontSize="3xl">
+                    {Math.floor(currWeather.wind || 3)} km/h
+                  </Text>
+                  <Text fontSize="2xl">Wind</Text>
+                </Flex>
+                <Flex direction="column" align="center">
+                  <Text fontSize="3xl">
+                    {Math.floor(currWeather.humidity || 15)}%
+                  </Text>
+                  <Text fontSize="2xl">Humidity</Text>
+                </Flex>
+              </Flex>
+              <Flex direction="row" justify="center" gap="3rem">
+                <Flex direction="column" align="center">
+                  <Text fontSize="3xl">{currWeather.pressure || 1013} hPa</Text>
+                  <Text fontSize="2xl">Pressure</Text>
+                </Flex>
+                <Flex direction="column" align="center">
+                  <Text fontSize="3xl">
+                    {Math.floor(currWeather.felt || 24)}°C
+                  </Text>
+                  <Text fontSize="2xl">Feels like</Text>
+                </Flex>
+              </Flex>
+            </Box>
+            <Box w="37%">
+              <Flex direction="column" justify="center" gap="3rem">
+                <Box>
+                  <Flex direction="column" align="center" gap="1rem">
+                    <Image
+                      src={imgSrc}
+                      alt="Current weather image"
+                      boxSize="250px"
+                    />
+                    <Box>
+                      <Flex direction="column" align="center">
+                        <Text fontSize="6xl">
+                          {Math.floor(currWeather.temp || 24.0)}°C
+                        </Text>
+                        <Text fontSize="5xl">
+                          {currWeather.main || "Clear"}
+                        </Text>
+                      </Flex>
+                    </Box>
+                  </Flex>
+                </Box>
+              </Flex>
+            </Box>
+            <Box w="30%" padding="4rem" borderLeft="1px solid black">
+              <Flex direction="column" justify="center" gap="1rem">
+                <Heading as="h2" fontSize="3xl" textAlign="center">
+                  Did you know that...
+                </Heading>
+                <Text fontSize="xl" textAlign="center">
+                  Munich enjoys crisp winters and warm summers due to its
+                  continental climate, creating a diverse and vibrant outdoor
+                  culture.
+                </Text>
+              </Flex>
+            </Box>
+          </Flex>
+        </Flex>
+      </Box>
+    </>
   );
+  // // <div className="city-container">
+  //   {/* <div className="current-weather-info">
+  //     <div className="current-weather-info__place"> */}
+
+  //   {/* <h1>
+  //         {currWeather.city || "Dreamcity"},{" "}
+  //         {currWeather.country || "Dreamland"}
+  //       </h1> */}
+  //   {/* <p>{time || "Saturday 10 AM"}</p> */}
+  //   {/* </div> */}
+  //   {/* <div className="current-weather-info__main">
+  //       <p className="current-temperature">
+  //         {Math.floor(currWeather.temp || 24.0)}°C
+  //       </p>
+  //       <p className="current-weather-description">
+  //         {currWeather.main || "Clear"}
+  //       </p>
+  //     </div> */}
+  //   {/* <div className="current-weather-info__additional">
+  //       <div className="additional_1">
+  //         <p>Wind: {Math.floor(currWeather.wind || 3)} km/h</p>
+  //         <p>Humidity: {Math.floor(currWeather.humidity || 15)}%</p>
+  //       </div>
+  //       <div className="additional_2">
+  //         <p>Pressure: {currWeather.pressure || 1013} hPa</p>
+  //         <p>Feels like: {Math.floor(currWeather.felt || 24)}°C</p>
+  //       </div>
+  //     </div> */}
+  //   {/* <div className="current-weather-info__day">
+  //       <p className="sunrise">Sunrise: {sunrise} </p>
+  //       <p className="sunset">Sunset: {sunset}</p>
+  //     </div> */}
+  //   {/* </div>
+  //   <div className="current-weather-image">
+  //     <img src={imgSrc} />
+  //   </div> */}
+  // // </div>
 };
 
 export default CurrentWeather;

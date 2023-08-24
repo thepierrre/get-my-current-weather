@@ -5,16 +5,19 @@
 
 .city-container {
   position: relative;
-  width: 40rem;
+  width: 50rem;
+  height: 30rem;
   box-sizing: content-box;
-  background: #0081d6;
+  /* background: #0081d6; */
+  /* background-image: linear-gradient(140deg, #8cc0de, #c8e4b2); */
   color: white;
-  border-radius: 0.3rem;
+  border-radius: 1.25rem;
   display: flex;
   gap: 2rem;
   flex-direction: row;
   align-items: center;
   padding: 1rem;
+  color: rgb(11, 0, 82);
 }
 
 .current-weather-info {
