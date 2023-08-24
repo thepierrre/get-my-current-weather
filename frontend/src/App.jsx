@@ -5,7 +5,7 @@ import CurrentWeather from "./components/CurrentWeather/CurrentWeather";
 import DayPartContextProvider from "./DayPartContextProvider";
 import Footer from "./components/authorship/Footer";
 import { Box, Flex } from "@chakra-ui/react";
-import "./App.css";
+// import "./App.css";
 
 function App() {
   const [enteredCity, setEnteredCity] = useState("");
@@ -86,13 +86,14 @@ function App() {
   return (
     <Box
       className="app"
-      paddingTop="5rem"
+      paddingTop="4rem"
       bg="linear-gradient(150deg, #4477CE, #CCEEBC)"
       w="100vw"
       h="100vh"
+      paddingRight="2.5rem"
+      paddingLeft="2.5rem"
     >
-      <Flex direction="column" align="center" gap="3rem">
-        {/* <h1 className="main-title">Get my current weather</h1> */}
+      <Flex direction="column" align="center" gap="2rem">
         <SearchBar
           getWeather={getWeather}
           getLocation={getLocation}

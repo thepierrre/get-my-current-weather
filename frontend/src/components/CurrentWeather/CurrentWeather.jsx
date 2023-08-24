@@ -1,8 +1,27 @@
 import { useContext, useEffect, useState } from "react";
 import DayPartContext from "../../context/day-part-context";
 import { imagesLinks } from "../../utils/images/images-links";
-import { Flex, Spacer, Text, Heading, Box, Image } from "@chakra-ui/react";
+import {
+  Flex,
+  Spacer,
+  Text,
+  Heading,
+  Box,
+  Image,
+  Icon,
+} from "@chakra-ui/react";
 // import "./CurrentWeather.css";
+import {
+  WiDaySunny,
+  WiCloudy,
+  WiMoonAltFull,
+  WiCelsius,
+  WiFahrenheit,
+  WiStrongWind,
+  WiHumidity,
+  WiEarthquake,
+  WiCloud,
+} from "react-icons/wi";
 
 const CurrentWeather = (props) => {
   const { isNight } = useContext(DayPartContext);
@@ -127,88 +146,159 @@ const CurrentWeather = (props) => {
 
   return (
     <>
-      <Box w="100%" h="100%">
+      <Box w="100%" h="100%" color="#0A2647">
         <Flex direction="column" gap="2rem">
-          <Box>
-            <Flex direction="column" align="center" gap="0.5rem">
-              <Heading as="h1" fontSize="6xl" textAlign="center">
-                {currWeather.city || "Munich"}, {currWeather.country || "DE"}
-              </Heading>
-              <Heading as="h2" fontSize="2xl">
-                {time || "Saturday 10 AM"}
-              </Heading>
-            </Flex>
+          <Box
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            gap="0.5rem"
+          >
+            <Heading as="h1" fontSize="6xl" textAlign="center">
+              {currWeather.city || "Munich"}, {currWeather.country || "DE"}
+            </Heading>
+            <Heading as="h2" fontSize="2xl">
+              {time || "Saturday 10 AM"}
+            </Heading>
           </Box>
-          <Flex justify="center" align="center">
-            <Box w="30%" padding="4rem" borderRight="1px solid black">
-              <Flex
-                direction="row"
-                justify="center"
-                gap="3rem"
-                marginBottom="2rem"
+          <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            gap="1.5rem"
+          >
+            <Box
+              w="30%"
+              h="28rem"
+              padding="2rem"
+              // bg="rgba(0,0,0,0.05)"
+              bg="rgba(255, 255, 255, 0.1)"
+              borderRadius="1.5rem"
+              display="flex"
+              flexDirection="column"
+              alignItems="center"
+              justifyContent="center"
+              gap="1rem"
+            >
+              <Box
+                display="flex"
+                flexDirection="row"
+                justifyContent="center"
+                gap="1.5rem"
+                width="100%"
               >
-                <Flex direction="column" align="center">
-                  <Text fontSize="3xl">
-                    {Math.floor(currWeather.wind || 3)} km/h
+                <Box display="flex" flexDirection="column" alignItems="center">
+                  <Text fontSize="4xl" width="9rem" textAlign="center">
+                    {Math.floor(currWeather.wind || 2)} km/h
                   </Text>
-                  <Text fontSize="2xl">Wind</Text>
-                </Flex>
-                <Flex direction="column" align="center">
-                  <Text fontSize="3xl">
+                  <Box width="100%" textAlign="center">
+                    <Icon as={WiStrongWind} boxSize={20} />
+                  </Box>
+                </Box>
+                <Box display="flex" flexDirection="column" alignItems="center">
+                  <Text fontSize="4xl" width="9rem" textAlign="center">
                     {Math.floor(currWeather.humidity || 15)}%
                   </Text>
-                  <Text fontSize="2xl">Humidity</Text>
-                </Flex>
-              </Flex>
-              <Flex direction="row" justify="center" gap="3rem">
-                <Flex direction="column" align="center">
-                  <Text fontSize="3xl">{currWeather.pressure || 1013} hPa</Text>
-                  <Text fontSize="2xl">Pressure</Text>
-                </Flex>
-                <Flex direction="column" align="center">
-                  <Text fontSize="3xl">
-                    {Math.floor(currWeather.felt || 24)}°C
-                  </Text>
-                  <Text fontSize="2xl">Feels like</Text>
-                </Flex>
-              </Flex>
-            </Box>
-            <Box w="37%">
-              <Flex direction="column" justify="center" gap="3rem">
-                <Box>
-                  <Flex direction="column" align="center" gap="1rem">
-                    <Image
-                      src={imgSrc}
-                      alt="Current weather image"
-                      boxSize="250px"
-                    />
-                    <Box>
-                      <Flex direction="column" align="center">
-                        <Text fontSize="6xl">
-                          {Math.floor(currWeather.temp || 24.0)}°C
-                        </Text>
-                        <Text fontSize="5xl">
-                          {currWeather.main || "Clear"}
-                        </Text>
-                      </Flex>
-                    </Box>
-                  </Flex>
+                  <Box width="100%" textAlign="center">
+                    <Icon as={WiHumidity} boxSize={20} />
+                  </Box>
                 </Box>
-              </Flex>
+              </Box>
+              <Box
+                display="flex"
+                flexDirection="row"
+                justifyContent="center"
+                gap="1.5rem"
+                width="100%"
+              >
+                <Box display="flex" flexDirection="column" alignItems="center">
+                  <Text fontSize="4xl" width="9rem" textAlign="center">
+                    {Math.floor(currWeather.pressure || 1013)} hPa
+                  </Text>
+                  <Box width="100%" textAlign="center">
+                    <Icon as={WiEarthquake} boxSize={20} />
+                  </Box>
+                </Box>
+                <Box display="flex" flexDirection="column" alignItems="center">
+                  <Text fontSize="4xl" width="9rem" textAlign="center">
+                    {Math.floor(currWeather.felt || 5)}%
+                  </Text>
+                  {/* <Text fontSize="2xl" width="100%" textAlign="center">
+                    Feels like
+                  </Text> */}
+                  <Box width="100%" textAlign="center">
+                    <Icon as={WiCloud} boxSize={20} />
+                  </Box>
+                </Box>
+              </Box>
             </Box>
-            <Box w="30%" padding="4rem" borderLeft="1px solid black">
-              <Flex direction="column" justify="center" gap="1rem">
-                <Heading as="h2" fontSize="3xl" textAlign="center">
-                  Did you know that...
-                </Heading>
-                <Text fontSize="xl" textAlign="center">
-                  Munich enjoys crisp winters and warm summers due to its
-                  continental climate, creating a diverse and vibrant outdoor
-                  culture.
+            <Box
+              w="37%"
+              bg="rgba(255, 255, 255, 0.1)"
+              borderRadius="1.5rem"
+              h="28rem"
+              display="flex"
+              flexDirection="column"
+              alignItems="center"
+              justifyContent="center"
+              // gap="1rem"
+            >
+              {/* <Image src={imgSrc} alt="Current weather image" boxSize="250px" /> */}
+              <Icon as={WiDaySunny} boxSize={60} />
+              <Box
+                display="flex"
+                flexDirection="row"
+                alignItems="center"
+                gap="2rem"
+              >
+                <Text fontSize="6xl">
+                  <Box display="flex">
+                    <Text fontSize="6xl">
+                      {Math.floor(currWeather.temp || 24.0)}
+                    </Text>
+                    <Text fontSize="2xl" marginTop="0.75rem">
+                      °
+                    </Text>
+                    <Text fontSize="2xl" marginTop="0.75rem">
+                      C
+                    </Text>
+                    <Text
+                      fontSize="2xl"
+                      marginTop="0.75rem"
+                      marginLeft="0.25rem"
+                      marginRight="0.25rem"
+                    >
+                      {"|"}
+                    </Text>
+                    <Text fontSize="2xl" marginTop="0.75rem">
+                      F
+                    </Text>
+                  </Box>
                 </Text>
-              </Flex>
+                <Text fontSize="5xl">{currWeather.main || "Clear"}</Text>
+              </Box>
             </Box>
-          </Flex>
+            <Box
+              w="30%"
+              h="28rem"
+              padding="4rem"
+              bg="rgba(255, 255, 255, 0.1)"
+              borderRadius="1.5rem"
+              display="flex"
+              flexDirection="column"
+              justifyContent="center"
+              gap="2rem"
+            >
+              <Heading as="h2" fontSize="3xl" textAlign="center">
+                Did you know that...
+              </Heading>
+              <Text fontSize="xl" textAlign="center">
+                Munich enjoys crisp winters and warm summers due to its
+                continental climate, creating a diverse and vibrant outdoor
+                culture.
+              </Text>
+            </Box>
+          </Box>
         </Flex>
       </Box>
     </>

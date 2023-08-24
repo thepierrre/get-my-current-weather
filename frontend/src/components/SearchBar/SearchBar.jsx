@@ -34,7 +34,7 @@ const SearchBar = (props) => {
         <InputLeftElement height="100%" width="3rem">
           <Tooltip label="Get my location">
             <IconButton variant="link" onClick={getLocation}>
-              <Icon as={CiLocationOn} boxSize={7} size="lg" color="grey" />
+              <Icon as={CiLocationOn} boxSize={7} size="lg" color="#0A2647" />
             </IconButton>
           </Tooltip>
         </InputLeftElement>
@@ -51,7 +51,7 @@ const SearchBar = (props) => {
         <InputRightElement height="100%" width="3rem">
           <Tooltip label="Search for the city">
             <IconButton variant="link">
-              <Icon as={CiSearch} boxSize={7} size="lg" color="grey" />
+              <Icon as={CiSearch} boxSize={7} size="lg" color="#0A2647" />
             </IconButton>
           </Tooltip>
         </InputRightElement>
