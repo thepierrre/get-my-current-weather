@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import SearchBar from "./components/SearchBar/SearchBar";
-import CurrentWeather from "./components/CurrentWeather/CurrentWeather";
+import CurrentCity from "./components/CurrentCity/CurrentCity";
 import DayPartContextProvider from "./DayPartContextProvider";
 import Footer from "./components/authorship/Footer";
 import { Box, Flex } from "@chakra-ui/react";
@@ -19,7 +19,7 @@ function App() {
     wind: undefined,
     humidity: undefined,
     pressure: undefined,
-    felt: undefined,
+    cloudiness: undefined,
     time: undefined,
     sunrise: undefined,
     sunset: undefined,
@@ -71,7 +71,7 @@ function App() {
         wind: response.data.wind.speed,
         humidity: response.data.main.humidity,
         pressure: response.data.main.pressure,
-        felt: response.data.main.feels_like,
+        cloudiness: response.data.clouds.all,
         time: response.data.timezone,
         sunrise: response.data.sys.sunrise,
         sunset: response.data.sys.sunset,
@@ -85,13 +85,10 @@ function App() {
 
   return (
     <Box
-      className="app"
-      paddingTop="4rem"
       bg="linear-gradient(150deg, #4477CE, #CCEEBC)"
       w="100vw"
-      h="100vh"
-      paddingRight="2.5rem"
-      paddingLeft="2.5rem"
+      padding="3.5rem 2.5rem"
+      paddingBottom="15rem"
     >
       <Flex direction="column" align="center" gap="2rem">
         <SearchBar
@@ -105,7 +102,7 @@ function App() {
           sunrise={currWeather.sunrise}
           sunset={currWeather.sunset}
         >
-          <CurrentWeather currWeather={currWeather} />
+          <CurrentCity currWeather={currWeather} />
         </DayPartContextProvider>
 
         {/* <Footer className="footer" /> */}

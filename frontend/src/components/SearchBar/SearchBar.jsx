@@ -1,7 +1,3 @@
-// import { InputAdornment, TextField, IconButton } from "@mui/material";
-// import LocationOnIcon from "@mui/icons-material/LocationOn";
-// import SearchIcon from "@mui/icons-material/Search";
-
 import {
   Input,
   InputGroup,
@@ -13,10 +9,8 @@ import {
   IconButton,
 } from "@chakra-ui/react";
 import { CiLocationOn, CiSearch } from "react-icons/ci";
-import { HiMagnifyingGlass } from "react-icons/hi2";
-import { PhoneIcon, AddIcon, WarningIcon } from "@chakra-ui/icons";
 
-import "./SearchBar.css";
+// import "./SearchBar.css";
 
 const SearchBar = (props) => {
   const { getWeather, getLocation, cityInputChangeHandler, enteredCity } =
@@ -32,7 +26,7 @@ const SearchBar = (props) => {
     <Box>
       <InputGroup>
         <InputLeftElement height="100%" width="3rem">
-          <Tooltip label="Get my location">
+          <Tooltip label="Fetch my location">
             <IconButton variant="link" onClick={getLocation}>
               <Icon as={CiLocationOn} boxSize={7} size="lg" color="#0A2647" />
             </IconButton>
@@ -50,7 +44,7 @@ const SearchBar = (props) => {
         />
         <InputRightElement height="100%" width="3rem">
           <Tooltip label="Search for the city">
-            <IconButton variant="link">
+            <IconButton variant="link" onClick={getWeather}>
               <Icon as={CiSearch} boxSize={7} size="lg" color="#0A2647" />
             </IconButton>
           </Tooltip>
@@ -58,31 +52,6 @@ const SearchBar = (props) => {
       </InputGroup>
     </Box>
   );
-
-  //       //   endAdornment: (
-  //       //     <InputAdornment position="end">
-  //       //       <Tooltip title="Get weather">
-  //       //         <IconButton onClick={getWeather}>
-  //       //           <SearchIcon color="primary" />
-  //       //         </IconButton>
-  //       //       </Tooltip>
-  //       //     </InputAdornment>
-  //       //   ),
-  //       // }}
-  //     />
-  //     {/* <InputRightElement
-  //       onClick={getLocation}
-  //       children={
-  //         <IconButton
-  //           color="gray.300"
-  //           backgroundColor="white"
-  //           icon={<SearchIcon />}
-  //         />
-  //       }
-  //       size="lg"
-  //     /> */}
-  //   {/* </InputGroup> */}
-  // </div>
 };
 
 export default SearchBar;
