@@ -7,7 +7,7 @@ const Header = (props) => {
       <Text fontSize="6xl" textAlign="center">
         {currWeather.city || "Dreamcity"}, {currWeather.country || "Dreamland"}
       </Text>
-      <Text fontSize="3xl">{time || "Saturday 10 AM"}</Text>
+      <Text fontSize="3xl">{time || "No one counts time in Dreamcity!"}</Text>
     </Box>
   );
 };

@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import WeatherContext from "../../context/weather-context";
 import {
   Input,
   InputGroup,
@@ -16,14 +18,21 @@ const SearchBar = (props) => {
   const {
     getWeather,
     getLocation,
-    cityInputChangeHandler,
-    enteredCity,
     getCoordinatesForCityName,
     getWeatherForCoordinates,
-    getWeatherForEnteredCity,
-    getWeatherForCurrentLocation,
     getCityNameForCoordinates,
   } = props;
+
+  const cityInputChangeHandler = (event) => {
+    setEnteredCity(event.target.value);
+  };
+
+  const {
+    getWeatherForCurrentLocation,
+    getWeatherForEnteredCity,
+    enteredCity,
+    setEnteredCity,
+  } = useContext(WeatherContext);
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {

@@ -2,7 +2,7 @@ import axios from "./axiosInstance";
 import { useState } from "react";
 import SearchBar from "./components/SearchBar/SearchBar";
 import Weather from "./components/Weather/MainInformation/MainInformation";
-import WeatherContextProvider from "./WeatherContextProvider";
+import WeatherContextProvider from "./context/WeatherContextProvider";
 import Footer from "./components/authorship/Footer";
 import { Box, Flex } from "@chakra-ui/react";
 // import "./App.css";
@@ -30,55 +30,55 @@ function App() {
   };
 
   // fetch the user's current location
-  const getLocation = () => {
-    setIsLoading(true);
-    setEnteredCity("Fetching my location...");
-    navigator.geolocation.getCurrentPosition(
-      async (position) => {
-        const lat = position.coords.latitude;
-        const lon = position.coords.longitude;
+  // const getLocation = () => {
+  //   setIsLoading(true);
+  //   setEnteredCity("Fetching my location...");
+  //   navigator.geolocation.getCurrentPosition(
+  //     async (position) => {
+  //       const lat = position.coords.latitude;
+  //       const lon = position.coords.longitude;
 
-        try {
-          const response = await axios.post(
-            // "https://get-my-current-weather-e1a1907797e1.herokuapp.com/location",
-            "http://localhost:5014/location",
-            {
-              lat,
-              lon,
-            }
-          );
-          setEnteredCity(response.data);
-        } catch (err) {
-          console.log(err);
-        } finally {
-          setIsLoading(false);
-        }
-      },
-      (error) => {
-        console.error("Error getting geolocation:", error);
-      }
-    );
-  };
+  //       try {
+  //         const response = await axios.post(
+  //           // "https://get-my-current-weather-e1a1907797e1.herokuapp.com/location",
+  //           "http://localhost:5014/location",
+  //           {
+  //             lat,
+  //             lon,
+  //           }
+  //         );
+  //         setEnteredCity(response.data);
+  //       } catch (err) {
+  //         console.log(err);
+  //       } finally {
+  //         setIsLoading(false);
+  //       }
+  //     },
+  //     (error) => {
+  //       console.error("Error getting geolocation:", error);
+  //     }
+  //   );
+  // };
 
-  const getWeather = async () => {
-    let lat, lon;
-    try {
-      const response = await axios.get(
-        `http://localhost:5014/weather?lat=${lat}&lon=${lon}`
-      );
-      lat = response.data[0].lat;
-      lon = response.data[0].lon;
-      console.log();
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const getWeather = async () => {
+  //   let lat, lon;
+  //   try {
+  //     const response = await axios.get(
+  //       `http://localhost:5014/weather?lat=${lat}&lon=${lon}`
+  //     );
+  //     lat = response.data[0].lat;
+  //     lon = response.data[0].lon;
+  //     console.log();
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   // const lat = 48.137154;
   // const lon = 11.576124;
 
   let lat, lon;
-  let cityName, cityCountry;
+  let cityName, countryCode;
 
   const getCoordinatesForCityName = async () => {
     const city = enteredCity;
@@ -87,7 +87,7 @@ function App() {
       lat = response.data[0].lat;
       lon = response.data[0].lon;
       cityName = response.data[0].name;
-      cityCountry = response.data[0].country;
+      countryCode = response.data[0].country;
     } catch (err) {
       console.log(err);
     }
@@ -97,8 +97,8 @@ function App() {
     try {
       const response = await axios.get(`city?lat=${lat}&lon=${lon}`);
       const cityName = response.data[0].name;
-      const countryName = response.data[0].country;
-      setEnteredCity(`${cityName}, ${countryName}`);
+      const countryCode = response.data[0].country;
+      setEnteredCity(`${cityName}, ${countryCode}`);
     } catch (err) {
       console.log(err);
     }
@@ -115,11 +115,9 @@ function App() {
 
   const getWeatherForEnteredCity = async () => {
     await getCoordinatesForCityName();
-    setEnteredCity(`${cityName}, ${cityCountry}`);
+    setEnteredCity(`${cityName}, ${countryCode}`);
     getWeatherForCoordinates(lat, lon);
   };
-
-  // setEnteredCity(`${cityName}, ${cityCountry}`);
 
   const getWeatherForCurrentLocation = async () => {
     setIsLoading(true);
@@ -167,8 +165,8 @@ function App() {
     >
       <Flex direction="column" align="center" gap="2rem">
         <SearchBar
-          getWeather={getWeather}
-          getLocation={getLocation}
+          // getWeather={getWeather}
+          // getLocation={getLocation}
           cityInputChangeHandler={cityInputChangeHandler}
           enteredCity={enteredCity}
           getCoordinatesForCityName={getCoordinatesForCityName}

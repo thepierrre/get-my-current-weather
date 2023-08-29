@@ -13,7 +13,7 @@ import { Flex, Box } from "@chakra-ui/react";
 const CurrentCity = (props) => {
   const { isNight } = useContext(WeatherContext);
   const { currWeather, setCurrWeather } = props;
-  const [time, setTime] = useState("Saturday 10 AM");
+  const [time, setTime] = useState("No one counts time in Dreamcity!");
 
   // Calculate the formatted local time.
   function getLocalTimeFromOffset(offsetInSeconds) {

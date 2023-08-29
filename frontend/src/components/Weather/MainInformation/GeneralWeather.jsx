@@ -77,11 +77,12 @@ const GeneralWeather = (props) => {
       weatherIcon = WiCloudy;
       break;
     case "Clear":
-      if (isNight === false) {
-        weatherIcon = WiDaySunny;
-      } else {
-        weatherIcon = WiMoonAltFull;
-      }
+      // if (isNight === false) {
+      //   weatherIcon = WiDaySunny;
+      // } else {
+      //   weatherIcon = WiMoonAltFull;
+      // }
+      weatherIcon = WiDaySunny;
       break;
     case "Snow":
       weatherIcon = WiSnow;
