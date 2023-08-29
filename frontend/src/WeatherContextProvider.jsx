@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import DayPartContext from "./context/day-part-context";
+import WeatherContext from "./context/weather-context";
 
-const DayPartContextProvider = (props) => {
+const WeatherContextProvider = (props) => {
   const { children, sunrise, sunset } = props;
   const [isNight, setIsNight] = useState(undefined);
 
@@ -18,10 +18,10 @@ const DayPartContextProvider = (props) => {
   }, [sunrise, sunset]);
 
   return (
-    <DayPartContext.Provider value={{ isNight }}>
+    <WeatherContext.Provider value={{ isNight }}>
       {children}
-    </DayPartContext.Provider>
+    </WeatherContext.Provider>
   );
 };
 
-export default DayPartContextProvider;
+export default WeatherContextProvider;

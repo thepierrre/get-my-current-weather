@@ -1,8 +1,8 @@
 import { createContext } from "react";
 
-const DayPartContext = createContext({
+const WeatherContext = createContext({
   isNight: undefined,
   setIsNight: () => {},
 });
 
-export default DayPartContext;
+export default WeatherContext;

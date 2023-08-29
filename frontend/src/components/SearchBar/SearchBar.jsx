@@ -26,7 +26,7 @@ const SearchBar = (props) => {
     <Box>
       <InputGroup>
         <InputLeftElement height="100%" width="3rem">
-          <Tooltip label="Fetch my location">
+          <Tooltip label="Fetch weather for my location">
             <IconButton variant="link" onClick={getLocation}>
               <Icon as={CiLocationOn} boxSize={7} size="lg" color="#0A2647" />
             </IconButton>
@@ -43,7 +43,7 @@ const SearchBar = (props) => {
           onKeyDown={handleKeyDown}
         />
         <InputRightElement height="100%" width="3rem">
-          <Tooltip label="Search for the city">
+          <Tooltip label="Fetch weather for entered city">
             <IconButton variant="link" onClick={getWeather}>
               <Icon as={CiSearch} boxSize={7} size="lg" color="#0A2647" />
             </IconButton>

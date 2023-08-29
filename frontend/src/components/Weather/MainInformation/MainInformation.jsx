@@ -1,15 +1,18 @@
 import { useContext, useEffect, useState } from "react";
-import DayPartContext from "../../context/day-part-context";
-import Header from "./Header";
-import AdditionalWeatherInfo from "./AdditionalWeatherInfo";
-import MainWeatherInfo from "./MainWeatherInfo";
-import RandomClimateFact from "./RandomClimateFact";
-import { imagesLinks } from "../../utils/images/images-links";
+import WeatherContext from "../../../context/weather-context";
+import Header from "../../Header/Header";
+import DetailedWeather from "./DetailedWeather";
+import GeneralWeather from "./GeneralWeather";
+import UVIndex from "./UVIndex";
+import { imagesLinks } from "../../../utils/images/images-links";
+import HourlyForecast from "../HourlyForecast/HourlyForecast";
+import DailyForecast from "../DailyForecast/DailyForecast";
+import AdditionalInfo from "../ExtraInformation/AdditionalInfo";
 import { Flex, Box } from "@chakra-ui/react";
 
 const CurrentCity = (props) => {
-  const { isNight } = useContext(DayPartContext);
-  const { currWeather } = props;
+  const { isNight } = useContext(WeatherContext);
+  const { currWeather, setCurrWeather } = props;
   const [time, setTime] = useState("Saturday 10 AM");
 
   // Calculate the formatted local time.
@@ -130,24 +133,27 @@ const CurrentCity = (props) => {
 
   return (
     <>
-      <Box w="100%" h="100%" color="#0A2647">
-        <Flex direction="column" gap="2rem">
-          <Header currWeather={currWeather} time={time} />
-          <Box
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            gap="1.5rem"
-          >
-            <AdditionalWeatherInfo currWeather={currWeather} />
-            <MainWeatherInfo
-              sunrise={sunrise}
-              sunset={sunset}
-              currWeather={currWeather}
-            />
-            <RandomClimateFact />
-          </Box>
-        </Flex>
+      <Box color="#0A2647" display="flex" flexDirection="column" gap="1.5rem">
+        <Header currWeather={currWeather} time={time} />
+        <HourlyForecast />
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          gap="1.5rem"
+        >
+          <DetailedWeather currWeather={currWeather} />
+          <GeneralWeather
+            setCurrWeather={setCurrWeather}
+            sunrise={sunrise}
+            sunset={sunset}
+            currWeather={currWeather}
+            isNight={isNight}
+          />
+          <UVIndex />
+        </Box>
+        <DailyForecast />
+        <AdditionalInfo />
       </Box>
     </>
   );

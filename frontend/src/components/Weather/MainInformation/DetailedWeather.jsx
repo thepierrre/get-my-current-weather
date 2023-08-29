@@ -2,14 +2,14 @@ import { Text, Box, Icon } from "@chakra-ui/react";
 
 import { WiStrongWind, WiHumidity, WiBarometer, WiCloud } from "react-icons/wi";
 
-const AdditionalWeatherInfo = (props) => {
+const DetailedWeather = (props) => {
   const { currWeather } = props;
   return (
     <Box
-      w="30%"
+      w="25rem"
       h="25rem"
       padding="2rem"
-      bg="rgba(255, 255, 255, 0.1)"
+      bg="rgba(255, 255, 255, 0.2)"
       borderRadius="1.5rem"
       display="flex"
       flexDirection="column"
@@ -29,7 +29,7 @@ const AdditionalWeatherInfo = (props) => {
             {Math.floor(currWeather.wind || 2)} km/h
           </Text>
           <Box width="100%" textAlign="center">
-            <Icon as={WiStrongWind} boxSize={20} />
+            <Icon as={WiStrongWind} boxSize={20}></Icon>
           </Box>
         </Box>
         <Box display="flex" flexDirection="column" alignItems="center">
@@ -69,4 +69,4 @@ const AdditionalWeatherInfo = (props) => {
   );
 };
 
-export default AdditionalWeatherInfo;
+export default DetailedWeather;

@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useState } from "react";
 import SearchBar from "./components/SearchBar/SearchBar";
-import CurrentCity from "./components/CurrentCity/CurrentCity";
-import DayPartContextProvider from "./DayPartContextProvider";
+import Weather from "./components/Weather/MainInformation/MainInformation";
+import WeatherContextProvider from "./WeatherContextProvider";
 import Footer from "./components/authorship/Footer";
 import { Box, Flex } from "@chakra-ui/react";
 // import "./App.css";
@@ -27,8 +27,10 @@ function App() {
 
   const cityInputChangeHandler = (event) => {
     setEnteredCity(event.target.value);
+    console.log(enteredCity);
   };
 
+  // fetch the user's current location
   const getLocation = () => {
     setIsLoading(true);
     setEnteredCity("Fetching my location...");
@@ -39,7 +41,8 @@ function App() {
 
         try {
           const response = await axios.post(
-            "https://get-my-current-weather-e1a1907797e1.herokuapp.com/location",
+            // "https://get-my-current-weather-e1a1907797e1.herokuapp.com/location",
+            "http://localhost:5014/location",
             {
               lat,
               lon,
@@ -59,28 +62,49 @@ function App() {
   };
 
   const getWeather = async () => {
+    let lat, lon;
     try {
       const response = await axios.get(
-        `https://get-my-current-weather-e1a1907797e1.herokuapp.com/weather?city=${enteredCity}`
+        `http://localhost:5014/weather?lat=${lat}&lon=${lon}`
       );
-      setCurrWeather({
-        city: response.data.name,
-        country: response.data.sys.country,
-        temp: response.data.main.temp,
-        main: response.data.weather[0].main,
-        wind: response.data.wind.speed,
-        humidity: response.data.main.humidity,
-        pressure: response.data.main.pressure,
-        cloudiness: response.data.clouds.all,
-        time: response.data.timezone,
-        sunrise: response.data.sys.sunrise,
-        sunset: response.data.sys.sunset,
-      });
-      setInputError(undefined);
+      lat = response.data[0].lat;
+      lon = response.data[0].lon;
+      console.log();
     } catch (err) {
-      const inputErr = err.response.data.errorMessage;
-      setInputError(inputErr);
+      console.log(err);
     }
+
+    const getCoordinatesFromCityName = async () => {};
+
+    const getWeatherForCoordinates = async () => {};
+
+    const getWeatherForCurrentLocation = async () => {};
+
+    const getWeatherForEnteredCity = async () => {};
+
+    // try {
+    //   const response = await axios.get(
+    //     // `https://get-my-current-weather-e1a1907797e1.herokuapp.com/weather?city=${enteredCity}`
+    //     `http://localhost:5014/weather?city=${enteredCity}`
+    //   );
+    //   setCurrWeather({
+    //     city: response.data.name,
+    //     country: response.data.sys.country,
+    //     temp: response.data.main.temp,
+    //     main: response.data.weather[0].main,
+    //     wind: response.data.wind.speed,
+    //     humidity: response.data.main.humidity,
+    //     pressure: response.data.main.pressure,
+    //     cloudiness: response.data.clouds.all,
+    //     time: response.data.timezone,
+    //     sunrise: response.data.sys.sunrise,
+    //     sunset: response.data.sys.sunset,
+    //   });
+    //   setInputError(undefined);
+    // } catch (err) {
+    //   const inputErr = err.response.data.errorMessage;
+    //   setInputError(inputErr);
+    // }
   };
 
   return (
@@ -98,12 +122,13 @@ function App() {
           enteredCity={enteredCity}
         />
         {inputError && <p className="input-error">{inputError}</p>}
-        <DayPartContextProvider
+
+        <WeatherContextProvider
           sunrise={currWeather.sunrise}
           sunset={currWeather.sunset}
         >
-          <CurrentCity currWeather={currWeather} />
-        </DayPartContextProvider>
+          <Weather currWeather={currWeather} setCurrWeather={setCurrWeather} />
+        </WeatherContextProvider>
 
         {/* <Footer className="footer" /> */}
       </Flex>
