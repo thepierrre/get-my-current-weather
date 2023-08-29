@@ -15,6 +15,7 @@ const QualityDetails = () => {
       </Text>
       <Flex gap="1.5rem">
         <Flex direction="column">
+          <Text>CO</Text>
           <Text>
             SO<sub>2</sub>
           </Text>
@@ -22,20 +23,13 @@ const QualityDetails = () => {
             NO<sub>2</sub>
           </Text>
           <Text>
-            PM<sub>10</sub>
+            O<sub>3</sub>
           </Text>
           <Text>
             PM<sub>2.5</sub>
           </Text>
-          <Text>
-            O<sub>3</sub>
-          </Text>
-          <Text>
-            CO<sub></sub>
-          </Text>
         </Flex>
         <Flex direction="column" align="flex-end">
-          <Text>–</Text>
           <Text>–</Text>
           <Text>–</Text>
           <Text>–</Text>
@@ -48,7 +42,6 @@ const QualityDetails = () => {
           <Text>6</Text>
           <Text>5</Text>
           <Text>11</Text>
-          <Text>9</Text>
         </Flex>
       </Flex>
     </Flex>

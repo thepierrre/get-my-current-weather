@@ -13,8 +13,17 @@ import { CiLocationOn, CiSearch } from "react-icons/ci";
 // import "./SearchBar.css";
 
 const SearchBar = (props) => {
-  const { getWeather, getLocation, cityInputChangeHandler, enteredCity } =
-    props;
+  const {
+    getWeather,
+    getLocation,
+    cityInputChangeHandler,
+    enteredCity,
+    getCoordinatesForCityName,
+    getWeatherForCoordinates,
+    getWeatherForEnteredCity,
+    getWeatherForCurrentLocation,
+    getCityNameForCoordinates,
+  } = props;
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
@@ -27,7 +36,12 @@ const SearchBar = (props) => {
       <InputGroup>
         <InputLeftElement height="100%" width="3rem">
           <Tooltip label="Fetch weather for my location">
-            <IconButton variant="link" onClick={getLocation}>
+            <IconButton
+              variant="link"
+              // onClick={getLocation}
+              // onClick={getWeatherForCurrentLocation}
+              onClick={getWeatherForCurrentLocation}
+            >
               <Icon as={CiLocationOn} boxSize={7} size="lg" color="#0A2647" />
             </IconButton>
           </Tooltip>
@@ -44,7 +58,11 @@ const SearchBar = (props) => {
         />
         <InputRightElement height="100%" width="3rem">
           <Tooltip label="Fetch weather for entered city">
-            <IconButton variant="link" onClick={getWeather}>
+            <IconButton
+              variant="link"
+              // onClick={getWeather}
+              onClick={getWeatherForEnteredCity}
+            >
               <Icon as={CiSearch} boxSize={7} size="lg" color="#0A2647" />
             </IconButton>
           </Tooltip>
