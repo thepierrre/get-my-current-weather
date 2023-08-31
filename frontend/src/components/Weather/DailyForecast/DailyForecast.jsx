@@ -1,7 +1,22 @@
+import { useContext } from "react";
+import WeatherContext from "../../../context/weather-context";
 import DailyForecastItem from "./DailyForecastItem";
 import { Flex } from "@chakra-ui/react";
 
 const DailyForecast = () => {
+  const { globalWeather } = useContext(WeatherContext);
+
+  const forecast = globalWeather.dailyForecast;
+
+  const forecastItems = Object.keys(forecast).map((daily) => (
+    <DailyForecastItem
+      key={daily}
+      temp={forecast[daily].temp}
+      main={forecast[daily].main}
+      date={forecast[daily].date}
+    />
+  ));
+
   return (
     <Flex
       bg="rgba(255, 255, 255, 0.2)"
@@ -12,14 +27,7 @@ const DailyForecast = () => {
       overflowX="scroll"
       overflowY="hidden"
     >
-      <DailyForecastItem />
-      <DailyForecastItem />
-      <DailyForecastItem />
-      <DailyForecastItem />
-      <DailyForecastItem />
-      <DailyForecastItem />
-      <DailyForecastItem />
-      <DailyForecastItem />
+      {forecastItems}
     </Flex>
   );
 };

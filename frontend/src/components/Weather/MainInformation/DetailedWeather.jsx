@@ -3,9 +3,14 @@ import WeatherContext from "../../../context/weather-context";
 import { Text, Box, Icon, Tooltip } from "@chakra-ui/react";
 import { WiStrongWind, WiHumidity, WiBarometer, WiCloud } from "react-icons/wi";
 
-const DetailedWeather = (props) => {
+const DetailedWeather = () => {
   const { globalWeather } = useContext(WeatherContext);
-  const { currWeather } = props;
+
+  const wind = globalWeather.weather.wind;
+  const humidity = globalWeather.weather.humidity;
+  const pressure = globalWeather.weather.pressure;
+  const cloudiness = globalWeather.weather.cloudiness;
+
   return (
     <Box
       w="25rem"
@@ -29,7 +34,7 @@ const DetailedWeather = (props) => {
         <Tooltip label="Wind speed">
           <Box display="flex" flexDirection="column" alignItems="center">
             <Text fontSize="4xl" width="9rem" textAlign="center">
-              {Math.floor(globalWeather.weather.wind || 2)} km/h
+              {Math.floor(wind || 2)} km/h
             </Text>
             <Box width="100%" textAlign="center">
               <Icon as={WiStrongWind} boxSize={20}></Icon>
@@ -39,7 +44,7 @@ const DetailedWeather = (props) => {
         <Tooltip label="Humidity">
           <Box display="flex" flexDirection="column" alignItems="center">
             <Text fontSize="4xl" width="9rem" textAlign="center">
-              {Math.floor(globalWeather.weather.humidity || 15)}%
+              {Math.floor(humidity || 15)}%
             </Text>
             <Box width="100%" textAlign="center">
               <Icon as={WiHumidity} boxSize={20} />
@@ -57,7 +62,7 @@ const DetailedWeather = (props) => {
         <Tooltip label="Air Pressure">
           <Box display="flex" flexDirection="column" alignItems="center">
             <Text fontSize="4xl" width="9rem" textAlign="center">
-              {Math.floor(globalWeather.weather.pressure || 1013)} hPa
+              {Math.floor(pressure || 1013)} hPa
             </Text>
             <Box width="100%" textAlign="center">
               <Icon as={WiBarometer} boxSize={20} />
@@ -67,7 +72,7 @@ const DetailedWeather = (props) => {
         <Tooltip label="Cloudiness">
           <Box display="flex" flexDirection="column" alignItems="center">
             <Text fontSize="4xl" width="9rem" textAlign="center">
-              {Math.floor(globalWeather.weather.cloudiness || 5)}%
+              {Math.floor(cloudiness || 5)}%
             </Text>
             <Box width="100%" textAlign="center">
               <Icon as={WiCloud} boxSize={20} />

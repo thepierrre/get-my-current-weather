@@ -15,6 +15,9 @@ const GeneralWeather = (props) => {
   let tempInFahrenheit;
   let tempInCelsius;
 
+  const main = globalWeather.weather.main;
+  const temp = globalWeather.weather.temp;
+
   const weatherIcon = getWeatherIcon(globalWeather.weather.main);
 
   const convertToFahrenheit = () => {
@@ -77,9 +80,7 @@ const GeneralWeather = (props) => {
       <Box display="flex" flexDirection="row" alignItems="center" gap="2rem">
         <Box>
           <Box display="flex">
-            <Text fontSize="6xl">
-              {Math.floor(globalWeather.weather.temp || 24.0)}
-            </Text>
+            <Text fontSize="6xl">{Math.floor(temp || 24.0)}</Text>
             <Text fontSize="2xl" marginTop="0.75rem">
               °
             </Text>
@@ -112,7 +113,7 @@ const GeneralWeather = (props) => {
             </Button>
           </Box>
         </Box>
-        <Text fontSize="5xl">{globalWeather.weather.main || "Clear"}</Text>
+        <Text fontSize="5xl">{main || "Clear"}</Text>
       </Box>
     </Box>
   );

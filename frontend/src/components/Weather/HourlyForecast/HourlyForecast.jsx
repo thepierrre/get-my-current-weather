@@ -8,11 +8,12 @@ const HourlyForecast = () => {
 
   const forecast = globalWeather.hourlyForecast;
 
-  const forecastItems = Object.keys(forecast).map((day) => (
+  const forecastItems = Object.keys(forecast).map((hourly) => (
     <HourlyForecastItem
-      key={day}
-      temp={forecast[day].temp}
-      main={forecast[day].main}
+      key={hourly}
+      temp={forecast[hourly].temp}
+      main={forecast[hourly].main}
+      date={forecast[hourly].date}
     />
   ));
 

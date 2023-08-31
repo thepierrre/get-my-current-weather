@@ -1,10 +1,8 @@
-import { useContext } from "react";
-import WeatherContext from "../../../context/weather-context";
 import getWeatherIcon from "../../../shared/get-weather-icon";
 import { Box, Text, Icon } from "@chakra-ui/react";
 
 const HourlyForecastItem = (props) => {
-  const { temp, main } = props;
+  const { temp, main, date } = props;
 
   const weatherIcon = getWeatherIcon(main);
 
@@ -15,7 +13,7 @@ const HourlyForecastItem = (props) => {
       alignItems="center"
       margin="1rem"
     >
-      <Text fontSize="2xl">1 hour</Text>
+      <Text fontSize="2xl">{date}</Text>
       <Icon as={weatherIcon} boxSize={20} />
       <Text>{temp}°</Text>
     </Box>
