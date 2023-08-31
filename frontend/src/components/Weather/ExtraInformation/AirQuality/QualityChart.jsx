@@ -14,11 +14,11 @@ const QualityChart = () => {
   let label, percentage;
   const getChartPercentageAndLabel = () => {
     if (airQuality === 1) {
-      label = "Very Good";
+      label = "Good";
       percentage = 100;
     }
     if (airQuality === 2) {
-      label = "Good";
+      label = "Fair";
       percentage = 80;
     }
     if (airQuality === 3) {

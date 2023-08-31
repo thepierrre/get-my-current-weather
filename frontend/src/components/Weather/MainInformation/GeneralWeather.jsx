@@ -1,17 +1,7 @@
 import { useContext, useState } from "react";
 import WeatherContext from "../../../context/weather-context";
+import getWeatherIcon from "../../../shared/get-weather-icon";
 import { Text, Box, Icon, Button } from "@chakra-ui/react";
-import {
-  WiFog,
-  WiRain,
-  WiSnow,
-  WiDaySunny,
-  WiCloudy,
-  WiThunderstorm,
-  WiTornado,
-  WiSmog,
-  WiDust,
-} from "react-icons/wi";
 
 const GeneralWeather = (props) => {
   const { currWeather, setCurrWeather, sunrise, sunset, isNight } = props;
@@ -24,6 +14,8 @@ const GeneralWeather = (props) => {
   let currTemp = currWeather.temp;
   let tempInFahrenheit;
   let tempInCelsius;
+
+  const weatherIcon = getWeatherIcon(globalWeather.weather.main);
 
   const convertToFahrenheit = () => {
     if (!currTemp) {
@@ -67,51 +59,6 @@ const GeneralWeather = (props) => {
     setTempUnit("Fahrenheit");
     convertToFahrenheit();
   };
-
-  let weatherIcon;
-  switch (currWeather.main) {
-    case "Clouds":
-      weatherIcon = WiCloudy;
-      break;
-    case "Clear":
-      // if (isNight === false) {
-      //   weatherIcon = WiDaySunny;
-      // } else {
-      //   weatherIcon = WiMoonAltFull;
-      // }
-      weatherIcon = WiDaySunny;
-      break;
-    case "Snow":
-      weatherIcon = WiSnow;
-      break;
-    case "Drizzle":
-    case "Rain":
-    case "Squall":
-      weatherIcon = WiRain;
-      break;
-    case "Haze":
-    case "Mist":
-    case "Fog":
-      weatherIcon = WiFog;
-      break;
-    case "Thunderstorm":
-      imgSrc = WiThunderstorm;
-      break;
-    case "Tornado":
-      weatherIcon = WiTornado;
-      break;
-    case "Smoke":
-      weatherIcon = WiSmog;
-      break;
-    case "Dust":
-    case "Sand":
-    case "Ash":
-      weatherIcon = WiDust;
-      break;
-    default:
-      weatherIcon = WiDaySunny;
-      break;
-  }
 
   return (
     <Box

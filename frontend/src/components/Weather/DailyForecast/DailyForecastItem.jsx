@@ -1,7 +1,10 @@
+import { useContext } from "react";
+import WeatherContext from "../../../context/weather-context";
 import { Box, Text, Icon } from "@chakra-ui/react";
 import { WiCloudy } from "react-icons/wi";
 
 const DailyForecastItem = () => {
+  const { weatherIcon } = useContext(WeatherContext);
   return (
     <Box
       display="flex"

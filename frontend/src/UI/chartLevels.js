@@ -1,6 +1,6 @@
 const chartLevels = [
-  { uvIndexGrade: "Low", airQualityGrade: "Very Good", color: "#55a875" },
-  { uvIndexGrade: "Moderate", airQualityGrade: "Good", color: "#8EAC50" },
+  { uvIndexGrade: "Low", airQualityGrade: "Good", color: "#55a875" },
+  { uvIndexGrade: "Moderate", airQualityGrade: "Fair", color: "#8EAC50" },
   { uvIndexGrade: "High", airQualityGrade: "Moderate", color: "#F7DB6A" },
   { uvIndexGrade: "Very High", airQualityGrade: "Poor", color: "#F79327" },
   { uvIndexGrade: "Extreme", airQualityGrade: "Very Poor", color: "#FC2947" },

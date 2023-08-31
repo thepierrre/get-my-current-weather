@@ -1,8 +1,21 @@
+import { useContext } from "react";
+import WeatherContext from "../../../context/weather-context";
 import HourlyForecastItem from "./HourlyForecastItem";
-import { Box, Text, Icon, Flex } from "@chakra-ui/react";
-import { WiRain } from "react-icons/wi";
+import { Flex } from "@chakra-ui/react";
 
 const HourlyForecast = () => {
+  const { globalWeather } = useContext(WeatherContext);
+
+  const forecast = globalWeather.hourlyForecast;
+
+  const forecastItems = Object.keys(forecast).map((day) => (
+    <HourlyForecastItem
+      key={day}
+      temp={forecast[day].temp}
+      main={forecast[day].main}
+    />
+  ));
+
   return (
     <Flex
       bg="rgba(255, 255, 255, 0.2)"
@@ -15,21 +28,7 @@ const HourlyForecast = () => {
       overflowY="hidden"
       gap="1.5rem"
     >
-      <HourlyForecastItem />
-      <HourlyForecastItem />
-      <HourlyForecastItem />
-      <HourlyForecastItem />
-      <HourlyForecastItem />
-      <HourlyForecastItem />
-      <HourlyForecastItem />
-      <HourlyForecastItem />
-      <HourlyForecastItem />
-      <HourlyForecastItem />
-      <HourlyForecastItem />
-      <HourlyForecastItem />
-      <HourlyForecastItem />
-      <HourlyForecastItem />
-      <HourlyForecastItem />
+      {forecastItems}
     </Flex>
   );
 };

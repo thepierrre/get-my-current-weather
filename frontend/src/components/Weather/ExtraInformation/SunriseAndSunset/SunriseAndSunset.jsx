@@ -7,7 +7,7 @@ import {
   WiMoonAltWaningCrescent3,
 } from "react-icons/wi";
 
-const SunAndMoon = () => {
+const SunriseAndSunset = () => {
   return (
     <Flex
       bg="rgba(255, 255, 255, 0.2)"
@@ -35,4 +35,4 @@ const SunAndMoon = () => {
   );
 };
 
-export default SunAndMoon;
+export default SunriseAndSunset;
