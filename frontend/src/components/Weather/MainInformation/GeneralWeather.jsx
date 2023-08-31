@@ -75,7 +75,7 @@ const GeneralWeather = (props) => {
         <Icon as={weatherIcon} boxSize={60} />
       </Box>
       <Box display="flex" flexDirection="row" alignItems="center" gap="2rem">
-        <Text fontSize="6xl">
+        <Box>
           <Box display="flex">
             <Text fontSize="6xl">
               {Math.floor(globalWeather.weather.temp || 24.0)}
@@ -111,7 +111,7 @@ const GeneralWeather = (props) => {
               F
             </Button>
           </Box>
-        </Text>
+        </Box>
         <Text fontSize="5xl">{globalWeather.weather.main || "Clear"}</Text>
       </Box>
     </Box>
