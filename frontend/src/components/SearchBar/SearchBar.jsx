@@ -45,12 +45,7 @@ const SearchBar = (props) => {
       <InputGroup>
         <InputLeftElement height="100%" width="3rem">
           <Tooltip label="Fetch weather for my location">
-            <IconButton
-              variant="link"
-              // onClick={getLocation}
-              // onClick={getWeatherForCurrentLocation}
-              onClick={getWeatherForCurrentLocation}
-            >
+            <IconButton variant="link" onClick={getWeatherForCurrentLocation}>
               <Icon as={CiLocationOn} boxSize={7} size="lg" color="#0A2647" />
             </IconButton>
           </Tooltip>

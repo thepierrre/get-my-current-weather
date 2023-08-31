@@ -1,9 +1,52 @@
+import { useContext, useEffect, useState } from "react";
+import WeatherContext from "../../../context/weather-context";
+import { chartLevels, chartBarEmpty } from "../../../UI/chartLevels";
 import "react-circular-progressbar/dist/styles.css";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import { Text, Box } from "@chakra-ui/react";
 
 const UVIndex = () => {
-  const percentage = 80;
+  const { globalWeather } = useContext(WeatherContext);
+  const [chartLevel, setChartLevel] = useState(undefined);
+  const [chartColor, setChartColor] = useState(undefined);
+
+  const uvIndex = globalWeather.weather.uvIndex;
+
+  useEffect(() => {
+    setChartLevel(uvIndex);
+    // console.log(`chartLevel: ${chartLevel}`);
+  });
+
+  useEffect(() => {
+    const uvIndexGrade = returnUVIIndexGrade();
+    const searchedItem = chartLevels.find(
+      (item) => item.uvIndexGrade === uvIndexGrade
+    );
+    if (searchedItem) {
+      const color = searchedItem.color;
+      setChartColor(color);
+      const level = chartLevels.indexOf(searchedItem) + 1;
+      setChartLevel(level);
+      console.log(chartLevel);
+    }
+  });
+
+  const returnUVIIndexGrade = () => {
+    if (uvIndex < 2) {
+      return "Low";
+    }
+    if (uvIndex >= 2 && uvIndex < 5) {
+      return "Moderate";
+    }
+    if (uvIndex >= 5 && uvIndex < 7) {
+      return "High";
+    }
+    if (uvIndex >= 7 && uvIndex < 10) {
+      return "Very high";
+    }
+    if (uvIndex >= 10) {
+      return "Extreme";
+    }
+  };
 
   return (
     <Box
@@ -28,48 +71,19 @@ const UVIndex = () => {
         justifyContent="center"
         padding="0 2rem 0 2rem"
       >
-        <Box bg="#609966" w="1rem" h="2rem" borderRadius="0.75rem"></Box>
-        <Box bg="#609966" w="1rem" h="3.5rem" borderRadius="0.75rem"></Box>
-        <Box
-          bg="rgba(1, 1, 1, 0.1)"
-          w="1rem"
-          h="5rem"
-          borderRadius="0.75rem"
-        ></Box>
-        <Box
-          bg="rgba(1, 1, 1, 0.1)"
-          w="1rem"
-          h="6.5rem"
-          borderRadius="0.75rem"
-        ></Box>
-        <Box
-          bg="rgba(1, 1, 1, 0.1)"
-          w="1rem"
-          h="8rem"
-          borderRadius="0.75rem"
-        ></Box>
+        {chartLevels.map((level, i) => (
+          <Box
+            key={level.uvIndexName}
+            w="1rem"
+            h={4 * (i + 3)}
+            borderRadius="0.75rem"
+            bg={i < chartLevel ? chartColor : chartBarEmpty}
+          />
+        ))}
       </Box>
-      <Text fontSize="4xl">Low</Text>
+      <Text fontSize="4xl">{returnUVIIndexGrade()}</Text>
     </Box>
   );
 };
 
 export default UVIndex;
-
-{
-  /* <Box w="10rem">
-        <CircularProgressbar
-          value={percentage}
-          text={"Good"}
-          styles={buildStyles({
-            rotation: 0,
-            strokeLinecap: "butt",
-            textSize: "0.75rem",
-            pathTransitionDuration: 1,
-            pathColor: "#0A2647",
-            textColor: "#0A2647",
-            trailColor: "#d6d6d6",
-          })}
-        />
-      </Box> */
-}

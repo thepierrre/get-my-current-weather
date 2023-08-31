@@ -1,7 +1,7 @@
 const globalWeatherState = {
   city: {
-    name: undefined,
-    country: undefined,
+    name: "Dreamcity",
+    country: "Dreamland",
   },
   currTime: undefined,
   weather: {
@@ -20,17 +20,12 @@ const globalWeatherState = {
       so2: undefined,
       no2: undefined,
       o3: undefined,
-      pm25: undefined,
+      pm2_5: undefined,
     },
   },
   sun: {
     sunrise: undefined,
     sunset: undefined,
-  },
-  moon: {
-    moonrise: undefined,
-    moonset: undefined,
-    moonPhase: undefined,
   },
   hourlyForecast: {
     plus1: {

@@ -1,6 +1,10 @@
-import { Text, Box, Icon, Tooltip, Flex } from "@chakra-ui/react";
+import { useContext } from "react";
+import WeatherContext from "../../../../context/weather-context";
+import { Text, Flex } from "@chakra-ui/react";
 
 const QualityDetails = () => {
+  const { globalWeather } = useContext(WeatherContext);
+  const components = globalWeather.airQuality.components;
   return (
     <Flex
       w="50%"
@@ -37,11 +41,11 @@ const QualityDetails = () => {
           <Text>–</Text>
         </Flex>
         <Flex direction="column" align="flex-end">
-          <Text>10</Text>
-          <Text>5</Text>
-          <Text>6</Text>
-          <Text>5</Text>
-          <Text>11</Text>
+          <Text>{components.co}</Text>
+          <Text>{components.so2}</Text>
+          <Text>{components.no2}</Text>
+          <Text>{components.o3}</Text>
+          <Text>{components.pm2_5}</Text>
         </Flex>
       </Flex>
     </Flex>

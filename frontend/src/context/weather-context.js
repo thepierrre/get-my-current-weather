@@ -5,6 +5,8 @@ const WeatherContext = createContext({
   setIsNight: () => {},
   enteredCity: undefined,
   setEnteredCity: () => {},
+  // chartLevel: undefined,
+  // setChartLevel: () => {},
   globalWeather: undefined,
   setGlobalWeather: () => {},
   getCoordinatesForCityName: () => {},

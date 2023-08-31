@@ -32,6 +32,15 @@ const WeatherContextProvider = (props) => {
       lon = response.data[0].lon;
       cityName = response.data[0].name;
       countryCode = response.data[0].country;
+      setGlobalWeather((prevState) => {
+        return {
+          ...prevState,
+          city: {
+            name: cityName,
+            country: countryCode,
+          },
+        };
+      });
     } catch (err) {
       console.log(err);
     }
@@ -43,6 +52,15 @@ const WeatherContextProvider = (props) => {
       const cityName = response.data[0].name;
       const countryCode = response.data[0].country;
       setEnteredCity(`${cityName}, ${countryCode}`);
+      setGlobalWeather((prevState) => {
+        return {
+          ...prevState,
+          city: {
+            name: cityName,
+            country: countryCode,
+          },
+        };
+      });
     } catch (err) {
       console.log(err);
     }
@@ -51,7 +69,37 @@ const WeatherContextProvider = (props) => {
   const getWeatherForCoordinates = async (lat, lon) => {
     try {
       const response = await axios.get(`combined-data?lat=${lat}&lon=${lon}`);
-      console.log(response.data);
+      const currentWeatherData = response.data.weather.current;
+      const airQuality = response.data.airQuality.list[0];
+
+      setGlobalWeather((prevState) => {
+        return {
+          ...prevState,
+          weather: {
+            main: currentWeatherData.weather[0].main,
+            temp: currentWeatherData.temp,
+            wind: currentWeatherData.wind_speed,
+            humidity: currentWeatherData.humidity,
+            pressure: currentWeatherData.pressure,
+            cloudiness: currentWeatherData.clouds,
+            uvIndex: currentWeatherData.uvi,
+          },
+          sun: {
+            sunrise: undefined,
+            sunset: undefined,
+          },
+          airQuality: {
+            overall: airQuality.main.aqi,
+            components: {
+              co: airQuality.components.co,
+              so2: airQuality.components.so2,
+              no2: airQuality.components.no2,
+              o3: airQuality.components.o3,
+              pm2_5: airQuality.components.pm2_5,
+            },
+          },
+        };
+      });
     } catch (err) {
       console.log(err);
     }
@@ -76,7 +124,8 @@ const WeatherContextProvider = (props) => {
   return (
     <WeatherContext.Provider
       value={{
-        globalWeatherState,
+        globalWeather,
+        setGlobalWeather,
         getWeatherForCurrentLocation,
         getWeatherForEnteredCity,
         enteredCity,

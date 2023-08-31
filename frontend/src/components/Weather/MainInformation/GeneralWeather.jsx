@@ -1,15 +1,12 @@
-import { useEffect, useState } from "react";
-
+import { useContext, useState } from "react";
+import WeatherContext from "../../../context/weather-context";
 import { Text, Box, Icon, Button } from "@chakra-ui/react";
 import {
   WiFog,
   WiRain,
   WiSnow,
-  WiMoonAltFull,
   WiDaySunny,
   WiCloudy,
-  WiSunrise,
-  WiSunset,
   WiThunderstorm,
   WiTornado,
   WiSmog,
@@ -18,8 +15,8 @@ import {
 
 const GeneralWeather = (props) => {
   const { currWeather, setCurrWeather, sunrise, sunset, isNight } = props;
+  const { globalWeather } = useContext(WeatherContext);
   const [tempUnit, setTempUnit] = useState(["Celsius"]);
-
   const celsiusSymbolColor = tempUnit === "Celsius" ? "#F1F1F1" : "#0A2647";
   const fahrenheitSymbolColor =
     tempUnit === "Fahrenheit" ? "#F1F1F1" : "#0A2647";
@@ -128,22 +125,14 @@ const GeneralWeather = (props) => {
       justifyContent="center"
     >
       <Box display="flex" alignItems="center">
-        {/* <Box display="flex" flexDirection="column">
-          <Icon as={WiSunrise} boxSize={20} />
-          <Text fontSize="2xl">{sunrise}</Text>
-        </Box> */}
-
         <Icon as={weatherIcon} boxSize={60} />
-        {/* <Box display="flex" flexDirection="column">
-          <Icon as={WiSunset} boxSize={20} />
-          <Text fontSize="2xl">{sunset}</Text>
-        </Box> */}
       </Box>
-
       <Box display="flex" flexDirection="row" alignItems="center" gap="2rem">
         <Text fontSize="6xl">
           <Box display="flex">
-            <Text fontSize="6xl">{Math.floor(currWeather.temp || 24.0)}</Text>
+            <Text fontSize="6xl">
+              {Math.floor(globalWeather.weather.temp || 24.0)}
+            </Text>
             <Text fontSize="2xl" marginTop="0.75rem">
               °
             </Text>
@@ -176,7 +165,7 @@ const GeneralWeather = (props) => {
             </Button>
           </Box>
         </Text>
-        <Text fontSize="5xl">{currWeather.main || "Clear"}</Text>
+        <Text fontSize="5xl">{globalWeather.weather.main || "Clear"}</Text>
       </Box>
     </Box>
   );
