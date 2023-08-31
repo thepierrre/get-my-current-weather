@@ -75,7 +75,7 @@ const WeatherContextProvider = (props) => {
       const hourlyWeatherData = response.data.weather.hourly;
       const dailyWeatherData = response.data.weather.daily;
       const timezone = response.data.weather.timezone;
-      // console.log(response.data.weather.timezone);
+
       setGlobalWeather((prevState) => {
         return {
           ...prevState,
