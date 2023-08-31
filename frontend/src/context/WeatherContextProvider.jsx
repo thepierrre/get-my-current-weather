@@ -1,21 +1,11 @@
 import { useState } from "react";
 import axios from "../axiosInstance";
+import { countries } from "country-data";
 import globalWeatherState from "./globalWeatherState";
 import WeatherContext from "./weather-context";
-// import {
-//   WiFog,
-//   WiRain,
-//   WiSnow,
-//   WiDaySunny,
-//   WiCloudy,
-//   WiThunderstorm,
-//   WiTornado,
-//   WiSmog,
-//   WiDust,
-// } from "react-icons/wi";
 
 const WeatherContextProvider = (props) => {
-  const { children, sunrise, sunset } = props;
+  const { children } = props;
   const [isNight, setIsNight] = useState(undefined);
   const [enteredCity, setEnteredCity] = useState("");
   const [globalWeather, setGlobalWeather] = useState(globalWeatherState);
@@ -48,7 +38,7 @@ const WeatherContextProvider = (props) => {
           ...prevState,
           city: {
             name: cityName,
-            country: countryCode,
+            country: countries[countryCode].name,
           },
         };
       });
@@ -62,13 +52,13 @@ const WeatherContextProvider = (props) => {
       const response = await axios.get(`city?lat=${lat}&lon=${lon}`);
       const cityName = response.data[0].name;
       const countryCode = response.data[0].country;
-      setEnteredCity(`${cityName}, ${countryCode}`);
+      setEnteredCity(`${cityName}, ${countries[countryCode].name}`);
       setGlobalWeather((prevState) => {
         return {
           ...prevState,
           city: {
             name: cityName,
-            country: countryCode,
+            country: countries[countryCode].name,
           },
         };
       });
@@ -84,7 +74,8 @@ const WeatherContextProvider = (props) => {
       const airQuality = response.data.airQuality.list[0];
       const hourlyWeatherData = response.data.weather.hourly;
       const dailyWeatherData = response.data.weather.daily;
-      // console.log(currentWeatherData.sunrise);
+      const timezone = response.data.weather.timezone;
+      // console.log(response.data.weather.timezone);
       setGlobalWeather((prevState) => {
         return {
           ...prevState,
@@ -97,6 +88,8 @@ const WeatherContextProvider = (props) => {
             cloudiness: currentWeatherData.clouds,
             uvIndex: currentWeatherData.uvi,
           },
+          currTime: currentWeatherData.dt,
+          timezone,
           sun: {
             sunrise: currentWeatherData.sunrise,
             sunset: currentWeatherData.sunset,
@@ -284,7 +277,7 @@ const WeatherContextProvider = (props) => {
 
   const getWeatherForEnteredCity = async () => {
     await getCoordinatesForCityName();
-    setEnteredCity(`${cityName}, ${countryCode}`);
+    setEnteredCity(`${cityName}, ${countries[countryCode].name}`);
     getWeatherForCoordinates(lat, lon);
   };
 

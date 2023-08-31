@@ -12,9 +12,7 @@ const UVIndex = () => {
   const uvIndex = globalWeather.weather.uvIndex;
 
   useEffect(() => {
-    setChartLevel(uvIndex);
-
-    const uvIndexGrade = getUVIIndexGrade();
+    const uvIndexGrade = getUVIIndexGrade(uvIndex);
     const searchedItem = chartLevels.find(
       (item) => item.uvIndexGrade === uvIndexGrade
     );
@@ -24,9 +22,9 @@ const UVIndex = () => {
       const level = chartLevels.indexOf(searchedItem) + 1;
       setChartLevel(level);
     }
-  });
+  }, [uvIndex]);
 
-  const getUVIIndexGrade = () => {
+  const getUVIIndexGrade = (uvIndex) => {
     if (uvIndex < 2) {
       return "Low";
     }
@@ -77,7 +75,7 @@ const UVIndex = () => {
           />
         ))}
       </Box>
-      <Text fontSize="4xl">{getUVIIndexGrade()}</Text>
+      <Text fontSize="4xl">{getUVIIndexGrade(uvIndex)}</Text>
     </Box>
   );
 };

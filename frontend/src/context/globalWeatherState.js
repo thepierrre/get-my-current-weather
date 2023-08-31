@@ -4,6 +4,7 @@ const globalWeatherState = {
     country: "Dreamland",
   },
   currTime: undefined,
+  timezone: undefined,
   weather: {
     main: undefined,
     temp: undefined,
@@ -143,6 +144,18 @@ const globalWeatherState = {
       temp: undefined,
     },
     plus5: {
+      main: undefined,
+      temp: undefined,
+    },
+    plus6: {
+      main: undefined,
+      temp: undefined,
+    },
+    plus7: {
+      main: undefined,
+      temp: undefined,
+    },
+    plus8: {
       main: undefined,
       temp: undefined,
     },
