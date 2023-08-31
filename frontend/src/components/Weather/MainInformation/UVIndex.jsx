@@ -13,11 +13,8 @@ const UVIndex = () => {
 
   useEffect(() => {
     setChartLevel(uvIndex);
-    // console.log(`chartLevel: ${chartLevel}`);
-  });
 
-  useEffect(() => {
-    const uvIndexGrade = returnUVIIndexGrade();
+    const uvIndexGrade = getUVIIndexGrade();
     const searchedItem = chartLevels.find(
       (item) => item.uvIndexGrade === uvIndexGrade
     );
@@ -26,11 +23,10 @@ const UVIndex = () => {
       setChartColor(color);
       const level = chartLevels.indexOf(searchedItem) + 1;
       setChartLevel(level);
-      console.log(chartLevel);
     }
   });
 
-  const returnUVIIndexGrade = () => {
+  const getUVIIndexGrade = () => {
     if (uvIndex < 2) {
       return "Low";
     }
@@ -73,7 +69,7 @@ const UVIndex = () => {
       >
         {chartLevels.map((level, i) => (
           <Box
-            key={level.uvIndexName}
+            key={level.uvIndexGrade}
             w="1rem"
             h={4 * (i + 3)}
             borderRadius="0.75rem"
@@ -81,7 +77,7 @@ const UVIndex = () => {
           />
         ))}
       </Box>
-      <Text fontSize="4xl">{returnUVIIndexGrade()}</Text>
+      <Text fontSize="4xl">{getUVIIndexGrade()}</Text>
     </Box>
   );
 };

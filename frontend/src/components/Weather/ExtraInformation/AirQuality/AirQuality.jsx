@@ -1,7 +1,6 @@
 import QualityChart from "./QualityChart";
 import QualityDetails from "./QualityDetails";
-import { Text, Box, Icon, Tooltip, Flex } from "@chakra-ui/react";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import { Text, Flex } from "@chakra-ui/react";
 
 const AirQuality = () => {
   return (
