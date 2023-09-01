@@ -8,14 +8,16 @@ const DailyForecast = () => {
 
   const forecast = globalWeather.dailyForecast;
 
-  const forecastItems = Object.keys(forecast).map((daily) => (
-    <DailyForecastItem
-      key={daily}
-      temp={forecast[daily].temp}
-      main={forecast[daily].main}
-      date={forecast[daily].date}
-    />
-  ));
+  const forecastItems = Object.keys(forecast).map((daily, index) =>
+    index !== 0 ? (
+      <DailyForecastItem
+        key={daily}
+        temp={forecast[daily].temp}
+        main={forecast[daily].main}
+        date={forecast[daily].date}
+      />
+    ) : null
+  );
 
   return (
     <Flex

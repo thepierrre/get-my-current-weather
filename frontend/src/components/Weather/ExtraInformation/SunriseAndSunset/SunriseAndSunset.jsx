@@ -1,13 +1,31 @@
 import { useContext } from "react";
 import WeatherContext from "../../../../context/weather-context";
+import { DateTime } from "luxon";
 import { Text, Icon, Tooltip, Flex } from "@chakra-ui/react";
 import { WiSunrise, WiSunset } from "react-icons/wi";
 
 const SunriseAndSunset = () => {
   const { globalWeather } = useContext(WeatherContext);
 
-  const sunrise = globalWeather.sun.sunrise;
-  const sunset = globalWeather.sun.sunset;
+  let sunrise = globalWeather.sun.sunrise;
+  let sunset = globalWeather.sun.sunset;
+  const timezone = globalWeather.timezone;
+
+  sunrise = DateTime.fromSeconds(+sunrise, { zone: timezone })
+    .toLocaleString({
+      hour: "numeric",
+      minute: "numeric",
+      hourCycle: "h12",
+    })
+    .replace(/(a|p)m/, (match) => match.toUpperCase());
+
+  sunset = DateTime.fromSeconds(+sunset, { zone: timezone })
+    .toLocaleString({
+      hour: "numeric",
+      minute: "numeric",
+      hourCycle: "h12",
+    })
+    .replace(/(a|p)m/, (match) => match.toUpperCase());
 
   return (
     <Flex

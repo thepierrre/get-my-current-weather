@@ -11,12 +11,13 @@ const HourlyForecastItem = (props) => {
   const weatherIcon = getWeatherIcon(main);
 
   const timezone = globalWeather.timezone;
-  // const hour = DateTime.fromSeconds(+date).toLocaleString({
-  //   hour: "2-digit",
-  // });
-  const hour = DateTime.fromSeconds(+date, { zone: timezone }).toLocaleString(
-    DateTime.TIME_SIMPLE
-  );
+
+  let hour = DateTime.fromSeconds(+date, { zone: timezone })
+    .toLocaleString({
+      hour: "numeric",
+      hourCycle: "h12",
+    })
+    .replace(/(a|p)m/, (match) => match.toUpperCase());
 
   return (
     <Box

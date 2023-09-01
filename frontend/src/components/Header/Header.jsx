@@ -16,7 +16,7 @@ const Header = (props) => {
         {globalWeather.city.name}, {globalWeather.city.country}
       </Text>
       <Text fontSize="3xl">
-        <Clock format={"HH:mm:ss"} ticking={true} timezone={timezone} />
+        <Clock format={"h:mm:ss A"} ticking={true} timezone={timezone} />
       </Text>
     </Box>
   );

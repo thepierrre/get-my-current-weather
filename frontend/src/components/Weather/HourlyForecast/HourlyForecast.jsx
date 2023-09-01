@@ -8,14 +8,16 @@ const HourlyForecast = () => {
 
   const forecast = globalWeather.hourlyForecast;
 
-  const forecastItems = Object.keys(forecast).map((hourly) => (
-    <HourlyForecastItem
-      key={hourly}
-      temp={forecast[hourly].temp}
-      main={forecast[hourly].main}
-      date={forecast[hourly].date}
-    />
-  ));
+  const forecastItems = Object.keys(forecast).map((hourly, index) =>
+    index !== 0 ? (
+      <HourlyForecastItem
+        key={hourly}
+        temp={forecast[hourly].temp}
+        main={forecast[hourly].main}
+        date={forecast[hourly].date}
+      />
+    ) : null
+  );
 
   return (
     <Flex
