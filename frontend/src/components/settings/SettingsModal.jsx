@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import WeatherContext from "../../context/weather-context";
+
 import {
   Modal,
   ModalOverlay,
@@ -13,50 +16,108 @@ import {
 
 const SettingsModal = (props) => {
   const { isOpen, onClose } = props;
+  const {
+    globalWeather,
+    tempUnits,
+    setTempUnits,
+    clockFormat,
+    setClockFormat,
+  } = useContext(WeatherContext);
+
+  const setTempUnitsToCelsius = () => {
+    setTempUnits("Celsius");
+  };
+
+  const setTempUnitsToFahrenheit = () => {
+    setTempUnits("Fahrenheit");
+  };
+
+  const setClockFormatTo12 = () => {
+    setClockFormat("12hours");
+  };
+
+  const setClockFormatTo24 = () => {
+    setClockFormat("24hours");
+  };
+
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
-      <ModalContent display="flex" gap="2rem" borderRadius="1.5rem">
+      <ModalContent
+        display="flex"
+        gap="2rem"
+        borderRadius="1.5rem"
+        p={3}
+        minWidth="45rem"
+      >
         <ModalHeader textAlign="center" fontSize="2xl">
           Settings
         </ModalHeader>
         <ModalCloseButton onClick={onClose} />
         <ModalBody>
-          <Flex direction="column" gap="2rem">
-            <Flex gap="3rem">
-              <Flex align="center" w="45%">
-                <Text fontSize="xl">Temperature</Text>
+          <Flex justify="center">
+            <Flex direction="column" gap="2rem">
+              <Flex gap="10rem">
+                <Flex align="center" w="45%">
+                  <Text fontSize="xl">Temperature</Text>
+                </Flex>
+                <Flex gap="1rem" w="55%">
+                  <Button
+                    w="8.5rem"
+                    onClick={setTempUnitsToCelsius}
+                    colorScheme={tempUnits === "Celsius" ? "blue" : undefined}
+                  >
+                    Celsius
+                  </Button>
+                  <Button
+                    w="8.5rem"
+                    onClick={setTempUnitsToFahrenheit}
+                    colorScheme={
+                      tempUnits === "Fahrenheit" ? "blue" : undefined
+                    }
+                  >
+                    Fahrenheit
+                  </Button>
+                </Flex>
               </Flex>
-              <Flex gap="1rem" w="55%">
-                <Button w="8.5rem">Celsius</Button>
-                <Button w="8.5rem">Fahrenheit</Button>
+              <Flex gap="3rem">
+                <Flex align="center" w="45%">
+                  <Text fontSize="xl">Clock</Text>
+                </Flex>
+                <Flex gap="1rem" w="55%">
+                  <Button
+                    w="8.5rem"
+                    onClick={setClockFormatTo12}
+                    colorScheme={clockFormat === "12hours" ? "blue" : undefined}
+                  >
+                    12 hours
+                  </Button>
+                  <Button
+                    w="8.5rem"
+                    onClick={setClockFormatTo24}
+                    colorScheme={clockFormat === "24hours" ? "blue" : undefined}
+                  >
+                    24 hours
+                  </Button>
+                </Flex>
               </Flex>
-            </Flex>
-            <Flex gap="3rem">
-              <Flex align="center" w="45%">
-                <Text fontSize="xl">Clock</Text>
+              <Flex gap="3rem">
+                <Flex align="center" w="45%">
+                  <Text fontSize="xl">Theme</Text>
+                </Flex>
+                <Flex gap="1rem" w="55%">
+                  <Button w="8.5rem">Default</Button>
+                  <Button w="8.5rem">Dark</Button>
+                </Flex>
               </Flex>
-              <Flex gap="1rem" w="55%">
-                <Button w="8rem">12 hours</Button>
-                <Button w="8rem">24 hours</Button>
-              </Flex>
-            </Flex>
-            <Flex gap="3rem">
-              <Flex align="center" w="45%">
-                <Text fontSize="xl">Theme</Text>
-              </Flex>
-              <Flex gap="1rem" w="55%">
-                <Button w="8rem">Default</Button>
-                <Button w="8rem">Dark</Button>
-              </Flex>
-            </Flex>
-            <Flex gap="3rem">
-              <Flex align="center" w="45%">
-                <Text fontSize="xl">Language</Text>
-              </Flex>
-              <Flex gap="1rem" w="55%">
-                <Button w="8rem">English</Button>
-                <Button w="8rem">German</Button>
+              <Flex gap="3rem">
+                <Flex align="center" w="45%">
+                  <Text fontSize="xl">Language</Text>
+                </Flex>
+                <Flex gap="1rem" w="55%">
+                  <Button w="8.5rem">English</Button>
+                  <Button w="8.5rem">German</Button>
+                </Flex>
               </Flex>
             </Flex>
           </Flex>

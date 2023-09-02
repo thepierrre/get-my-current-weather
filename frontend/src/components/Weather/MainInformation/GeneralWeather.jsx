@@ -4,10 +4,13 @@ import getWeatherIcon from "../../../shared/get-weather-icon";
 import { Text, Box, Icon, Button } from "@chakra-ui/react";
 
 const GeneralWeather = () => {
-  const { globalWeather } = useContext(WeatherContext);
+  const { globalWeather, tempUnits } = useContext(WeatherContext);
 
   const main = globalWeather.weather.main;
-  const temp = globalWeather.weather.temp;
+  const temp =
+    tempUnits === "Celsius"
+      ? globalWeather.weather.celsiusTemp
+      : globalWeather.weather.fahrenheitTemp;
 
   const weatherIcon = getWeatherIcon(globalWeather.weather.main);
 
@@ -27,35 +30,7 @@ const GeneralWeather = () => {
       </Box>
       <Box display="flex" flexDirection="row" alignItems="center" gap="2rem">
         <Box>
-          <Box display="flex">
-            <Text fontSize="6xl">{Math.floor(temp || 24.0)}</Text>
-            <Text fontSize="2xl" marginTop="0.75rem">
-              °
-            </Text>
-            <Button
-              variant="ghost"
-              fontSize="2xl"
-              marginTop="0.75rem"
-              padding="0"
-              _hover={{ color: "rgb(241, 241, 241)" }}
-              _active={{ bg: "none", fontSize: "3xl" }}
-            >
-              C
-            </Button>
-            <Text fontSize="2xl" marginTop="0.75rem">
-              {"|"}
-            </Text>
-            <Button
-              variant="ghost"
-              fontSize="2xl"
-              marginTop="0.75rem"
-              padding="0"
-              _hover={{ color: "rgb(241, 241, 241)" }}
-              _active={{ bg: "none", fontSize: "3xl" }}
-            >
-              F
-            </Button>
-          </Box>
+          <Text fontSize="6xl">{`${Math.floor(temp || 24.0)}°`}</Text>
         </Box>
         <Text fontSize="5xl">{main || "Clear"}</Text>
       </Box>

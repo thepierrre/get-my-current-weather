@@ -8,6 +8,8 @@ const WeatherContextProvider = (props) => {
   const { children } = props;
   const [isNight, setIsNight] = useState(undefined);
   const [enteredCity, setEnteredCity] = useState("");
+  const [tempUnits, setTempUnits] = useState("Celsius");
+  const [clockFormat, setClockFormat] = useState("12hours");
   const [globalWeather, setGlobalWeather] = useState(globalWeatherState);
 
   // useEffect(() => {
@@ -24,6 +26,14 @@ const WeatherContextProvider = (props) => {
 
   let lat, lon;
   let cityName, countryCode;
+
+  const getCelsiusTemp = (kelvinTemp) => {
+    return Math.round(kelvinTemp - 273.15);
+  };
+
+  const getFahrenheitTemp = (kelvinTemp) => {
+    return Math.round(((kelvinTemp - 273.15) * 9) / 5 + 32);
+  };
 
   const getCoordinatesForCityName = async () => {
     const city = enteredCity;
@@ -77,11 +87,14 @@ const WeatherContextProvider = (props) => {
       const timezone = response.data.weather.timezone;
 
       setGlobalWeather((prevState) => {
+        // ["day" + i]:
         return {
           ...prevState,
           weather: {
             main: currentWeatherData.weather[0].main,
             temp: currentWeatherData.temp,
+            celsiusTemp: getCelsiusTemp(currentWeatherData.temp),
+            fahrenheitTemp: getFahrenheitTemp(currentWeatherData.temp),
             wind: currentWeatherData.wind_speed,
             humidity: currentWeatherData.humidity,
             pressure: currentWeatherData.pressure,
@@ -108,121 +121,169 @@ const WeatherContextProvider = (props) => {
             plus1: {
               main: hourlyWeatherData[0].weather[0].main,
               temp: hourlyWeatherData[0].temp,
+              celsiusTemp: getCelsiusTemp(hourlyWeatherData[0].temp),
+              fahrenheitTemp: getFahrenheitTemp(hourlyWeatherData[0].temp),
               date: hourlyWeatherData[0].dt,
             },
             plus2: {
               main: hourlyWeatherData[1].weather[0].main,
               temp: hourlyWeatherData[1].temp,
+              celsiusTemp: getCelsiusTemp(hourlyWeatherData[1].temp),
+              fahrenheitTemp: getFahrenheitTemp(hourlyWeatherData[1].temp),
               date: hourlyWeatherData[1].dt,
             },
             plus3: {
               main: hourlyWeatherData[2].weather[0].main,
               temp: hourlyWeatherData[2].temp,
+              celsiusTemp: getCelsiusTemp(hourlyWeatherData[2].temp),
+              fahrenheitTemp: getFahrenheitTemp(hourlyWeatherData[2].temp),
               date: hourlyWeatherData[2].dt,
             },
             plus4: {
               main: hourlyWeatherData[3].weather[0].main,
               temp: hourlyWeatherData[3].temp,
+              celsiusTemp: getCelsiusTemp(hourlyWeatherData[3].temp),
+              fahrenheitTemp: getFahrenheitTemp(hourlyWeatherData[3].temp),
               date: hourlyWeatherData[3].dt,
             },
             plus5: {
               main: hourlyWeatherData[4].weather[0].main,
               temp: hourlyWeatherData[4].temp,
+              celsiusTemp: getCelsiusTemp(hourlyWeatherData[4].temp),
+              fahrenheitTemp: getFahrenheitTemp(hourlyWeatherData[4].temp),
               date: hourlyWeatherData[4].dt,
             },
             plus6: {
               main: hourlyWeatherData[5].weather[0].main,
               temp: hourlyWeatherData[5].temp,
+              celsiusTemp: getCelsiusTemp(hourlyWeatherData[5].temp),
+              fahrenheitTemp: getFahrenheitTemp(hourlyWeatherData[5].temp),
               date: hourlyWeatherData[5].dt,
             },
             plus7: {
               main: hourlyWeatherData[6].weather[0].main,
               temp: hourlyWeatherData[6].temp,
+              celsiusTemp: getCelsiusTemp(hourlyWeatherData[6].temp),
+              fahrenheitTemp: getFahrenheitTemp(hourlyWeatherData[6].temp),
               date: hourlyWeatherData[6].dt,
             },
             plus8: {
               main: hourlyWeatherData[7].weather[0].maind,
               temp: hourlyWeatherData[7].temp,
+              celsiusTemp: getCelsiusTemp(hourlyWeatherData[7].temp),
+              fahrenheitTemp: getFahrenheitTemp(hourlyWeatherData[7].temp),
               date: hourlyWeatherData[7].dt,
             },
             plus9: {
               main: hourlyWeatherData[8].weather[0].main,
               temp: hourlyWeatherData[8].temp,
+              celsiusTemp: getCelsiusTemp(hourlyWeatherData[8].temp),
+              fahrenheitTemp: getFahrenheitTemp(hourlyWeatherData[8].temp),
               date: hourlyWeatherData[8].dt,
             },
             plus10: {
               main: hourlyWeatherData[9].weather[0].main,
               temp: hourlyWeatherData[9].temp,
+              celsiusTemp: getCelsiusTemp(hourlyWeatherData[9].temp),
+              fahrenheitTemp: getFahrenheitTemp(hourlyWeatherData[9].temp),
               date: hourlyWeatherData[9].dt,
             },
             plus11: {
               main: hourlyWeatherData[10].weather[0].main,
               temp: hourlyWeatherData[10].temp,
+              celsiusTemp: getCelsiusTemp(hourlyWeatherData[10].temp),
+              fahrenheitTemp: getFahrenheitTemp(hourlyWeatherData[10].temp),
               date: hourlyWeatherData[10].dt,
             },
             plus12: {
               main: hourlyWeatherData[11].weather[0].main,
               temp: hourlyWeatherData[11].temp,
+              celsiusTemp: getCelsiusTemp(hourlyWeatherData[11].temp),
+              fahrenheitTemp: getFahrenheitTemp(hourlyWeatherData[11].temp),
               date: hourlyWeatherData[11].dt,
             },
             plus13: {
               main: hourlyWeatherData[12].weather[0].main,
               temp: hourlyWeatherData[12].temp,
+              celsiusTemp: getCelsiusTemp(hourlyWeatherData[12].temp),
+              fahrenheitTemp: getFahrenheitTemp(hourlyWeatherData[12].temp),
               date: hourlyWeatherData[12].dt,
             },
             plus14: {
               main: hourlyWeatherData[13].weather[0].main,
               temp: hourlyWeatherData[13].temp,
+              celsiusTemp: getCelsiusTemp(hourlyWeatherData[13].temp),
+              fahrenheitTemp: getFahrenheitTemp(hourlyWeatherData[13].temp),
               date: hourlyWeatherData[13].dt,
             },
             plus15: {
               main: hourlyWeatherData[14].weather[0].main,
               temp: hourlyWeatherData[14].temp,
+              celsiusTemp: getCelsiusTemp(hourlyWeatherData[14].temp),
+              fahrenheitTemp: getFahrenheitTemp(hourlyWeatherData[14].temp),
               date: hourlyWeatherData[14].dt,
             },
             plus16: {
               main: hourlyWeatherData[15].weather[0].main,
               temp: hourlyWeatherData[15].temp,
+              celsiusTemp: getCelsiusTemp(hourlyWeatherData[15].temp),
+              fahrenheitTemp: getFahrenheitTemp(hourlyWeatherData[15].temp),
               date: hourlyWeatherData[15].dt,
             },
             plus17: {
               main: hourlyWeatherData[16].weather[0].main,
               temp: hourlyWeatherData[16].temp,
+              celsiusTemp: getCelsiusTemp(hourlyWeatherData[16].temp),
+              fahrenheitTemp: getFahrenheitTemp(hourlyWeatherData[16].temp),
               date: hourlyWeatherData[16].dt,
             },
             plus18: {
               main: hourlyWeatherData[17].weather[0].main,
               temp: hourlyWeatherData[17].temp,
+              celsiusTemp: getCelsiusTemp(hourlyWeatherData[17].temp),
+              fahrenheitTemp: getFahrenheitTemp(hourlyWeatherData[17].temp),
               date: hourlyWeatherData[17].dt,
             },
             plus19: {
               main: hourlyWeatherData[18].weather[0].main,
               temp: hourlyWeatherData[18].temp,
+              celsiusTemp: getCelsiusTemp(hourlyWeatherData[18].temp),
+              fahrenheitTemp: getFahrenheitTemp(hourlyWeatherData[18].temp),
               date: hourlyWeatherData[18].dt,
             },
             plus20: {
               main: hourlyWeatherData[19].weather[0].main,
               temp: hourlyWeatherData[19].temp,
+              celsiusTemp: getCelsiusTemp(hourlyWeatherData[19].temp),
+              fahrenheitTemp: getFahrenheitTemp(hourlyWeatherData[19].temp),
               date: hourlyWeatherData[19].dt,
             },
             plus31: {
               main: hourlyWeatherData[20].weather[0].main,
               temp: hourlyWeatherData[20].temp,
+              celsiusTemp: getCelsiusTemp(hourlyWeatherData[20].temp),
+              fahrenheitTemp: getFahrenheitTemp(hourlyWeatherData[20].temp),
               date: hourlyWeatherData[20].dt,
             },
             plus22: {
               main: hourlyWeatherData[21].weather[0].main,
               temp: hourlyWeatherData[21].temp,
+              celsiusTemp: getCelsiusTemp(hourlyWeatherData[21].temp),
+              fahrenheitTemp: getFahrenheitTemp(hourlyWeatherData[21].temp),
               date: hourlyWeatherData[21].dt,
             },
             plus23: {
               main: hourlyWeatherData[22].weather[0].main,
               temp: hourlyWeatherData[22].temp,
+              celsiusTemp: getCelsiusTemp(hourlyWeatherData[22].temp),
+              fahrenheitTemp: getFahrenheitTemp(hourlyWeatherData[22].temp),
               date: hourlyWeatherData[22].dt,
             },
             plus24: {
               main: hourlyWeatherData[23].weather[0].main,
               temp: hourlyWeatherData[23].temp,
+              celsiusTemp: getCelsiusTemp(hourlyWeatherData[23].temp),
+              fahrenheitTemp: getFahrenheitTemp(hourlyWeatherData[23].temp),
               date: hourlyWeatherData[23].dt,
             },
           },
@@ -230,41 +291,57 @@ const WeatherContextProvider = (props) => {
             plus1: {
               main: dailyWeatherData[0].weather[0].main,
               temp: dailyWeatherData[0].temp.day,
+              celsiusTemp: getCelsiusTemp(dailyWeatherData[0].temp.day),
+              fahrenheitTemp: getFahrenheitTemp(dailyWeatherData[0].temp.day),
               date: dailyWeatherData[0].dt,
             },
             plus2: {
               main: dailyWeatherData[1].weather[0].main,
               temp: dailyWeatherData[1].temp.day,
+              celsiusTemp: getCelsiusTemp(dailyWeatherData[1].temp.day),
+              fahrenheitTemp: getFahrenheitTemp(dailyWeatherData[1].temp.day),
               date: dailyWeatherData[1].dt,
             },
             plus3: {
               main: dailyWeatherData[2].weather[0].main,
               temp: dailyWeatherData[2].temp.day,
+              celsiusTemp: getCelsiusTemp(dailyWeatherData[2].temp.day),
+              fahrenheitTemp: getFahrenheitTemp(dailyWeatherData[2].temp.day),
               date: dailyWeatherData[2].dt,
             },
             plus4: {
               main: dailyWeatherData[3].weather[0].main,
               temp: dailyWeatherData[3].temp.day,
+              celsiusTemp: getCelsiusTemp(dailyWeatherData[3].temp.day),
+              fahrenheitTemp: getFahrenheitTemp(dailyWeatherData[3].temp.day),
               date: dailyWeatherData[3].dt,
             },
             plus5: {
               main: dailyWeatherData[4].weather[0].main,
               temp: dailyWeatherData[4].temp.day,
+              celsiusTemp: getCelsiusTemp(dailyWeatherData[4].temp.day),
+              fahrenheitTemp: getFahrenheitTemp(dailyWeatherData[4].temp.day),
               date: dailyWeatherData[4].dt,
             },
             plus6: {
               main: dailyWeatherData[5].weather[0].main,
               temp: dailyWeatherData[5].temp.day,
+              celsiusTemp: getCelsiusTemp(dailyWeatherData[5].temp.day),
+              fahrenheitTemp: getFahrenheitTemp(dailyWeatherData[5].temp.day),
               date: dailyWeatherData[5].dt,
             },
             plus7: {
               main: dailyWeatherData[6].weather[0].main,
               temp: dailyWeatherData[6].temp.day,
+              celsiusTemp: getCelsiusTemp(dailyWeatherData[6].temp.day),
+              fahrenheitTemp: getFahrenheitTemp(dailyWeatherData[6].temp.day),
               date: dailyWeatherData[6].dt,
             },
             plus8: {
               main: dailyWeatherData[7].weather[0].main,
               temp: dailyWeatherData[7].temp.day,
+              celsiusTemp: getCelsiusTemp(dailyWeatherData[7].temp.day),
+              fahrenheitTemp: getFahrenheitTemp(dailyWeatherData[7].temp.day),
               date: dailyWeatherData[7].dt,
             },
           },
@@ -300,7 +377,10 @@ const WeatherContextProvider = (props) => {
         getWeatherForEnteredCity,
         enteredCity,
         setEnteredCity,
-        // weatherIcon,
+        tempUnits,
+        setTempUnits,
+        clockFormat,
+        setClockFormat,
       }}
     >
       {children}

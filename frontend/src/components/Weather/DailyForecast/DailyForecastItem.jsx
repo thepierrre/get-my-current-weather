@@ -5,8 +5,10 @@ import getWeatherIcon from "../../../shared/get-weather-icon";
 import { Box, Text, Icon } from "@chakra-ui/react";
 
 const DailyForecastItem = (props) => {
-  const { main, temp, date } = props;
-  const { globalWeather } = useContext(WeatherContext);
+  const { temp, celsiusTemp, fahrenheitTemp, main, date } = props;
+  const { globalWeather, tempUnits } = useContext(WeatherContext);
+
+  const convertedTemp = tempUnits === "Celsius" ? celsiusTemp : fahrenheitTemp;
 
   const weatherIcon = getWeatherIcon(main);
 
@@ -24,7 +26,7 @@ const DailyForecastItem = (props) => {
     >
       <Text fontSize="3xl">{day}</Text>
       <Icon as={weatherIcon} boxSize={40} />
-      <Text fontSize="2xl">{temp}°</Text>
+      <Text fontSize="2xl">{convertedTemp}°</Text>
     </Box>
   );
 };

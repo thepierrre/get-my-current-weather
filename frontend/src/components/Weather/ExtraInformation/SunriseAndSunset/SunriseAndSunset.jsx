@@ -38,18 +38,16 @@ const SunriseAndSunset = () => {
       justify="center"
       gap="6rem"
     >
-      <Tooltip label="Sunrise">
-        <Flex direction="column" align="center" justify="center" gap="1rem">
-          <Icon as={WiSunrise} boxSize={36} />
-          <Text fontSize="2xl">{sunrise}</Text>
-        </Flex>
-      </Tooltip>
-      <Tooltip label="Sunrise">
-        <Flex direction="column" align="center" justify="center" gap="1rem">
-          <Icon as={WiSunset} boxSize={36} />
-          <Text fontSize="2xl">{sunset}</Text>
-        </Flex>
-      </Tooltip>
+      <Flex direction="column" align="center" justify="center" gap="1rem">
+        <Text fontSize="4xl">Sunrise</Text>
+        <Icon as={WiSunrise} boxSize={36} />
+        <Text fontSize="2xl">{sunrise}</Text>
+      </Flex>
+      <Flex direction="column" align="center" justify="center" gap="1rem">
+        <Text fontSize="4xl">Sunset</Text>
+        <Icon as={WiSunset} boxSize={36} />
+        <Text fontSize="2xl">{sunset}</Text>
+      </Flex>
     </Flex>
   );
 };

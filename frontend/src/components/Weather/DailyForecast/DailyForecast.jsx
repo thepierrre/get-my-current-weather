@@ -13,6 +13,8 @@ const DailyForecast = () => {
       <DailyForecastItem
         key={daily}
         temp={forecast[daily].temp}
+        celsiusTemp={forecast[daily].celsiusTemp}
+        fahrenheitTemp={forecast[daily].fahrenheitTemp}
         main={forecast[daily].main}
         date={forecast[daily].date}
       />

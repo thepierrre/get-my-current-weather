@@ -13,6 +13,8 @@ const HourlyForecast = () => {
       <HourlyForecastItem
         key={hourly}
         temp={forecast[hourly].temp}
+        celsiusTemp={forecast[hourly].celsiusTemp}
+        fahrenheitTemp={forecast[hourly].fahrenheitTemp}
         main={forecast[hourly].main}
         date={forecast[hourly].date}
       />
