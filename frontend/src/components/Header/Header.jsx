@@ -1,23 +1,34 @@
 import { useContext } from "react";
-import Clock from "react-live-clock";
 import WeatherContext from "../../context/weather-context";
+import { DateTime } from "luxon";
 import { Text, Box } from "@chakra-ui/react";
 
-const Header = (props) => {
-  const { time } = props;
-  const { globalWeather } = useContext(WeatherContext);
+const Header = () => {
+  const { globalWeather, clockFormat } = useContext(WeatherContext);
 
-  const currTime = globalWeather.currTime;
   const timezone = globalWeather.timezone;
+  // const time = DateTime.fromSeconds(+globalWeather.currTime, {
+  //   zone: timezone,
+  // }).toLocaleString(
+  //   DateTime.TIME_SIMPLE
+  //   // hour: "numeric",
+  //   // minute: "numeric",
+  //   // hourCycle: "h12",
+  // );
+  // // .replace(/(a|p)m/, (match) => match.toUpperCase());
+
+  const format = clockFormat === "12hours" ? "hh:mm a" : "HH:mm";
+
+  const time = DateTime.fromSeconds(+globalWeather.currTime, {
+    zone: timezone,
+  }).toFormat(format);
 
   return (
     <Box display="flex" flexDirection="column" alignItems="center">
       <Text fontSize="6xl" textAlign="center">
         {globalWeather.city.name}, {globalWeather.city.country}
       </Text>
-      <Text fontSize="3xl">
-        <Clock format={"h:mm:ss A"} ticking={true} timezone={timezone} />
-      </Text>
+      <Text fontSize="3xl">{time}</Text>
     </Box>
   );
 };

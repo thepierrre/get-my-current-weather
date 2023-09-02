@@ -5,27 +5,21 @@ import { Text, Icon, Tooltip, Flex } from "@chakra-ui/react";
 import { WiSunrise, WiSunset } from "react-icons/wi";
 
 const SunriseAndSunset = () => {
-  const { globalWeather } = useContext(WeatherContext);
+  const { globalWeather, clockFormat } = useContext(WeatherContext);
 
   let sunrise = globalWeather.sun.sunrise;
   let sunset = globalWeather.sun.sunset;
   const timezone = globalWeather.timezone;
 
-  sunrise = DateTime.fromSeconds(+sunrise, { zone: timezone })
-    .toLocaleString({
-      hour: "numeric",
-      minute: "numeric",
-      hourCycle: "h12",
-    })
-    .replace(/(a|p)m/, (match) => match.toUpperCase());
+  const format = clockFormat === "12hours" ? "h:mm a" : "H:mm";
 
-  sunset = DateTime.fromSeconds(+sunset, { zone: timezone })
-    .toLocaleString({
-      hour: "numeric",
-      minute: "numeric",
-      hourCycle: "h12",
-    })
-    .replace(/(a|p)m/, (match) => match.toUpperCase());
+  sunrise = DateTime.fromSeconds(+sunrise, {
+    zone: timezone,
+  }).toFormat(format);
+
+  sunset = DateTime.fromSeconds(+sunset, {
+    zone: timezone,
+  }).toFormat(format);
 
   return (
     <Flex
