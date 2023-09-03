@@ -8,23 +8,11 @@ import WeatherContext from "./weather-context";
 const WeatherContextProvider = (props) => {
   const { children } = props;
   const [isNight, setIsNight] = useState(undefined);
-  const [theme, setTheme] = useState("default");
   const [enteredCity, setEnteredCity] = useState("");
   const [tempUnits, setTempUnits] = useState("Celsius");
   const [clockFormat, setClockFormat] = useState("12hours");
   const [globalWeather, setGlobalWeather] = useState(globalWeatherState);
-
-  // useEffect(() => {
-  //   // Calculate the current UTC time in seconds
-  //   const currentTimeInSeconds = Math.floor(Date.now() / 1000);
-
-  //   // Check if it is night or day based on sunrise and sunset times
-  //   if (currentTimeInSeconds > sunset || currentTimeInSeconds < sunrise) {
-  //     setIsNight(true);
-  //   } else {
-  //     setIsNight(false);
-  //   }
-  // }, [sunrise, sunset]);
+  const [weatherIsFetched, setWeatherIsFetched] = useState(false);
 
   let lat, lon;
   let cityName, countryCode;
@@ -455,6 +443,7 @@ const WeatherContextProvider = (props) => {
     await getCoordinatesForCityName();
     setEnteredCity(`${cityName}, ${countries[countryCode].name}`);
     getWeatherForCoordinates(lat, lon);
+    // setWeatherIsFetched(true);
   };
 
   const getWeatherForCurrentLocation = async () => {
@@ -465,6 +454,7 @@ const WeatherContextProvider = (props) => {
       getCityNameForCoordinates(lat, lon);
       getWeatherForCoordinates(lat, lon);
     });
+    // setWeatherIsFetched(true);
   };
 
   return (
@@ -481,6 +471,8 @@ const WeatherContextProvider = (props) => {
         clockFormat,
         setClockFormat,
         getLocalTime,
+        weatherIsFetched,
+        setWeatherIsFetched,
       }}
     >
       {children}

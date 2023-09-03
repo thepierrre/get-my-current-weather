@@ -5,27 +5,24 @@ import UVIndex from "./UVIndex";
 import HourlyForecast from "../HourlyForecast/HourlyForecast";
 import DailyForecast from "../DailyForecast/DailyForecast";
 import AdditionalInfo from "../ExtraInformation/AdditionalInfo";
-import { Box } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 
 const MainInformation = () => {
   return (
     <>
-      <Box color="#0A2647" display="flex" flexDirection="column" gap="1.5rem">
+      <Flex color="#0A2647" direction="column" gap="3rem">
         <Header />
-        <HourlyForecast />
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          gap="1.5rem"
-        >
-          <DetailedWeather />
-          <GeneralWeather />
-          <UVIndex />
-        </Box>
-        <DailyForecast />
-        <AdditionalInfo />
-      </Box>
+        <Flex direction="column" gap="1.5rem">
+          <HourlyForecast />
+          <Flex justify="center" align="center" gap="1.5rem">
+            <DetailedWeather />
+            <GeneralWeather />
+            <UVIndex />
+          </Flex>
+          <DailyForecast />
+          <AdditionalInfo />
+        </Flex>
+      </Flex>
     </>
   );
 };

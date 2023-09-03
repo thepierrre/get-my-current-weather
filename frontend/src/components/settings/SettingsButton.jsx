@@ -5,7 +5,7 @@ const SettingsButton = (props) => {
   const { onOpen } = props;
 
   return (
-    <Flex position="fixed" top="3rem" right="3rem">
+    <Flex position="fixed" top="2rem" right="2rem">
       <IconButton
         variant="link"
         color="#0A2647"

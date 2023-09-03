@@ -123,20 +123,32 @@ const DailyForecastItemDetail = (props) => {
             </Flex>
             <Flex direction="column" align="center" gap="2rem">
               <Flex direction="column">
-                <Text>Precipitation probability: {precipProbability}</Text>
+                <Text>
+                  <b>Precipitation probability:</b> {precipProbability}
+                </Text>
                 <Flex direction="column" align="center" gap="0.5rem">
-                  <Text>Moon phase: {moonPhaseName}</Text>
+                  <Text>
+                    <b>Moon phase:</b> {moonPhaseName}
+                  </Text>
                   <Icon as={moonIcon} boxSize={8} />
                 </Flex>
               </Flex>
               <Flex justify="center" gap="2rem">
                 <Flex direction="column">
-                  <Text>Sunrise: {getLocalTime(sunrise, timezone)}</Text>
-                  <Text>Sunset: {getLocalTime(sunset, timezone)}</Text>
+                  <Text>
+                    <b>Sunrise:</b> {getLocalTime(sunrise, timezone)}
+                  </Text>
+                  <Text>
+                    <b>Sunset:</b> {getLocalTime(sunset, timezone)}
+                  </Text>
                 </Flex>
                 <Flex direction="column">
-                  <Text>Moonrise: {getLocalTime(moonrise, timezone)}</Text>
-                  <Text>Moonset {getLocalTime(moonset, timezone)}</Text>
+                  <Text>
+                    <b>Moonrise:</b> {getLocalTime(moonrise, timezone)}
+                  </Text>
+                  <Text>
+                    <b>Moonset:</b> {getLocalTime(moonset, timezone)}
+                  </Text>
                 </Flex>
               </Flex>
             </Flex>

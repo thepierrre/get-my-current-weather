@@ -102,15 +102,6 @@ const SettingsModal = (props) => {
                   </Button>
                 </Flex>
               </Flex>
-              <Flex gap="3rem">
-                <Flex align="center" w="45%">
-                  <Text fontSize="xl">Theme</Text>
-                </Flex>
-                <Flex gap="1rem" w="55%">
-                  <Button w="8.5rem">Default</Button>
-                  <Button w="8.5rem">Dark</Button>
-                </Flex>
-              </Flex>
             </Flex>
           </Flex>
         </ModalBody>
