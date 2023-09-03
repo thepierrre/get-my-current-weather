@@ -19,6 +19,7 @@ const WeatherContext = createContext({
   getWeatherForEnteredCity: () => {},
   getWeatherForCurrentLocation: () => {},
   cityInputChangeHandler: () => {},
+  getLocalTime: () => {},
 });
 
 export default WeatherContext;

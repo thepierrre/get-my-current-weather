@@ -6,7 +6,7 @@ import { Box, Text, Icon } from "@chakra-ui/react";
 
 const HourlyForecastItem = (props) => {
   const { celsiusTemp, fahrenheitTemp, main, date } = props;
-  const { globalWeather, tempUnits, clockFormat } = useContext(WeatherContext);
+  const { globalWeather, tempUnits, getLocalTime } = useContext(WeatherContext);
 
   const convertedTemp = tempUnits === "Celsius" ? celsiusTemp : fahrenheitTemp;
 
@@ -14,27 +14,15 @@ const HourlyForecastItem = (props) => {
 
   const timezone = globalWeather.timezone;
 
-  // let hour = DateTime.fromSeconds(+date, { zone: timezone })
-  //   .toLocaleString({
-  //     hour: "numeric",
-  //     hourCycle: "h12",
-  //   })
-  //   .replace(/(a|p)m/, (match) => match.toUpperCase());
-
-  const format = clockFormat === "12hours" ? "h a" : "H:mm";
-
-  let time = DateTime.fromSeconds(+date, {
-    zone: timezone,
-  }).toFormat(format);
-
   return (
     <Box
       display="flex"
       flexDirection="column"
       alignItems="center"
       margin="1rem"
+      minWidth="6.5rem"
     >
-      <Text fontSize="2xl">{time}</Text>
+      <Text fontSize="2xl">{getLocalTime(date, timezone)}</Text>
       <Icon as={weatherIcon} boxSize={20} />
       <Text>{convertedTemp}°</Text>
     </Box>

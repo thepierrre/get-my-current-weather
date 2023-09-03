@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import WeatherContext from "../../../context/weather-context";
+import { DateTime } from "luxon";
 import {
   Modal,
   ModalOverlay,
@@ -13,51 +16,127 @@ import {
 } from "@chakra-ui/react";
 
 import {
-  WiSunrise,
-  WiSunset,
-  WiMoonrise,
-  WiMoonset,
   WiMoonNew,
+  WiMoonWaxingCrescent4,
+  WiMoonFirstQuarter,
+  WiMoonWaxingGibbous4,
+  WiMoonFull,
+  WiMoonWaningGibbous4,
+  WiMoonThirdQuarter,
+  WiMoonWaningCrescent4,
   WiDaySunny,
   WiNightClear,
 } from "react-icons/wi";
 
 const DailyForecastItemDetail = (props) => {
-  const { onClose, weatherIcon } = props;
+  const { onClose, dayWeather, isOpen, weatherIcon } = props;
+  const { globalWeather, getLocalTime, tempUnits } = useContext(WeatherContext);
+
+  const timezone = globalWeather.timezone;
+
+  const {
+    main,
+    celsiusTemp,
+    celsiusNightTemp,
+    fahrenheitTemp,
+    fahrenheitNightTemp,
+    date,
+    moonPhase,
+    moonset,
+    moonrise,
+    sunset,
+    sunrise,
+    nightTemp,
+    precipProb,
+    temp,
+  } = dayWeather;
+
+  const convertedTemp = tempUnits === "Celsius" ? celsiusTemp : fahrenheitTemp;
+  const convertedNightTemp =
+    tempUnits === "Celsius" ? celsiusNightTemp : fahrenheitNightTemp;
+
+  const format = { weekday: "long", day: "numeric", month: "long" };
+  const time = DateTime.fromSeconds(+date, {
+    zone: timezone,
+  }).toLocaleString(format);
+
+  const getMoonPhase = (moonPhase) => {
+    let moonIcon;
+    let moonPhaseName;
+    if (moonPhase === 0 || moonPhase === 1) {
+      moonIcon = WiMoonNew;
+      moonPhaseName = "New moon";
+    }
+    if (moonPhase > 0 && moonPhase < 0.25) {
+      moonIcon = WiMoonWaxingCrescent4;
+      moonPhaseName = "Waxing crescent";
+    }
+    if (moonPhase === 0.25) {
+      moonIcon = WiMoonFirstQuarter;
+      moonPhaseName = "First quarter";
+    }
+    if (moonPhase > 0.25 && moonPhase < 0.5) {
+      moonIcon = WiMoonWaxingGibbous4;
+      moonPhaseName = "Waxing gibbous";
+    }
+    if (moonPhase === 0.5) {
+      moonIcon = WiMoonFull;
+      moonPhaseName = "Full moon";
+    }
+    if (moonPhase > 0.5 && moonPhase < 0.75) {
+      moonIcon = WiMoonWaningGibbous4;
+      moonPhaseName = "Waning gibbous";
+    }
+    if (moonPhase === 0.75) {
+      moonIcon = WiMoonThirdQuarter;
+      moonPhaseName = "Third quarter";
+    }
+    if (moonPhase > 0.75 && moonPhase < 1) {
+      moonIcon = WiMoonWaningCrescent4;
+      moonPhaseName = "Waning crescent";
+    }
+
+    return { moonIcon, moonPhaseName };
+  };
+
+  const { moonIcon, moonPhaseName } = getMoonPhase(moonPhase);
+  let precipProbability = `${precipProb * 100}%`;
 
   return (
-    <Modal isOpen={true} onClose={onClose} isCentered>
+    <Modal isOpen={isOpen} onClose={onClose} isCentered>
       <ModalOverlay />
       <ModalContent borderRadius="1.5rem" color="#0A2647">
-        <ModalHeader textAlign="center">Wednesday, 10 September</ModalHeader>
+        <ModalHeader textAlign="center">{time}</ModalHeader>
         <ModalCloseButton />
         <ModalBody color="inherit">
           <Flex direction="column" gap="2rem">
             <Flex direction="column" align="center">
               <Icon as={weatherIcon} boxSize={40} />
-              <Text fontSize="3xl">Clear</Text>
+              <Text fontSize="3xl">{main}</Text>
               <Flex align="center" gap="0.5rem">
                 <Icon as={WiNightClear} boxSize={8} />
-                <Text fontSize="2xl">11° / 23°</Text>
+                <Text fontSize="2xl">
+                  {convertedNightTemp}° / {convertedTemp}°
+                </Text>
                 <Icon as={WiDaySunny} boxSize={8} />
               </Flex>
             </Flex>
             <Flex direction="column" align="center" gap="2rem">
               <Flex direction="column">
-                <Text>Precipitation probability: 20%</Text>
+                <Text>Precipitation probability: {precipProbability}</Text>
                 <Flex direction="column" align="center" gap="0.5rem">
-                  <Text>Moonphase: New Moon</Text>
-                  <Icon as={WiMoonNew} boxSize={8} />
+                  <Text>Moon phase: {moonPhaseName}</Text>
+                  <Icon as={moonIcon} boxSize={8} />
                 </Flex>
               </Flex>
               <Flex justify="center" gap="2rem">
                 <Flex direction="column">
-                  <Text>Sunrise: 6:14 AM</Text>
-                  <Text>Sunset: 8:20 PM</Text>
+                  <Text>Sunrise: {getLocalTime(sunrise, timezone)}</Text>
+                  <Text>Sunset: {getLocalTime(sunset, timezone)}</Text>
                 </Flex>
                 <Flex direction="column">
-                  <Text>Moonrise: 5:18 PM</Text>
-                  <Text>Moonset 2:35 AM</Text>
+                  <Text>Moonrise: {getLocalTime(moonrise, timezone)}</Text>
+                  <Text>Moonset {getLocalTime(moonset, timezone)}</Text>
                 </Flex>
               </Flex>
             </Flex>

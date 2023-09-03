@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "../axiosInstance";
+import { DateTime } from "luxon";
 import { countries } from "country-data";
 import globalWeatherState from "./globalWeatherState";
 import WeatherContext from "./weather-context";
@@ -441,6 +442,15 @@ const WeatherContextProvider = (props) => {
     }
   };
 
+  const getLocalTime = (timeInSeconds, timezone) => {
+    const format = clockFormat === "12hours" ? "h:mm a" : "H:mm";
+    const time = DateTime.fromSeconds(+timeInSeconds, {
+      zone: timezone,
+    }).toFormat(format);
+
+    return time;
+  };
+
   const getWeatherForEnteredCity = async () => {
     await getCoordinatesForCityName();
     setEnteredCity(`${cityName}, ${countries[countryCode].name}`);
@@ -470,6 +480,7 @@ const WeatherContextProvider = (props) => {
         setTempUnits,
         clockFormat,
         setClockFormat,
+        getLocalTime,
       }}
     >
       {children}
