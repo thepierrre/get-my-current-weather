@@ -34,11 +34,11 @@ const SearchBar = (props) => {
     setEnteredCity,
   } = useContext(WeatherContext);
 
-  const handleKeyDown = (event) => {
-    if (event.key === "Enter") {
-      getWeather();
-    }
-  };
+  // const handleKeyDown = (event) => {
+  //   if (event.key === "Enter") {
+  //     getWeather();
+  //   }
+  // };
 
   return (
     <Box>
@@ -57,7 +57,7 @@ const SearchBar = (props) => {
           borderRadius="1.5rem"
           value={enteredCity}
           onChange={cityInputChangeHandler}
-          onKeyDown={handleKeyDown}
+          // onKeyDown={handleKeyDown}
         />
         <InputRightElement height="100%" width="3rem">
           <Tooltip label="Fetch weather for entered city">

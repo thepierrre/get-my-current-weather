@@ -11,6 +11,8 @@ const WeatherContext = createContext({
   setTempUnits: () => {},
   clockFormat: undefined,
   setClockFormat: () => {},
+  theme: undefined,
+  setTheme: () => {},
   getCoordinatesForCityName: () => {},
   getCityNameForCoordinates: () => {},
   getWeatherForCoordinates: () => {},

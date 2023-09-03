@@ -17,7 +17,7 @@ const Header = () => {
   // );
   // // .replace(/(a|p)m/, (match) => match.toUpperCase());
 
-  const format = clockFormat === "12hours" ? "hh:mm a" : "HH:mm";
+  const format = clockFormat === "12hours" ? "h:mm a" : "H:mm";
 
   const time = DateTime.fromSeconds(+globalWeather.currTime, {
     zone: timezone,
@@ -28,7 +28,7 @@ const Header = () => {
       <Text fontSize="6xl" textAlign="center">
         {globalWeather.city.name}, {globalWeather.city.country}
       </Text>
-      <Text fontSize="3xl">{time}</Text>
+      <Text fontSize="4xl">{time}</Text>
     </Box>
   );
 };

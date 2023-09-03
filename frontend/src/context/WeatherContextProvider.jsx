@@ -7,6 +7,7 @@ import WeatherContext from "./weather-context";
 const WeatherContextProvider = (props) => {
   const { children } = props;
   const [isNight, setIsNight] = useState(undefined);
+  const [theme, setTheme] = useState("default");
   const [enteredCity, setEnteredCity] = useState("");
   const [tempUnits, setTempUnits] = useState("Celsius");
   const [clockFormat, setClockFormat] = useState("12hours");
@@ -290,58 +291,146 @@ const WeatherContextProvider = (props) => {
           dailyForecast: {
             plus1: {
               main: dailyWeatherData[0].weather[0].main,
+              precipProb: dailyWeatherData[0].pop,
               temp: dailyWeatherData[0].temp.day,
               celsiusTemp: getCelsiusTemp(dailyWeatherData[0].temp.day),
               fahrenheitTemp: getFahrenheitTemp(dailyWeatherData[0].temp.day),
+              nightTemp: dailyWeatherData[0].temp.night,
+              celsiusNightTemp: getCelsiusTemp(dailyWeatherData[0].temp.night),
+              fahrenheitNightTemp: getFahrenheitTemp(
+                dailyWeatherData[0].temp.night
+              ),
+              sunrise: dailyWeatherData[0].sunrise,
+              sunset: dailyWeatherData[0].sunset,
+              moonrise: dailyWeatherData[0].moonrise,
+              moonset: dailyWeatherData[0].moonset,
+              moonPhase: dailyWeatherData[0].moon_phase,
               date: dailyWeatherData[0].dt,
             },
             plus2: {
               main: dailyWeatherData[1].weather[0].main,
+              precipProb: dailyWeatherData[1].pop,
               temp: dailyWeatherData[1].temp.day,
               celsiusTemp: getCelsiusTemp(dailyWeatherData[1].temp.day),
               fahrenheitTemp: getFahrenheitTemp(dailyWeatherData[1].temp.day),
+              nightTemp: dailyWeatherData[1].temp.night,
+              celsiusNightTemp: getCelsiusTemp(dailyWeatherData[1].temp.night),
+              fahrenheitNightTemp: getFahrenheitTemp(
+                dailyWeatherData[1].temp.night
+              ),
+              sunrise: dailyWeatherData[1].sunrise,
+              sunset: dailyWeatherData[1].sunset,
+              moonrise: dailyWeatherData[1].moonrise,
+              moonset: dailyWeatherData[1].moonset,
+              moonPhase: dailyWeatherData[1].moon_phase,
               date: dailyWeatherData[1].dt,
             },
             plus3: {
               main: dailyWeatherData[2].weather[0].main,
+              precipProb: dailyWeatherData[2].pop,
               temp: dailyWeatherData[2].temp.day,
               celsiusTemp: getCelsiusTemp(dailyWeatherData[2].temp.day),
               fahrenheitTemp: getFahrenheitTemp(dailyWeatherData[2].temp.day),
+              nightTemp: dailyWeatherData[2].temp.night,
+              celsiusNightTemp: getCelsiusTemp(dailyWeatherData[2].temp.night),
+              fahrenheitNightTemp: getFahrenheitTemp(
+                dailyWeatherData[2].temp.night
+              ),
+              sunrise: dailyWeatherData[2].sunrise,
+              sunset: dailyWeatherData[2].sunset,
+              moonrise: dailyWeatherData[2].moonrise,
+              moonset: dailyWeatherData[2].moonset,
+              moonPhase: dailyWeatherData[2].moon_phase,
               date: dailyWeatherData[2].dt,
             },
             plus4: {
               main: dailyWeatherData[3].weather[0].main,
+              precipProb: dailyWeatherData[3].pop,
               temp: dailyWeatherData[3].temp.day,
               celsiusTemp: getCelsiusTemp(dailyWeatherData[3].temp.day),
               fahrenheitTemp: getFahrenheitTemp(dailyWeatherData[3].temp.day),
+              nightTemp: dailyWeatherData[3].temp.night,
+              celsiusNightTemp: getCelsiusTemp(dailyWeatherData[3].temp.night),
+              fahrenheitNightTemp: getFahrenheitTemp(
+                dailyWeatherData[3].temp.night
+              ),
+              sunrise: dailyWeatherData[3].sunrise,
+              sunset: dailyWeatherData[3].sunset,
+              moonrise: dailyWeatherData[3].moonrise,
+              moonset: dailyWeatherData[3].moonset,
+              moonPhase: dailyWeatherData[3].moon_phase,
               date: dailyWeatherData[3].dt,
             },
             plus5: {
               main: dailyWeatherData[4].weather[0].main,
+              precipProb: dailyWeatherData[4].pop,
               temp: dailyWeatherData[4].temp.day,
               celsiusTemp: getCelsiusTemp(dailyWeatherData[4].temp.day),
               fahrenheitTemp: getFahrenheitTemp(dailyWeatherData[4].temp.day),
+              nightTemp: dailyWeatherData[4].temp.night,
+              celsiusNightTemp: getCelsiusTemp(dailyWeatherData[4].temp.night),
+              fahrenheitNightTemp: getFahrenheitTemp(
+                dailyWeatherData[4].temp.night
+              ),
+              sunrise: dailyWeatherData[4].sunrise,
+              sunset: dailyWeatherData[4].sunset,
+              moonrise: dailyWeatherData[4].moonrise,
+              moonset: dailyWeatherData[4].moonset,
+              moonPhase: dailyWeatherData[4].moon_phase,
               date: dailyWeatherData[4].dt,
             },
             plus6: {
               main: dailyWeatherData[5].weather[0].main,
+              precipProb: dailyWeatherData[5].pop,
               temp: dailyWeatherData[5].temp.day,
               celsiusTemp: getCelsiusTemp(dailyWeatherData[5].temp.day),
               fahrenheitTemp: getFahrenheitTemp(dailyWeatherData[5].temp.day),
+              nightTemp: dailyWeatherData[5].temp.night,
+              celsiusNightTemp: getCelsiusTemp(dailyWeatherData[5].temp.night),
+              fahrenheitNightTemp: getFahrenheitTemp(
+                dailyWeatherData[5].temp.night
+              ),
+              sunrise: dailyWeatherData[5].sunrise,
+              sunset: dailyWeatherData[5].sunset,
+              moonrise: dailyWeatherData[5].moonrise,
+              moonset: dailyWeatherData[5].moonset,
+              moonPhase: dailyWeatherData[5].moon_phase,
               date: dailyWeatherData[5].dt,
             },
             plus7: {
               main: dailyWeatherData[6].weather[0].main,
+              precipProb: dailyWeatherData[6].pop,
               temp: dailyWeatherData[6].temp.day,
               celsiusTemp: getCelsiusTemp(dailyWeatherData[6].temp.day),
               fahrenheitTemp: getFahrenheitTemp(dailyWeatherData[6].temp.day),
+              nightTemp: dailyWeatherData[6].temp.night,
+              celsiusNightTemp: getCelsiusTemp(dailyWeatherData[6].temp.night),
+              fahrenheitNightTemp: getFahrenheitTemp(
+                dailyWeatherData[6].temp.night
+              ),
+              sunrise: dailyWeatherData[6].sunrise,
+              sunset: dailyWeatherData[6].sunset,
+              moonrise: dailyWeatherData[6].moonrise,
+              moonset: dailyWeatherData[6].moonset,
+              moonPhase: dailyWeatherData[6].moon_phase,
               date: dailyWeatherData[6].dt,
             },
             plus8: {
               main: dailyWeatherData[7].weather[0].main,
+              precipProb: dailyWeatherData[7].pop,
               temp: dailyWeatherData[7].temp.day,
               celsiusTemp: getCelsiusTemp(dailyWeatherData[7].temp.day),
               fahrenheitTemp: getFahrenheitTemp(dailyWeatherData[7].temp.day),
+              nightTemp: dailyWeatherData[7].temp.night,
+              celsiusNightTemp: getCelsiusTemp(dailyWeatherData[7].temp.night),
+              fahrenheitNightTemp: getFahrenheitTemp(
+                dailyWeatherData[7].temp.night
+              ),
+              sunrise: dailyWeatherData[7].sunrise,
+              sunset: dailyWeatherData[7].sunset,
+              moonrise: dailyWeatherData[7].moonrise,
+              moonset: dailyWeatherData[7].moonset,
+              moonPhase: dailyWeatherData[7].moon_phase,
               date: dailyWeatherData[7].dt,
             },
           },

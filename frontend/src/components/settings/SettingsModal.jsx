@@ -41,7 +41,7 @@ const SettingsModal = (props) => {
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={isOpen} onClose={onClose} isCentered>
       <ModalOverlay />
       <ModalContent
         display="flex"
@@ -49,6 +49,7 @@ const SettingsModal = (props) => {
         borderRadius="1.5rem"
         p={3}
         minWidth="45rem"
+        color="#0A2647"
       >
         <ModalHeader textAlign="center" fontSize="2xl">
           Settings
@@ -108,15 +109,6 @@ const SettingsModal = (props) => {
                 <Flex gap="1rem" w="55%">
                   <Button w="8.5rem">Default</Button>
                   <Button w="8.5rem">Dark</Button>
-                </Flex>
-              </Flex>
-              <Flex gap="3rem">
-                <Flex align="center" w="45%">
-                  <Text fontSize="xl">Language</Text>
-                </Flex>
-                <Flex gap="1rem" w="55%">
-                  <Button w="8.5rem">English</Button>
-                  <Button w="8.5rem">German</Button>
                 </Flex>
               </Flex>
             </Flex>
