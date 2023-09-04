@@ -44,23 +44,23 @@ const UVIndex = () => {
 
   return (
     <Box
-      w="25rem"
-      h="25rem"
-      padding="4rem"
+      w={["100%", "25rem"]}
+      h={["17rem", "25rem"]}
+      padding={["2rem", "4rem"]}
       bg="rgba(255, 255, 255, 0.2)"
       borderRadius="1.5rem"
       display="flex"
       flexDirection="column"
       justifyContent="center"
       alignItems="center"
-      gap="2rem"
+      gap={["1rem", "2rem"]}
     >
-      <Text fontSize="5xl">UV Index</Text>
+      <Text fontSize={["3xl", "5xl"]}>UV Index</Text>
       <Box
         w="19.5rem"
         h="20rem"
         display="flex"
-        gap="2rem"
+        gap={["1rem", "2rem"]}
         alignItems="flex-end"
         justifyContent="center"
         padding="0 2rem 0 2rem"
@@ -68,14 +68,14 @@ const UVIndex = () => {
         {chartLevels.map((level, i) => (
           <Box
             key={level.uvIndexGrade}
-            w="1rem"
+            w={["1.25rem", "1rem"]}
             h={4 * (i + 3)}
             borderRadius="0.75rem"
             bg={i < chartLevel ? chartColor : chartBarEmpty}
           />
         ))}
       </Box>
-      <Text fontSize="4xl">{getUVIIndexGrade(uvIndex)}</Text>
+      <Text fontSize={["2xl", "4xl"]}>{getUVIIndexGrade(uvIndex)}</Text>
     </Box>
   );
 };

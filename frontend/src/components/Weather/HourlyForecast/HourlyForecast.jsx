@@ -24,14 +24,13 @@ const HourlyForecast = () => {
   return (
     <Flex
       bg="rgba(255, 255, 255, 0.2)"
-      w="78rem"
-      h="10rem"
+      w="100%"
+      h={["7rem"]}
       borderRadius="1.5rem"
-      padding="1rem"
       align="center"
       overflowX="scroll"
       overflowY="hidden"
-      gap="1.5rem"
+      gap={["0"]}
     >
       {forecastItems}
     </Flex>

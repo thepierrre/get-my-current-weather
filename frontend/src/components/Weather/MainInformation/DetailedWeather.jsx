@@ -13,8 +13,8 @@ const DetailedWeather = () => {
 
   return (
     <Box
-      w="25rem"
-      h="25rem"
+      w={["100%", "25rem"]}
+      h={["20rem", "25rem"]}
       padding="2rem"
       bg="rgba(255, 255, 255, 0.2)"
       borderRadius="1.5rem"
@@ -33,7 +33,7 @@ const DetailedWeather = () => {
       >
         <Tooltip label="Wind speed">
           <Box display="flex" flexDirection="column" alignItems="center">
-            <Text fontSize="4xl" width="10rem" textAlign="center">
+            <Text fontSize={["3xl", "4xl"]} width="10rem" textAlign="center">
               {Math.floor(wind || 2)} km/h
             </Text>
             <Box width="100%" textAlign="center">
@@ -43,7 +43,7 @@ const DetailedWeather = () => {
         </Tooltip>
         <Tooltip label="Humidity">
           <Box display="flex" flexDirection="column" alignItems="center">
-            <Text fontSize="4xl" width="10rem" textAlign="center">
+            <Text fontSize={["3xl", "4xl"]} width="10rem" textAlign="center">
               {Math.floor(humidity || 15)}%
             </Text>
             <Box width="100%" textAlign="center">
@@ -61,7 +61,7 @@ const DetailedWeather = () => {
       >
         <Tooltip label="Air Pressure">
           <Box display="flex" flexDirection="column" alignItems="center">
-            <Text fontSize="4xl" width="10rem" textAlign="center">
+            <Text fontSize={["3xl", "4xl"]} width="10rem" textAlign="center">
               {Math.floor(pressure || 1013)} hPa
             </Text>
             <Box width="100%" textAlign="center">
@@ -71,7 +71,7 @@ const DetailedWeather = () => {
         </Tooltip>
         <Tooltip label="Cloudiness">
           <Box display="flex" flexDirection="column" alignItems="center">
-            <Text fontSize="4xl" width="10rem" textAlign="center">
+            <Text fontSize={["3xl", "4xl"]} width="10rem" textAlign="center">
               {Math.floor(cloudiness || 5)}%
             </Text>
             <Box width="100%" textAlign="center">

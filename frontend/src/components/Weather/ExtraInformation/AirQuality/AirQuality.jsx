@@ -6,18 +6,25 @@ const AirQuality = () => {
   return (
     <Flex
       bg="rgba(255, 255, 255, 0.2)"
-      w="39rem"
-      h="23rem"
+      w="100%"
+      // h="23rem"
       borderRadius="1.5rem"
       direction="column"
       justify="center"
       align="center"
-      gap="1rem"
+      gap="2rem"
+      padding="1rem"
     >
-      <Text as="h2" fontSize="4xl">
+      <Text as="h2" fontSize="3xl">
         Air Quality
       </Text>
-      <Flex gap="1rem" w="100%">
+      <Flex
+        gap="1.5rem"
+        direction={["column", "row"]}
+        align="center"
+        justify="center"
+        w="100%"
+      >
         <QualityChart />
         <QualityDetails />
       </Flex>

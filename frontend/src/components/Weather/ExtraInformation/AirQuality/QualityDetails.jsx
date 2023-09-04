@@ -14,10 +14,10 @@ const QualityDetails = () => {
       align="center"
       gap="1rem"
     >
-      <Text fontSize="2xl">
+      <Text fontSize={["xl", "2xl"]}>
         μg/m<sup>3</sup>
       </Text>
-      <Flex gap="1.5rem">
+      <Flex fontSize="md" gap="1.5rem">
         <Flex direction="column">
           <Text>CO</Text>
           <Text>

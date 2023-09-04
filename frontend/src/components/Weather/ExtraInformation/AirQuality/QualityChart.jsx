@@ -1,7 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { chartLevels, chartBarEmpty } from "../../../../UI/chartLevels";
 import WeatherContext from "../../../../context/weather-context";
-import { Box, CircularProgress, CircularProgressLabel } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  CircularProgress,
+  CircularProgressLabel,
+} from "@chakra-ui/react";
 
 const QualityChart = () => {
   const { globalWeather } = useContext(WeatherContext);
@@ -51,20 +56,20 @@ const QualityChart = () => {
   }, [airQuality]);
 
   return (
-    <Box w="50%" display="flex" alignItems="center" justifyContent="flex-end">
+    <Flex w="100%" align="center" justify={["center", "flex-end"]}>
       <Box w="13rem">
         <CircularProgress
           value={qualityPercentage}
           color={chartColor}
-          size="12rem"
-          fontSize="8xl"
+          size={["12rem"]}
+          fontSize={["7xl", "8xl"]}
           thickness="10px"
           trackColor={chartBarEmpty}
         >
           <CircularProgressLabel>{qualityLabel}</CircularProgressLabel>
         </CircularProgress>
       </Box>
-    </Box>
+    </Flex>
   );
 };
 

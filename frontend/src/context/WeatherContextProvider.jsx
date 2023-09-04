@@ -442,8 +442,8 @@ const WeatherContextProvider = (props) => {
   const getWeatherForEnteredCity = async () => {
     await getCoordinatesForCityName();
     setEnteredCity(`${cityName}, ${countries[countryCode].name}`);
-    getWeatherForCoordinates(lat, lon);
-    // setWeatherIsFetched(true);
+    await getWeatherForCoordinates(lat, lon);
+    setWeatherIsFetched(true);
   };
 
   const getWeatherForCurrentLocation = async () => {
@@ -453,8 +453,8 @@ const WeatherContextProvider = (props) => {
       lon = position.coords.longitude;
       getCityNameForCoordinates(lat, lon);
       getWeatherForCoordinates(lat, lon);
+      setWeatherIsFetched(true);
     });
-    // setWeatherIsFetched(true);
   };
 
   return (

@@ -12,12 +12,15 @@ const Header = () => {
 
   return (
     <Box display="flex" flexDirection="column" alignItems="center">
-      <Text fontSize="6xl" textAlign="center">
+      {/* <Text fontSize="6xl" textAlign="center"> */}
+      <Text fontSize={["4xl", "6xl"]} textAlign="center">
         {globalWeather.city.name}, {globalWeather.city.country}
       </Text>
-      <Text fontSize="4xl">{getLocalTime(currTime, timezone)}</Text>
+      <Text fontSize={["3xl", "4xl"]}>{getLocalTime(currTime, timezone)}</Text>
     </Box>
   );
 };
 
 export default Header;
+
+// w={[370, 400, 600, 700]}

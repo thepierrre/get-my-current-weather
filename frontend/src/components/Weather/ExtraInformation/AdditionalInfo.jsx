@@ -5,10 +5,10 @@ import { Text, Box, Icon, Tooltip, Flex } from "@chakra-ui/react";
 
 const AdditionalInfo = () => {
   return (
-    <Box w="78rem" display="flex" alignItems="center" gap="1.5rem">
+    <Flex w="100%" direction={["column", "row"]} align="center" gap="1.5rem">
       <SunAndMoon />
       <AirQuality />
-    </Box>
+    </Flex>
   );
 };
 

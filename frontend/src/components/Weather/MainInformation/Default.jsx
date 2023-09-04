@@ -11,7 +11,12 @@ const defaultCities = [
 ];
 
 const cityButtons = defaultCities.map((city) => (
-  <Button bg="white" color="#0A264" _hover={{ bg: "#2C5282", color: "white" }}>
+  <Button
+    key={city}
+    bg="white"
+    color="#0A264"
+    _hover={{ bg: "#2C5282", color: "white" }}
+  >
     {city}
   </Button>
 ));

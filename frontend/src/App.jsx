@@ -15,23 +15,23 @@ function App() {
   const { globalWeather, weatherIsFetched, setWeatherIsFetched } =
     useContext(WeatherContext);
 
+  useEffect(() => {}, [weatherIsFetched]);
+  console.log(weatherIsFetched);
+
   return (
-    <WeatherContextProvider>
-      <Box
-        bg="linear-gradient(150deg, #4477CE, #CCEEBC)"
-        w="100vw"
-        padding="5rem 0 5rem 0 "
-        h="100vh"
-      >
-        <SettingsButton onOpen={onOpen} />
-        <Flex direction="column" align="center" gap="3rem">
-          <SearchBar />
-          {weatherIsFetched ? <MainInformation /> : <Default />}
-          {/* <MainInformation /> */}
-        </Flex>
-        <SettingsModal isOpen={isOpen} onClose={onClose} />
-      </Box>
-    </WeatherContextProvider>
+    <Flex
+      bg="linear-gradient(150deg, #4477CE, #CCEEBC)"
+      justify="center"
+      padding={["4rem 0 2rem 0", "5rem 0 5rem 0"]}
+      w="100vw"
+    >
+      <SettingsButton onOpen={onOpen} />
+      <Flex direction="column" align="center" gap={["1.5rem", "3rem"]} w="100%">
+        <SearchBar />
+        {weatherIsFetched ? <MainInformation /> : <Default />}
+      </Flex>
+      <SettingsModal isOpen={isOpen} onClose={onClose} />
+    </Flex>
   );
 }
 
