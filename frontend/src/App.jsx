@@ -16,7 +16,6 @@ function App() {
     useContext(WeatherContext);
 
   useEffect(() => {}, [weatherIsFetched]);
-  console.log(weatherIsFetched);
 
   return (
     <Flex

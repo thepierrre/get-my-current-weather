@@ -8,19 +8,19 @@ import {
   WiTornado,
   WiSmog,
   WiDust,
+  WiNightClear,
 } from "react-icons/wi";
 
-const getWeatherIcon = (main) => {
+const getWeatherIcon = (main, isNight) => {
   switch (main) {
     case "Clouds":
       return WiCloudy;
     case "Clear":
-      // if (isNight === false) {
-      //   weatherIcon = WiDaySunny;
-      // } else {
-      //   weatherIcon = WiMoonAltFull;
-      // }
-      return WiDaySunny;
+      if (isNight === true) {
+        return WiNightClear;
+      } else {
+        return WiDaySunny;
+      }
 
     case "Snow":
       return WiSnow;

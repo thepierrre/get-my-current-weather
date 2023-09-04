@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "../axiosInstance";
 import { DateTime } from "luxon";
 import { countries } from "country-data";
@@ -7,12 +7,12 @@ import WeatherContext from "./weather-context";
 
 const WeatherContextProvider = (props) => {
   const { children } = props;
-  const [isNight, setIsNight] = useState(undefined);
   const [enteredCity, setEnteredCity] = useState("");
   const [tempUnits, setTempUnits] = useState("Celsius");
   const [clockFormat, setClockFormat] = useState("12hours");
   const [globalWeather, setGlobalWeather] = useState(globalWeatherState);
   const [weatherIsFetched, setWeatherIsFetched] = useState(false);
+  const [clickedCity, setClickedCity] = useState(undefined);
 
   let lat, lon;
   let cityName, countryCode;
@@ -27,6 +27,7 @@ const WeatherContextProvider = (props) => {
 
   const getCoordinatesForCityName = async () => {
     const city = enteredCity;
+
     try {
       const response = await axios.get(`coordinates?city=${city}`);
       lat = response.data[0].lat;
@@ -80,6 +81,11 @@ const WeatherContextProvider = (props) => {
         // ["day" + i]:
         return {
           ...prevState,
+          isNight:
+            currentWeatherData.dt > currentWeatherData.sunset ||
+            currentWeatherData.dt < currentWeatherData.sunrise
+              ? true
+              : false,
           weather: {
             main: currentWeatherData.weather[0].main,
             temp: currentWeatherData.temp,
@@ -457,6 +463,24 @@ const WeatherContextProvider = (props) => {
     });
   };
 
+  const getWeatherForClickedCity = async (city) => {
+    setEnteredCity(city);
+    setClickedCity(city);
+  };
+
+  useEffect(() => {
+    const fetchWeather = async () => {
+      await getCoordinatesForCityName();
+      setEnteredCity(`${cityName}, ${countries[countryCode].name}`);
+      await getWeatherForCoordinates(lat, lon);
+      setWeatherIsFetched(true);
+    };
+
+    if (enteredCity) {
+      fetchWeather();
+    }
+  }, [clickedCity]);
+
   return (
     <WeatherContext.Provider
       value={{
@@ -471,6 +495,7 @@ const WeatherContextProvider = (props) => {
         clockFormat,
         setClockFormat,
         getLocalTime,
+        getWeatherForClickedCity,
         weatherIsFetched,
         setWeatherIsFetched,
       }}

@@ -1,4 +1,5 @@
 const globalWeatherState = {
+  isNight: undefined,
   city: {
     name: undefined,
     country: undefined,

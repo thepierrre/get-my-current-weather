@@ -1,41 +1,46 @@
-import { Flex, Text, Icon, Button, useTheme } from "@chakra-ui/react";
+import { useContext, useState } from "react";
+import WeatherContext from "../../../context/weather-context";
+import { Flex, Text, Icon, Button } from "@chakra-ui/react";
 import { WiDaySunnyOvercast } from "react-icons/wi";
 
-const defaultCities = [
-  "Lisbon",
-  "San Francisco",
-  "Cairo",
-  "Buenos Aires",
-  "Sydney",
-  "Jakarta",
-];
-
-const cityButtons = defaultCities.map((city) => (
-  <Button
-    key={city}
-    bg="white"
-    color="#0A264"
-    _hover={{ bg: "#2C5282", color: "white" }}
-  >
-    {city}
-  </Button>
-));
-
 const Default = () => {
+  const { getWeatherForClickedCity } = useContext(WeatherContext);
+
+  const defaultCities = [
+    "Lisbon",
+    "San Francisco",
+    "Cairo",
+    "Buenos Aires",
+    "Sydney",
+    "Beijing",
+  ];
+
+  const cityButtons = defaultCities.map((city) => (
+    <Button
+      key={city}
+      bg="rgba(255, 255, 255, 0.4)"
+      width="700px"
+      color="#0A264"
+      borderRadius="1.5rem"
+      _hover={{ bg: "rgba(255, 255, 255, 0.7)" }}
+      onClick={() => getWeatherForClickedCity(city)}
+    >
+      {city}
+    </Button>
+  ));
+
   return (
-    <Flex direction="column" color="#0A2647">
-      <Flex align="center" h="20rem" gap="2rem">
-        <Text align="center" fontSize="4xl">
-          Enter a city
-          <br /> or fetch your location
-          <br /> to get weather!
+    <Flex direction="column" color="#0A2647" gap="3rem">
+      <Flex direction="column" align="center">
+        <Icon as={WiDaySunnyOvercast} boxSize={230} />
+        <Text align="center" fontSize="3xl">
+          Enter a city or fetch your location
         </Text>
-        <Icon as={WiDaySunnyOvercast} boxSize={300} />
+        <Text fontSize="3xl" textAlign="center">
+          ... or simply choose one!
+        </Text>
       </Flex>
-      <Flex direction="column" gap="2rem">
-        <Text fontSize="4xl" textAlign="center">
-          ... or simply choose one:
-        </Text>
+      <Flex direction="column">
         <Flex direction="column" gap="0.5rem">
           {cityButtons}
         </Flex>

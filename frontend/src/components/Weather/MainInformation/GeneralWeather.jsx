@@ -12,7 +12,12 @@ const GeneralWeather = () => {
       ? globalWeather.weather.celsiusTemp
       : globalWeather.weather.fahrenheitTemp;
 
-  const weatherIcon = getWeatherIcon(globalWeather.weather.main);
+  console.log(globalWeather.isNight);
+
+  const weatherIcon = getWeatherIcon(
+    globalWeather.weather.main,
+    globalWeather.isNight
+  );
 
   return (
     <Flex
