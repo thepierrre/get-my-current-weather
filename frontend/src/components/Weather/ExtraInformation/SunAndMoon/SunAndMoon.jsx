@@ -18,43 +18,51 @@ const SunAndMoon = () => {
   return (
     <Flex
       bg="rgba(255, 255, 255, 0.2)"
-      w="100%"
-      h="10.5rem"
+      w={["100%", "35.25rem"]}
+      h={["10.5rem", "20rem"]}
       borderRadius="1.5rem"
       p="1rem"
       justify="center"
       align="center"
-      gap="1rem"
+      gap={["1rem", "3rem"]}
     >
-      <Flex direction="column" gap="1rem">
+      <Flex direction="column" gap={["1rem", "2rem"]}>
         <Flex gap="1rem" align="center">
           <Icon as={WiSunrise} boxSize="60px" />
           <Flex direction="column" align="center" justify="center">
-            <Text fontSize="sm">Sunrise</Text>
-            <Text fontSize="md">{getLocalTime(sunrise, timezone)}</Text>
+            <Text fontSize={["sm", "2xl"]}>Sunrise</Text>
+            <Text fontSize={["md", "3xl"]}>
+              {getLocalTime(sunrise, timezone)}
+            </Text>
           </Flex>
         </Flex>
         <Flex gap="1rem" align="center">
           <Icon as={WiSunset} boxSize="60px" />
           <Flex direction="column" align="center" justify="center">
-            <Text fontSize="sm">Sunset</Text>
-            <Text fontSize="md">{getLocalTime(sunset, timezone)}</Text>
+            <Text fontSize={["sm", "2xl"]}>Sunset</Text>
+            <Text fontSize={["md", "3xl"]}>
+              {getLocalTime(sunset, timezone)}
+            </Text>
           </Flex>
         </Flex>
       </Flex>
-      <Flex direction="column" gap="1rem">
+      <Flex direction="column" gap={["1rem", "2rem"]}>
         <Flex gap="1rem" align="center">
           <Icon as={WiMoonrise} boxSize="60px" />
           <Flex direction="column" align="center" justify="center">
-            <Text fontSize="sm">Moonrise</Text>
-            <Text fontSize="md">{getLocalTime(moonrise, timezone)}</Text>
+            <Text fontSize={["sm", "2xl"]}>Moonrise</Text>
+            <Text fontSize={["md", "3xl"]}>
+              {getLocalTime(moonrise, timezone)}
+            </Text>
           </Flex>
         </Flex>
         <Flex gap="1rem" align="center">
           <Icon as={WiMoonset} boxSize="60px" />
           <Flex direction="column" align="center" justify="center">
-            <Text fontSize="sm">Moonset</Text>
-            <Text fontSize="md">{getLocalTime(moonset, timezone)}</Text>
+            <Text fontSize={["sm", "2xl"]}>Moonset</Text>
+            <Text fontSize={["md", "3xl"]}>
+              {getLocalTime(moonset, timezone)}
+            </Text>
           </Flex>
         </Flex>
       </Flex>

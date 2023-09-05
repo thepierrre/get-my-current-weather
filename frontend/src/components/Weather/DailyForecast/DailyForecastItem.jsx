@@ -35,7 +35,7 @@ const DailyForecastItem = (props) => {
         align="center"
         justify="center"
         m={0}
-        minWidth={["5.5rem"]}
+        minWidth={["5.5rem", "9.25rem"]}
         gap={["0.2rem"]}
         h="100%"
         _hover={{ bg: "rgba(255, 255, 255, 0.2)" }}
@@ -44,8 +44,8 @@ const DailyForecastItem = (props) => {
       >
         <Text fontSize={["sm", "2xl"]}>{day}</Text>
         <Flex direction="column" align="center">
-          <Icon as={weatherIcon} boxSize={["32px"]} />
-          <Text fontSize={["lg", "2xl"]}>{convertedTemp}°</Text>
+          <Icon as={weatherIcon} boxSize={["32px", "80px"]} />
+          <Text fontSize={["lg", "3xl"]}>{convertedTemp}°</Text>
         </Flex>
       </Flex>
       <DailyForecastItemDetail

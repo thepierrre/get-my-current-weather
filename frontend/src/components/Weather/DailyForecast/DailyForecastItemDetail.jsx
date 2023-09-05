@@ -105,7 +105,12 @@ const DailyForecastItemDetail = (props) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose} isCentered>
       <ModalOverlay />
-      <ModalContent borderRadius="1.5rem" color="#0A2647">
+      <ModalContent
+        borderRadius="1.5rem"
+        color="#0A2647"
+        minWidth={["95%", "28rem"]}
+        maxWidth={["95%", "28rem"]}
+      >
         <ModalHeader textAlign="center">{time}</ModalHeader>
         <ModalCloseButton />
         <ModalBody color="inherit">
@@ -130,7 +135,7 @@ const DailyForecastItemDetail = (props) => {
                   <Text>
                     <b>Moon phase:</b> {moonPhaseName}
                   </Text>
-                  <Icon as={moonIcon} boxSize={8} />
+                  <Icon as={moonIcon} boxSize={10} />
                 </Flex>
               </Flex>
               <Flex justify="center" gap="2rem">

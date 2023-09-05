@@ -13,11 +13,16 @@ const MainInformation = () => {
       <Flex
         color="#0A2647"
         direction="column"
-        gap="3rem"
-        w={[360, 400, 600, 700]}
+        gap="1rem"
+        w={[360, 400, 600, 1100]}
       >
         <Header />
-        <Flex direction="column" gap={["1rem", "1.5rem"]} w="100%">
+        <Flex
+          direction="column"
+          align="center"
+          gap={["1rem", "1.5rem"]}
+          w="100%"
+        >
           <HourlyForecast />
           <Flex
             direction={["column", "row"]}
@@ -26,13 +31,13 @@ const MainInformation = () => {
             gap={["1rem", "1.5rem"]}
             w="100%"
           >
-            <Box order={[2, 1]} w="100%">
+            <Box order={[2, 1]} w={["100%", "33rem"]}>
               <DetailedWeather />
             </Box>
-            <Box order={[1, 2]} w="100%">
+            <Box order={[1, 2]} w={["100%", "33rem"]}>
               <GeneralWeather />
             </Box>
-            <Box order={[3, 3]} w="100%">
+            <Box order={[3, 3]} w={["100%", "33rem"]}>
               <UVIndex />
             </Box>
           </Flex>

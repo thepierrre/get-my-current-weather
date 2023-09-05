@@ -13,9 +13,8 @@ const DetailedWeather = () => {
 
   return (
     <Box
-      w={["100%", "25rem"]}
+      w={["100%", "23rem"]}
       h={["20rem", "25rem"]}
-      padding="2rem"
       bg="rgba(255, 255, 255, 0.2)"
       borderRadius="1.5rem"
       display="flex"
@@ -28,12 +27,12 @@ const DetailedWeather = () => {
         display="flex"
         flexDirection="row"
         justifyContent="center"
-        gap="1.5rem"
+        gap={["1.5rem", "4rem"]}
         width="100%"
       >
         <Tooltip label="Wind speed">
           <Box display="flex" flexDirection="column" alignItems="center">
-            <Text fontSize={["3xl", "4xl"]} width="10rem" textAlign="center">
+            <Text fontSize={["3xl"]} width="100%" textAlign="center">
               {Math.floor(wind || 2)} km/h
             </Text>
             <Box width="100%" textAlign="center">
@@ -43,7 +42,7 @@ const DetailedWeather = () => {
         </Tooltip>
         <Tooltip label="Humidity">
           <Box display="flex" flexDirection="column" alignItems="center">
-            <Text fontSize={["3xl", "4xl"]} width="10rem" textAlign="center">
+            <Text fontSize={["3xl"]} width="100%" textAlign="center">
               {Math.floor(humidity || 15)}%
             </Text>
             <Box width="100%" textAlign="center">
@@ -56,12 +55,12 @@ const DetailedWeather = () => {
         display="flex"
         flexDirection="row"
         justifyContent="center"
-        gap="1.5rem"
+        gap={["1.5rem", "4rem"]}
         width="100%"
       >
         <Tooltip label="Air Pressure">
           <Box display="flex" flexDirection="column" alignItems="center">
-            <Text fontSize={["3xl", "4xl"]} width="10rem" textAlign="center">
+            <Text fontSize={["3xl"]} width="100%" textAlign="center">
               {Math.floor(pressure || 1013)} hPa
             </Text>
             <Box width="100%" textAlign="center">
@@ -71,7 +70,7 @@ const DetailedWeather = () => {
         </Tooltip>
         <Tooltip label="Cloudiness">
           <Box display="flex" flexDirection="column" alignItems="center">
-            <Text fontSize={["3xl", "4xl"]} width="10rem" textAlign="center">
+            <Text fontSize={["3xl"]} width="100%" textAlign="center">
               {Math.floor(cloudiness || 5)}%
             </Text>
             <Box width="100%" textAlign="center">

@@ -33,11 +33,13 @@ const DailyForecast = () => {
     <>
       <Flex
         bg="rgba(255, 255, 255, 0.2)"
-        w="100%"
-        h={["7rem"]}
+        w={["100%", "72rem"]}
+        h={["7rem", "12rem"]}
+        gap={["0.2rem"]}
         borderRadius="1.5rem"
         align="center"
-        overflowX="scroll"
+        justify={["", "center"]}
+        overflowX={["scroll", "hidden"]}
         overflowY="hidden"
       >
         {forecastItems}

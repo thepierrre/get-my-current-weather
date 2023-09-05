@@ -21,26 +21,26 @@ const GeneralWeather = () => {
 
   return (
     <Flex
-      w="100%"
+      w={["100%", "23rem"]}
       bg="rgba(255, 255, 255, 0.2)"
       borderRadius="1.5rem"
-      // h="25rem"
-      padding={["0.5rem", "1rem"]}
+      h={["18rem", "25rem"]}
+      padding={["0", "1rem"]}
       direction="column"
       align="center"
       justify="center"
     >
       <Flex align="center">
-        <Icon as={weatherIcon} boxSize="140px" />
+        <Icon as={weatherIcon} boxSize={["160px", "220px"]} />
       </Flex>
-      <Flex direction={["column", "row"]} align="center" gap={["0", "2rem"]}>
-        <Box order={[2, 1]}>
-          <Text fontSize={["6xl", "6xl"]}>{`${Math.floor(
+      <Flex direction={["row", "row"]} align="center" gap="1rem">
+        <Box order={[1, 1]}>
+          <Text fontSize={["7xl", "7xl"]}>{`${Math.floor(
             temp || 24.0
           )}°`}</Text>
         </Box>
-        <Box order={[1, 2]}>
-          <Text fontSize={["3xl", "6xl"]}>{main || "Clear"}</Text>
+        <Box order={[2, 2]}>
+          <Text fontSize={["5xl", "5xl"]}>{main || "Clear"}</Text>
         </Box>
       </Flex>
     </Flex>

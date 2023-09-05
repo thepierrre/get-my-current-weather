@@ -19,7 +19,7 @@ const Default = () => {
     <Button
       key={city}
       bg="rgba(255, 255, 255, 0.4)"
-      width="700px"
+      width={["360px", "700px"]}
       color="#0A264"
       borderRadius="1.5rem"
       _hover={{ bg: "rgba(255, 255, 255, 0.7)" }}
@@ -30,18 +30,23 @@ const Default = () => {
   ));
 
   return (
-    <Flex direction="column" color="#0A2647" gap="3rem">
+    <Flex
+      direction="column"
+      color="#0A2647"
+      gap="3rem"
+      paddingTop={["1rem", "0"]}
+    >
       <Flex direction="column" align="center">
         <Icon as={WiDaySunnyOvercast} boxSize={230} />
-        <Text align="center" fontSize="3xl">
+        <Text align="center" fontSize={["2xl", "3xl"]}>
           Enter a city or fetch your location
         </Text>
-        <Text fontSize="3xl" textAlign="center">
+        <Text fontSize={["2xl", "3xl"]} textAlign="center">
           ... or simply choose one!
         </Text>
       </Flex>
       <Flex direction="column">
-        <Flex direction="column" gap="0.5rem">
+        <Flex direction="column" gap="0.5rem" paddingTop={["0.5rem", "0"]}>
           {cityButtons}
         </Flex>
       </Flex>

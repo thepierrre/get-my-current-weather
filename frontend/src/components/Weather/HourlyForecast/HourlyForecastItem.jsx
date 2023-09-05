@@ -18,13 +18,13 @@ const HourlyForecastItem = (props) => {
     <Flex
       direction="column"
       align="center"
-      margin="1rem"
-      minWidth={["4rem"]}
+      margin="0.5rem"
+      minWidth={["4rem", "7rem"]}
       gap={["0.2rem"]}
     >
       <Text fontSize={["sm", "2xl"]}>{getLocalTime(date, timezone)}</Text>
-      <Icon as={weatherIcon} boxSize={["32px"]} />
-      <Text fontSize={["lg", "2xl"]}>{convertedTemp}°</Text>
+      <Icon as={weatherIcon} boxSize={["32px", "80px"]} />
+      <Text fontSize={["lg", "3xl"]}>{convertedTemp}°</Text>
     </Flex>
   );
 };

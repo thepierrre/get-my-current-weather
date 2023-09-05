@@ -48,7 +48,8 @@ const SettingsModal = (props) => {
         gap="2rem"
         borderRadius="1.5rem"
         p={3}
-        minWidth="45rem"
+        maxWidth={["95%", "32rem"]}
+        minWidth={["95%", "32rem"]}
         color="#0A2647"
       >
         <ModalHeader textAlign="center" fontSize="2xl">
@@ -58,20 +59,22 @@ const SettingsModal = (props) => {
         <ModalBody>
           <Flex justify="center">
             <Flex direction="column" gap="2rem">
-              <Flex gap="10rem">
-                <Flex align="center" w="45%">
-                  <Text fontSize="xl">Temperature</Text>
+              <Flex>
+                <Flex align="center" w={["40%", "45%"]}>
+                  <Text fontSize={["lg", "xl"]}>Temperature</Text>
                 </Flex>
-                <Flex gap="1rem" w="55%">
+                <Flex gap="1rem" w={["60%", "55%"]}>
                   <Button
-                    w="8.5rem"
+                    w={["6rem", "8.5rem"]}
+                    fontSize={["sm", "md"]}
                     onClick={setTempUnitsToCelsius}
                     colorScheme={tempUnits === "Celsius" ? "blue" : undefined}
                   >
                     Celsius
                   </Button>
                   <Button
-                    w="8.5rem"
+                    w={["6rem", "8.5rem"]}
+                    fontSize={["sm", "md"]}
                     onClick={setTempUnitsToFahrenheit}
                     colorScheme={
                       tempUnits === "Fahrenheit" ? "blue" : undefined
@@ -82,19 +85,21 @@ const SettingsModal = (props) => {
                 </Flex>
               </Flex>
               <Flex gap="3rem">
-                <Flex align="center" w="45%">
-                  <Text fontSize="xl">Clock</Text>
+                <Flex align="center" w={["40%", "45%"]}>
+                  <Text fontSize={["lg", "xl"]}>Clock</Text>
                 </Flex>
-                <Flex gap="1rem" w="55%">
+                <Flex gap="1rem" w={["60%", "55%"]}>
                   <Button
-                    w="8.5rem"
+                    w={["7rem", "8.5rem"]}
+                    fontSize={["sm", "md"]}
                     onClick={setClockFormatTo12}
                     colorScheme={clockFormat === "12hours" ? "blue" : undefined}
                   >
                     12 hours
                   </Button>
                   <Button
-                    w="8.5rem"
+                    w={["7rem", "8.5rem"]}
+                    fontSize={["sm", "md"]}
                     onClick={setClockFormatTo24}
                     colorScheme={clockFormat === "24hours" ? "blue" : undefined}
                   >

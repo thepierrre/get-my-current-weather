@@ -8,7 +8,7 @@ const SettingsButton = (props) => {
     <Flex
       position={["absolute", "fixed"]}
       top={["1rem", "2rem"]}
-      right={["1rem", "2rem"]}
+      right={["1.5rem", "2rem"]}
     >
       <IconButton
         variant="link"
@@ -16,7 +16,7 @@ const SettingsButton = (props) => {
         _hover={{ color: "rgb(241, 241, 241)" }}
         onClick={onOpen}
       >
-        <Icon as={IoSettingsOutline} boxSize="35px" />
+        <Icon as={IoSettingsOutline} boxSize={["25px", "35px"]} />
       </IconButton>
     </Flex>
   );

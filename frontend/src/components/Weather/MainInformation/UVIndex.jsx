@@ -44,7 +44,7 @@ const UVIndex = () => {
 
   return (
     <Box
-      w={["100%", "25rem"]}
+      w={["100%", "23rem"]}
       h={["17rem", "25rem"]}
       padding={["2rem", "4rem"]}
       bg="rgba(255, 255, 255, 0.2)"
@@ -55,12 +55,12 @@ const UVIndex = () => {
       alignItems="center"
       gap={["1rem", "2rem"]}
     >
-      <Text fontSize={["3xl", "5xl"]}>UV Index</Text>
+      <Text fontSize={["3xl", "4xl"]}>UV Index</Text>
       <Box
         w="19.5rem"
         h="20rem"
         display="flex"
-        gap={["1rem", "2rem"]}
+        gap={["1rem", "1.25rem"]}
         alignItems="flex-end"
         justifyContent="center"
         padding="0 2rem 0 2rem"
@@ -75,7 +75,7 @@ const UVIndex = () => {
           />
         ))}
       </Box>
-      <Text fontSize={["2xl", "4xl"]}>{getUVIIndexGrade(uvIndex)}</Text>
+      <Text fontSize={["2xl", "3xl"]}>{getUVIIndexGrade(uvIndex)}</Text>
     </Box>
   );
 };
