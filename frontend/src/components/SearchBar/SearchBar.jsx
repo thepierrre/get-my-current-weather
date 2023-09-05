@@ -1,52 +1,63 @@
-import { InputAdornment, TextField, IconButton } from "@mui/material";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import SearchIcon from "@mui/icons-material/Search";
-import Tooltip from "@mui/material/Tooltip";
-import "./SearchBar.css";
+import { useContext } from "react";
+import WeatherContext from "../../context/weather-context";
+import {
+  Input,
+  InputGroup,
+  InputLeftElement,
+  InputRightElement,
+  Icon,
+  Tooltip,
+  Box,
+  IconButton,
+} from "@chakra-ui/react";
+import { CiLocationOn, CiSearch } from "react-icons/ci";
 
-const SearchBar = (props) => {
-  const { getWeather, getLocation, cityInputChangeHandler, enteredCity } =
-    props;
+const SearchBar = () => {
+  const cityInputChangeHandler = (event) => {
+    setEnteredCity(event.target.value);
+  };
+
+  const {
+    getWeatherForCurrentLocation,
+    getWeatherForEnteredCity,
+    enteredCity,
+    setEnteredCity,
+  } = useContext(WeatherContext);
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
-      getWeather();
+      getWeatherForEnteredCity();
     }
   };
 
   return (
-    <div className="search-container">
-      <TextField
-        className="search-bar"
-        label="City name"
-        focused
-        style={{ background: "rgba(255, 255, 255)" }}
-        value={enteredCity}
-        onChange={cityInputChangeHandler}
-        onKeyDown={handleKeyDown}
-        InputProps={{
-          style: { fontFamily: "Arial" },
-          startAdornment: (
-            <InputAdornment position="start">
-              <Tooltip title="Get my location">
-                <IconButton onClick={getLocation}>
-                  <LocationOnIcon color="primary" />
-                </IconButton>
-              </Tooltip>
-            </InputAdornment>
-          ),
-          endAdornment: (
-            <InputAdornment position="end">
-              <Tooltip title="Get weather">
-                <IconButton onClick={getWeather}>
-                  <SearchIcon color="primary" />
-                </IconButton>
-              </Tooltip>
-            </InputAdornment>
-          ),
-        }}
-      />
-    </div>
+    <Box>
+      <InputGroup>
+        <InputLeftElement height="100%" width="3rem">
+          <Tooltip label="Fetch weather for my location">
+            <IconButton variant="link" onClick={getWeatherForCurrentLocation}>
+              <Icon as={CiLocationOn} boxSize={7} color="#0A2647" />
+            </IconButton>
+          </Tooltip>
+        </InputLeftElement>
+        <Input
+          placeholder="Enter a city name"
+          w={[360, 400, 600, 700]}
+          background="white"
+          borderRadius="1.5rem"
+          value={enteredCity}
+          onChange={cityInputChangeHandler}
+          onKeyDown={handleKeyDown}
+        />
+        <InputRightElement height="100%" width="3rem">
+          <Tooltip label="Fetch weather for entered city">
+            <IconButton variant="link" onClick={getWeatherForEnteredCity}>
+              <Icon as={CiSearch} boxSize={7} color="#0A2647" />
+            </IconButton>
+          </Tooltip>
+        </InputRightElement>
+      </InputGroup>
+    </Box>
   );
 };
 
