@@ -1,14 +1,14 @@
 import { createContext } from "react";
 
 const WeatherContext = createContext({
-  // isNight: undefined,
-  // setIsNight: () => {},
   enteredCity: undefined,
   setEnteredCity: () => {},
   globalWeather: undefined,
   setGlobalWeather: () => {},
   tempUnits: undefined,
   clickedCity: undefined,
+  inputError: undefined,
+  setInputError: () => {},
   setClickedCity: () => {},
   setTempUnits: () => {},
   clockFormat: undefined,

@@ -43,8 +43,8 @@ const SettingsModal = (props) => {
         gap="2rem"
         borderRadius="1.5rem"
         p={3}
-        maxWidth={["95%", "90%", "32rem"]}
-        minWidth={["95%", "90%", "32rem"]}
+        maxWidth={["95%", "30rem", "32rem"]}
+        minWidth={["95%", "30rem", "32rem"]}
         color="#0A2647"
       >
         <ModalHeader textAlign="center" fontSize="2xl">

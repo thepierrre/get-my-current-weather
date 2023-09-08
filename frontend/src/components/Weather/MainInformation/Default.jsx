@@ -8,7 +8,7 @@ const Default = () => {
 
   const defaultCities = [
     "Lisbon",
-    "San Francisco",
+    "Miami",
     "Cairo",
     "Buenos Aires",
     "Sydney",

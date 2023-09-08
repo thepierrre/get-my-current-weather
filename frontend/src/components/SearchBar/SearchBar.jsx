@@ -14,12 +14,13 @@ import {
 import { CiLocationOn, CiSearch } from "react-icons/ci";
 
 const SearchBar = () => {
-  const [inputError, setInputError] = useState(false);
   const {
     getWeatherForCurrentLocation,
     getWeatherForEnteredCity,
     enteredCity,
     setEnteredCity,
+    inputError,
+    setInputError,
   } = useContext(WeatherContext);
 
   const cityInputChangeHandler = (event) => {
@@ -28,10 +29,10 @@ const SearchBar = () => {
 
   const onEnteredCity = () => {
     if (!enteredCity) {
-      setInputError(true);
+      setInputError("Please enter a city name.");
       return;
     } else {
-      setInputError(false);
+      setInputError("");
       getWeatherForEnteredCity();
     }
   };
@@ -76,7 +77,7 @@ const SearchBar = () => {
           fontSize="lg"
           color="#822727"
         >
-          Please enter a city name.
+          {inputError}
         </Text>
       )}
     </Box>
