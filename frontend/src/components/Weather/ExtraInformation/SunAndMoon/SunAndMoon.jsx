@@ -1,12 +1,10 @@
 import { useContext } from "react";
 import WeatherContext from "../../../../context/weather-context";
-import { DateTime } from "luxon";
-import { Text, Icon, Tooltip, Flex } from "@chakra-ui/react";
+import { Text, Icon, Flex } from "@chakra-ui/react";
 import { WiSunrise, WiSunset, WiMoonrise, WiMoonset } from "react-icons/wi";
 
 const SunAndMoon = () => {
-  const { globalWeather, clockFormat, getLocalTime } =
-    useContext(WeatherContext);
+  const { globalWeather, getLocalTime } = useContext(WeatherContext);
 
   const sunrise = globalWeather.sun.sunrise;
   const sunset = globalWeather.sun.sunset;
@@ -18,7 +16,7 @@ const SunAndMoon = () => {
   return (
     <Flex
       bg="rgba(255, 255, 255, 0.2)"
-      w={["100%", "35.25rem"]}
+      w={["100%", "28rem", "40rem", "35.25rem"]}
       h={["10.5rem", "20rem"]}
       borderRadius="1.5rem"
       p="1rem"
@@ -31,7 +29,7 @@ const SunAndMoon = () => {
           <Icon as={WiSunrise} boxSize="60px" />
           <Flex direction="column" align="center" justify="center">
             <Text fontSize={["sm", "2xl"]}>Sunrise</Text>
-            <Text fontSize={["md", "3xl"]}>
+            <Text fontSize={["md", "3xl", "3xl", "2xl", "3xl"]}>
               {getLocalTime(sunrise, timezone)}
             </Text>
           </Flex>
@@ -40,7 +38,7 @@ const SunAndMoon = () => {
           <Icon as={WiSunset} boxSize="60px" />
           <Flex direction="column" align="center" justify="center">
             <Text fontSize={["sm", "2xl"]}>Sunset</Text>
-            <Text fontSize={["md", "3xl"]}>
+            <Text fontSize={["md", "3xl", "3xl", "2xl", "3xl"]}>
               {getLocalTime(sunset, timezone)}
             </Text>
           </Flex>
@@ -51,7 +49,7 @@ const SunAndMoon = () => {
           <Icon as={WiMoonrise} boxSize="60px" />
           <Flex direction="column" align="center" justify="center">
             <Text fontSize={["sm", "2xl"]}>Moonrise</Text>
-            <Text fontSize={["md", "3xl"]}>
+            <Text fontSize={["md", "3xl", "3xl", "2xl", "3xl"]}>
               {getLocalTime(moonrise, timezone)}
             </Text>
           </Flex>
@@ -60,7 +58,7 @@ const SunAndMoon = () => {
           <Icon as={WiMoonset} boxSize="60px" />
           <Flex direction="column" align="center" justify="center">
             <Text fontSize={["sm", "2xl"]}>Moonset</Text>
-            <Text fontSize={["md", "3xl"]}>
+            <Text fontSize={["md", "3xl", "3xl", "2xl", "3xl"]}>
               {getLocalTime(moonset, timezone)}
             </Text>
           </Flex>

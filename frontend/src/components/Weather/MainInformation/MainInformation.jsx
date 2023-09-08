@@ -14,7 +14,7 @@ const MainInformation = () => {
         color="#0A2647"
         direction="column"
         gap="1rem"
-        w={[360, 400, 600, 1100]}
+        width={["360px", "400px", "700px"]}
       >
         <Header />
         <Flex
@@ -25,19 +25,25 @@ const MainInformation = () => {
         >
           <HourlyForecast />
           <Flex
-            direction={["column", "row"]}
+            direction={["column", "column", "column", "row", "row"]}
             justify="center"
             align="center"
             gap={["1rem", "1.5rem"]}
             w="100%"
           >
-            <Box order={[2, 1]} w={["100%", "33rem"]}>
+            <Box
+              order={[2, 2, 2, 2, 1]}
+              w={["100%", "28rem", "40rem", "60rem", "33rem"]}
+            >
               <DetailedWeather />
             </Box>
-            <Box order={[1, 2]} w={["100%", "33rem"]}>
+            <Box
+              order={[1, 1, 1, 1, 2]}
+              w={["100%", "28rem", "40rem", "60rem", "33rem"]}
+            >
               <GeneralWeather />
             </Box>
-            <Box order={[3, 3]} w={["100%", "33rem"]}>
+            <Box order={3} w={["100%", "28rem", "40rem", "60rem", "33rem"]}>
               <UVIndex />
             </Box>
           </Flex>

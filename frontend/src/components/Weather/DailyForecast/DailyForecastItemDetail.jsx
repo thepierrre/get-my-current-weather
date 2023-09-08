@@ -100,7 +100,7 @@ const DailyForecastItemDetail = (props) => {
   };
 
   const { moonIcon, moonPhaseName } = getMoonPhase(moonPhase);
-  let precipProbability = `${precipProb * 100}%`;
+  let precipProbability = `${Math.round(precipProb * 100)}%`;
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} isCentered>

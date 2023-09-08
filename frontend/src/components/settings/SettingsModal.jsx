@@ -16,13 +16,8 @@ import {
 
 const SettingsModal = (props) => {
   const { isOpen, onClose } = props;
-  const {
-    globalWeather,
-    tempUnits,
-    setTempUnits,
-    clockFormat,
-    setClockFormat,
-  } = useContext(WeatherContext);
+  const { tempUnits, setTempUnits, clockFormat, setClockFormat } =
+    useContext(WeatherContext);
 
   const setTempUnitsToCelsius = () => {
     setTempUnits("Celsius");
@@ -48,8 +43,8 @@ const SettingsModal = (props) => {
         gap="2rem"
         borderRadius="1.5rem"
         p={3}
-        maxWidth={["95%", "32rem"]}
-        minWidth={["95%", "32rem"]}
+        maxWidth={["95%", "90%", "32rem"]}
+        minWidth={["95%", "90%", "32rem"]}
         color="#0A2647"
       >
         <ModalHeader textAlign="center" fontSize="2xl">

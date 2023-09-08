@@ -1,8 +1,7 @@
 import { useContext } from "react";
 import WeatherContext from "../../../context/weather-context";
-import { DateTime } from "luxon";
 import getWeatherIcon from "../../../shared/get-weather-icon";
-import { Box, Flex, Text, Icon } from "@chakra-ui/react";
+import { Flex, Text, Icon } from "@chakra-ui/react";
 
 const HourlyForecastItem = (props) => {
   const { celsiusTemp, fahrenheitTemp, main, date } = props;
@@ -19,7 +18,7 @@ const HourlyForecastItem = (props) => {
       direction="column"
       align="center"
       margin="0.5rem"
-      minWidth={["4rem", "7rem"]}
+      minWidth={["4rem", "8.5rem"]}
       gap={["0.2rem"]}
     >
       <Text fontSize={["sm", "2xl"]}>{getLocalTime(date, timezone)}</Text>

@@ -13,7 +13,7 @@ const DetailedWeather = () => {
 
   return (
     <Box
-      w={["100%", "23rem"]}
+      w={["100%", "28rem", "40rem", "19rem", "23rem"]}
       h={["20rem", "25rem"]}
       bg="rgba(255, 255, 255, 0.2)"
       borderRadius="1.5rem"

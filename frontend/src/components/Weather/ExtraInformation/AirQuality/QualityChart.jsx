@@ -56,7 +56,11 @@ const QualityChart = () => {
   }, [airQuality]);
 
   return (
-    <Flex w="100%" align="center" justify={["center", "flex-end"]}>
+    <Flex
+      w={["100%", "100%", "50%", "100%"]}
+      align="center"
+      justify={["center", "center", "center", "flex-end"]}
+    >
       <Box w="13rem">
         <CircularProgress
           value={qualityPercentage}

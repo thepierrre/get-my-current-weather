@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import WeatherContext from "../../../context/weather-context";
 import getWeatherIcon from "../../../shared/get-weather-icon";
-import { Text, Box, Icon, Flex, Button } from "@chakra-ui/react";
+import { Text, Box, Icon, Flex } from "@chakra-ui/react";
 
 const GeneralWeather = () => {
   const { globalWeather, tempUnits } = useContext(WeatherContext);
@@ -12,8 +12,6 @@ const GeneralWeather = () => {
       ? globalWeather.weather.celsiusTemp
       : globalWeather.weather.fahrenheitTemp;
 
-  console.log(globalWeather.isNight);
-
   const weatherIcon = getWeatherIcon(
     globalWeather.weather.main,
     globalWeather.isNight
@@ -21,7 +19,7 @@ const GeneralWeather = () => {
 
   return (
     <Flex
-      w={["100%", "23rem"]}
+      w={["100%", "28rem", "40rem", "19rem", "23rem"]}
       bg="rgba(255, 255, 255, 0.2)"
       borderRadius="1.5rem"
       h={["18rem", "25rem"]}
@@ -35,12 +33,14 @@ const GeneralWeather = () => {
       </Flex>
       <Flex direction={["row", "row"]} align="center" gap="1rem">
         <Box order={[1, 1]}>
-          <Text fontSize={["7xl", "7xl"]}>{`${Math.floor(
+          <Text fontSize={["7xl", "7xl", "7xl", "6xl", "7xl"]}>{`${Math.floor(
             temp || 24.0
           )}°`}</Text>
         </Box>
         <Box order={[2, 2]}>
-          <Text fontSize={["5xl", "5xl"]}>{main || "Clear"}</Text>
+          <Text fontSize={["5xl", "5xl", "5xl", "4xl", "5xl"]}>
+            {main || "Clear"}
+          </Text>
         </Box>
       </Flex>
     </Flex>

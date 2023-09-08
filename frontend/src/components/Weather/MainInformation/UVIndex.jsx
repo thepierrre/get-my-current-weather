@@ -44,7 +44,7 @@ const UVIndex = () => {
 
   return (
     <Box
-      w={["100%", "23rem"]}
+      w={["100%", "28rem", "40rem", "19rem", "23rem"]}
       h={["17rem", "25rem"]}
       padding={["2rem", "4rem"]}
       bg="rgba(255, 255, 255, 0.2)"

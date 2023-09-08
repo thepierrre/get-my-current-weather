@@ -1,18 +1,14 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import DailyForecastItemDetail from "./DailyForecastItemDetail";
 import WeatherContext from "../../../context/weather-context";
 import { DateTime } from "luxon";
 import { useDisclosure } from "@chakra-ui/react";
 import getWeatherIcon from "../../../shared/get-weather-icon";
 import { Flex, Text, Icon } from "@chakra-ui/react";
-// import { useDisclosure } from "@chakra-ui/react";
 
 const DailyForecastItem = (props) => {
-  // const { celsiusTemp, fahrenheitTemp, main, date, daily, setSelectedDay } =
-  //   props;
   const { dayWeather } = props;
   const { globalWeather, tempUnits } = useContext(WeatherContext);
-  const [selectedDay, setSelectedDay] = useState(undefined);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const celsiusTemp = dayWeather.celsiusTemp;
@@ -35,7 +31,7 @@ const DailyForecastItem = (props) => {
         align="center"
         justify="center"
         m={0}
-        minWidth={["5.5rem", "9.25rem"]}
+        minWidth={["5.5rem", "10.25rem"]}
         gap={["0.2rem"]}
         h="100%"
         _hover={{ bg: "rgba(255, 255, 255, 0.2)" }}
@@ -59,25 +55,3 @@ const DailyForecastItem = (props) => {
 };
 
 export default DailyForecastItem;
-
-// {selectedDay && (
-//   <DailyForecastItemDetail
-//     key={selectedDay}
-//     // temp={forecast[selectedDay].temp}
-//     // celsiusTemp={forecast[selectedDay].celsiusTemp}
-//     // fahrenheitTemp={forecast[selectedDay].fahrenheitTemp}
-//     // nightTemp={forecast[selectedDay].nightTemp}
-//     // celsiusNightTemp={forecast[selectedDay].celsiusNightTemp}
-//     // fahrenheitNightTemp={forecast[selectedDay].fahrenheitNightTemp}
-//     // main={forecast[selectedDay].main}
-//     // date={forecast[selectedDay].date}
-//     // precipProb={forecast[selectedDay].precipProb}
-//     // sunrise={forecast[selectedDay].sunrise}
-//     // sunset={forecast[selectedDay].sunset}
-//     // moonrise={forecast[selectedDay].moonrise}
-//     // moonset={forecast[selectedDay].moonset}
-//     // moonPhase={forecast[selectedDay].moonPhase}
-//     daily={forecast[selectedDay]}
-//     onClose={() => setSelectedDay(undefined)}
-//   />
-// )}

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import WeatherContext from "../../context/weather-context";
 import {
   Input,
@@ -6,6 +6,7 @@ import {
   InputLeftElement,
   InputRightElement,
   Icon,
+  Text,
   Tooltip,
   Box,
   IconButton,
@@ -13,16 +14,27 @@ import {
 import { CiLocationOn, CiSearch } from "react-icons/ci";
 
 const SearchBar = () => {
-  const cityInputChangeHandler = (event) => {
-    setEnteredCity(event.target.value);
-  };
-
+  const [inputError, setInputError] = useState(false);
   const {
     getWeatherForCurrentLocation,
     getWeatherForEnteredCity,
     enteredCity,
     setEnteredCity,
   } = useContext(WeatherContext);
+
+  const cityInputChangeHandler = (event) => {
+    setEnteredCity(event.target.value);
+  };
+
+  const onEnteredCity = () => {
+    if (!enteredCity) {
+      setInputError(true);
+      return;
+    } else {
+      setInputError(false);
+      getWeatherForEnteredCity();
+    }
+  };
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
@@ -42,7 +54,7 @@ const SearchBar = () => {
         </InputLeftElement>
         <Input
           placeholder="Enter a city name"
-          w={[360, 400, 600, 700]}
+          width={["360px", "400px", "700px"]}
           background="white"
           borderRadius="1.5rem"
           value={enteredCity}
@@ -51,12 +63,22 @@ const SearchBar = () => {
         />
         <InputRightElement height="100%" width="3rem">
           <Tooltip label="Fetch weather for entered city">
-            <IconButton variant="link" onClick={getWeatherForEnteredCity}>
+            <IconButton variant="link" onClick={onEnteredCity}>
               <Icon as={CiSearch} boxSize={7} color="#0A2647" />
             </IconButton>
           </Tooltip>
         </InputRightElement>
       </InputGroup>
+      {inputError && (
+        <Text
+          textAlign="center"
+          marginTop="0.5rem"
+          fontSize="lg"
+          color="#822727"
+        >
+          Please enter a city name.
+        </Text>
+      )}
     </Box>
   );
 };

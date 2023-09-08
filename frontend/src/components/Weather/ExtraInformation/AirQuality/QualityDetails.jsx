@@ -40,7 +40,7 @@ const QualityDetails = () => {
           <Text>–</Text>
           <Text>–</Text>
         </Flex>
-        <Flex direction="column" align="flex-end">
+        <Flex direction="column" align="flex-start">
           <Text>{components.co}</Text>
           <Text>{components.so2}</Text>
           <Text>{components.no2}</Text>

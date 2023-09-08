@@ -24,7 +24,7 @@ const HourlyForecast = () => {
   return (
     <Flex
       bg="rgba(255, 255, 255, 0.2)"
-      w={["100%", "72rem"]}
+      w={["100%", "28rem", "40rem", "60rem", "72rem"]}
       h={["7rem", "12rem"]}
       borderRadius="1.5rem"
       align="center"

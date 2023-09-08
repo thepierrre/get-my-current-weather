@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import WeatherContext from "../../../context/weather-context";
 import { Flex, Text, Icon, Button } from "@chakra-ui/react";
 import { WiDaySunnyOvercast } from "react-icons/wi";
@@ -19,7 +19,7 @@ const Default = () => {
     <Button
       key={city}
       bg="rgba(255, 255, 255, 0.4)"
-      width={["360px", "700px"]}
+      width={["360px", "400px", "700px"]}
       color="#0A264"
       borderRadius="1.5rem"
       _hover={{ bg: "rgba(255, 255, 255, 0.7)" }}

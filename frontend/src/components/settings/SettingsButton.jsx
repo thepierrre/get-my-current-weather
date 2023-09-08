@@ -1,4 +1,4 @@
-import { Text, Flex, IconButton, Icon } from "@chakra-ui/react";
+import { Flex, IconButton, Icon } from "@chakra-ui/react";
 import { IoSettingsOutline } from "react-icons/io5";
 
 const SettingsButton = (props) => {
@@ -6,9 +6,9 @@ const SettingsButton = (props) => {
 
   return (
     <Flex
-      position={["absolute", "fixed"]}
-      top={["1rem", "2rem"]}
-      right={["1.5rem", "2rem"]}
+      position={["absolute", "absolute", "absolute", "absolute", "fixed"]}
+      top={["1rem", "1rem", "2rem"]}
+      right={["1.5rem", "1rem", "2rem"]}
     >
       <IconButton
         variant="link"
